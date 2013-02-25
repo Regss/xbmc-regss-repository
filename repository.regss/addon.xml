@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.regss" name="Regss Add-ons" version="1.0.2" provider-name="Regss">
+<addon id="repository.regss" name="Regss Add-ons" version="1.2.0" provider-name="Regss">
     <extension point="xbmc.addon.repository" name="Regss Add-ons">
-		<info compressed="true">http://github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
-		<checksum>http://github.com/Regss/xbmc-regss-repository/master/addons.xml.md5</checksum>
-		<datadir zip="false">http://github.com/Regss/xbmc-regss-repository/master</datadir>
+		<info compressed="true">https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
+		<checksum>https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.github.com/Regss/xbmc-regss-repository/master</datadir>
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Regss Add-ons repository</summary>

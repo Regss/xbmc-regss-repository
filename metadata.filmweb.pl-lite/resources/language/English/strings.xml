@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+    <string id="30000">Prefer DVD Plot</string>
+    <string id="30001">Download all posters</string>
+    <string id="30002">Download fanarts from TMDB</string>
+    <string id="30003">Find Trailer</string>
+    <string id="30004">Use Movie Sets from TMDB</string>
+</strings>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addons>
 <addon id="metadata.filmweb.pl-lite" name="Filmweb-lite" version="1.0.11" provider-name="Regss">
     <requires>
     <import addon="xbmc.metadata" version="1.0"/>
@@ -19,21 +18,3 @@
         <platform>all</platform>
     </extension>
 </addon>
-
-<addon id="repository.regss" name="Regss Add-ons" version="1.2.0" provider-name="Regss">
-    <extension point="xbmc.addon.repository" name="Regss Add-ons">
-		<info compressed="true">https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
-		<checksum>https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://raw.github.com/Regss/xbmc-regss-repository/master</datadir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Regss Add-ons repository</summary>
-        <summary lang="pl">Regss - repozytorium dodatków</summary>
-        <description>Download Regss Add-ons</description>
-        <description lang="pl">Pobieraj i instaluj dodatki z repozytorium Regss'a</description>
-        <disclaimer> - </disclaimer>
-        <disclaimer lang="pl"> - </disclaimer>
-        <platform>all</platform>
-    </extension>
-</addon>
-</addons>

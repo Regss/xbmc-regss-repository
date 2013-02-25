@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<scraper name="Filmweb-lite" content="movies" framework="1.1" date="2013-02-02">
+    <NfoUrl dest="3">
+        <RegExp input="$$1" output="\1" dest="3">
+            <expression></expression>
+        </RegExp>
+    </NfoUrl>
+    <CreateSearchUrl dest="3">
+        <RegExp input="$$1" output="&lt;url&gt;http://www.filmweb.pl/search/film?q=\1&amp;startYear=$$2&amp;endYear=$$2&amp;sort=TEXT_SCORE&lt;/url&gt;" dest="3">
+            <expression noclean="1"/>
+        </RegExp>
+    </CreateSearchUrl>
+    <GetSearchResults dest="5">
+        <RegExp input="$$3" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="5">
+            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;&lt;url&gt;http://www.filmweb.pl/Film?id=\3&lt;/url&gt;&lt;/entity&gt;" dest="3">
+                <expression repeat="yes" fixchars="1">searchResultTitle.*?&gt;(.*?)&lt;/a&gt;.*?searchResultDetails&gt;([0-9]+).*?dropdownTarget ([0-9]+)</expression>
+            </RegExp>
+            <expression noclean="1"/>
+        </RegExp>
+    </GetSearchResults>
+    <GetDetails clearbuffers="no" dest="3">
+        <RegExp input="$$5" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" dest="3">
+
+            <!-- Title !-->
+            <RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;" dest="5">
+                <expression trim="1" fixchars="1">v:itemreviewed&quot;&gt;([^&lt;]+)&lt;</expression>
+            </RegExp>
+
+            <!-- Originaltitle !-->
+            <RegExp input="$$5" output="\1" dest="11">
+                <expression noclean="1">&lt;title&gt;([^&lt;]+)&lt;</expression>
+            </RegExp>
+            <RegExp input="$$1" output="\1" dest="11">
+                <expression trim="1" fixchars="1">h2 class=&quot;text-large caption&quot;&gt;([^&lt;]+)&lt;</expression>
+            </RegExp>
+            <RegExp input="$$11" output="\2 \1" dest="11">
+                <expression trim="1" fixchars="1">(.*), ('E|A|A'|Al|Al-|Am|An|Ang|As|Az|Bat|D'|Da|Das|De|Dei|Dem|Den|Der|Des|Det|Die|Dos|E|Ei|Ein|Eine|Einem|Einen|Einer|Eines|Eit|El|El-|Els|En|Et|Gli|Ha|Ha-|Hai|He|He-|Hen|Het|Hi|Hin|Ho|Ho-|Hoi|I|Il|Il-|L'|La|Las|Le|Les|Lo|Los|Na|Nang|Ni|O|Os|Sa|Si|Ta|Ten|Tes|The|To|Ton|Um|Uma|Umas|Un|Un'|Una|Unas|Une|Uno|Unos)$</expression>
+            </RegExp>
+            <RegExp input="$$11" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="5+">
+                <expression />
+            </RegExp>
+			
+			<!-- Year !-->
+            <RegExp input="$$1" output="&lt;year&gt;\1&lt;/year&gt;" dest="5+">
+                <expression fixchars="1">id=filmYear[^&gt;]+&gt;\(([0-9]*)\)</expression>
+            </RegExp>
+
+            <!-- Director's names !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression noclean="1">reżyseria:(.*?)&lt;/ul&gt;</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;director&gt;\1&lt;/director&gt;" dest="7">
+                <expression repeat="yes" fixchars="1" trim="1">v:directedBy&quot;&gt;([^&lt;]+)&lt;</expression>
+            </RegExp>
+            <RegExp input="$$7" output="\1" dest="5+">
+                <expression noclean="1" />
+            </RegExp>
+
+            <!-- Credits !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression noclean="1">scenariusz:(.*?)&lt;/ul&gt;</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7">
+                <expression repeat="yes" fixchars="1" trim="1">title=[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
+            </RegExp>
+            <RegExp input="$$7" output="\1" dest="5+">
+                <expression noclean="1" />
+            </RegExp>
+
+            <!-- Genres !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression noclean="1">gatunek:(.*?)&lt;/ul</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
+                <expression repeat="yes" fixchars="1" trim="1">a href=[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
+            </RegExp>
+            <RegExp input="$$7" output="\1" dest="5+">
+                <expression noclean="1" />
+            </RegExp>
+
+            <!-- Actors !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression noclean="1">class=&quot;pageBox filmCastBox&quot;&gt;(.*?)zobacz pełną</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;role&gt;\3&lt;/role&gt;&lt;thumb&gt;\1&lt;/thumb&gt;&lt;/actor&gt;" dest="7">
+                <expression repeat="yes" fixchars="2,3" trim="2,3">li&gt;.*?src=&quot;(.*?)&quot;.*?v:starring&quot;&gt;(.*?)&lt;/a.*?roleName&gt;(.*?)&lt;/span.*?&lt;/li</expression>
+            </RegExp>
+            <RegExp input="$$7" output="\1" dest="5+">
+                <expression noclean="1" />
+            </RegExp>
+
+            <!-- Plot !-->
+            <RegExp conditional="plot" input="$$1" output="&lt;url function=&quot;DVD_PLOT&quot;&gt;http://www.filmweb.pl\1&lt;/url&gt;" dest="5+">
+                <expression noclean="1">filmMenu-filmDescriptions class=&quot;wl &quot;&gt;&lt;a href=&quot;(.*?)&quot;</expression>
+            </RegExp>
+            <RegExp conditional="!plot" input="$$1" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="5+">
+                <expression fixchars="1">v:summary&quot;&gt;(.*?)&lt;/</expression>
+            </RegExp>
+
+            <!-- Tagline !-->
+            <RegExp input="$$1" output="&lt;tagline&gt;\1&lt;/tagline&gt;" dest="5+">
+                <expression fixchars="1">class=hdr-bigger&gt;[^&gt;]+&gt;([^&lt;]+)</expression>
+            </RegExp>
+
+            <!-- Outline !-->
+            <RegExp input="" output="Ten film nie posiada jeszcze zarysu fabuły." dest="6">
+                <expression />
+            </RegExp>
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression fixchars="1">filmPlot&gt;&lt;p&gt;([^&lt;]+)</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;outline&gt;\1&lt;/outline&gt;" dest="5+">
+                <expression />
+            </RegExp>
+
+            <!-- Country !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression noclean="1">produkcja:(.*?)&lt;/ul</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;country&gt;\1&lt;/country&gt;" dest="7">
+                <expression repeat="yes" fixchars="1" trim="1">a href=[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
+            </RegExp>
+            <RegExp input="$$7" output="\1" dest="5+">
+                <expression noclean="1" />
+            </RegExp>
+
+            <!-- Rating !-->
+            <RegExp input="$$1" output="&lt;rating&gt;\1.\2&lt;/rating&gt;" dest="5+">
+                <expression noclean="1">v:average&quot;&gt; ([0-9]*),([0-9]*)&lt;</expression>
+            </RegExp>
+
+            <!-- Votes !-->
+            <RegExp input="$$1" output="&lt;votes&gt;\1&lt;/votes&gt;" dest="5+">
+                <expression noclean="1">v:votes&quot;&gt;([^&lt;]+)</expression>
+            </RegExp>
+
+            <!-- Thumbnail !-->
+            <RegExp conditional="!poster_thumb" input="$$1" output="&lt;thumb&gt;\1&lt;/thumb&gt;" dest="5+">
+                <expression noclean="1">v:image&quot; href=&quot;([^\?]+)\?</expression>
+            </RegExp>
+            <RegExp conditional="poster_thumb" input="$$1" output="&lt;url function=&quot;ALL_POSTER_THUMB&quot;&gt;http://www.filmweb.pl\1/posters&lt;/url&gt;" dest="5+">
+                <expression noclean="1">v:Review-aggregate&quot; href=&quot;([^"]+)&quot;</expression>
+            </RegExp>
+
+            <!-- Fanart !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression noclean="1">zdjęcia&lt;/a&gt;(.*?)&lt;script</expression>
+            </RegExp>
+            <RegExp conditional="!fanart" input="$$6" output="&lt;fanart&gt;&lt;thumb preview=&quot;\13\2&quot;&gt;\11\2&lt;/thumb&gt;&lt;/fanart&gt;" dest="5+">
+                <expression noclean="1">div class=col&gt;&lt;a href=&quot;([^\.]+\.[^\.]+\.[^\.]+\.)1([^"]+)&quot;</expression>
+            </RegExp>
+            <RegExp conditional="fanart" input="$$6" output="&lt;thumb preview=&quot;\13\2&quot;&gt;\11\2&lt;/thumb&gt;" dest="10">
+                <expression noclean="1" repeat="yes">div class=col&gt;&lt;a href=&quot;([^\.]+\.[^\.]+\.[^\.]+\.)1([^"]+)&quot;</expression>
+            </RegExp>        
+            <RegExp conditional="fanart" input="$$5" output="&lt;url function=&quot;ID_IMDB&quot;&gt;http://www.google.com/cse?cx=006698336934997514206%3A4xhr0fg1_ye&amp;num=1&amp;ie=UTF-8&amp;q=\1+\2&lt;/url&gt;" dest="5+">
+                <expression noclean="1" encode="1">&lt;originaltitle&gt;([^&lt;]+)&lt;.*?&lt;year&gt;([0-9]*)&lt;</expression>
+            </RegExp>
+
+            <!-- Sets !-->
+            <RegExp conditional="sets" input="$$5" output="&lt;url function=&quot;ID_IMDB&quot;&gt;http://www.google.com/cse?cx=006698336934997514206%3A4xhr0fg1_ye&amp;num=1&amp;ie=UTF-8&amp;q=\1+\2&lt;/url&gt;" dest="5+">
+                <expression noclean="1" encode="1">&lt;originaltitle&gt;([^&lt;]+)&lt;.*?&lt;year&gt;([0-9]*)&lt;</expression>
+            </RegExp>
+
+            <!-- Trailer !-->
+            <RegExp conditional="trailer" input="$$1" output="&lt;url function=&quot;TRAILERS&quot;&gt;http://www.filmweb.pl\1&lt;/url&gt;" dest="5+">
+                <expression noclean="1">videosList&quot;&gt;&lt;div class=col&gt;&lt;a href=&quot;(.*?)&quot;</expression>
+            </RegExp>
+            <expression noclean="1"/>
+        </RegExp>
+    </GetDetails>
+
+    <!-- DVD_PLOT !-->
+    <DVD_PLOT dest="5">
+        <RegExp input="$$1" output="\1" dest="6">
+            <expression noclean="1">filmSubpageContentWrapper(.*?)&lt;/script&gt;</expression>
+        </RegExp>
+        <RegExp input="$$6" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="7">
+            <expression fixchars="1">hoverOpacity&quot; id=[0-9]+&gt;&lt;p[^&gt;]+&gt;(.*?)&lt;/p</expression>
+        </RegExp>
+        <RegExp input="$$6" output="&lt;plot&gt;\2 [opis dystrybutora]&lt;/plot&gt;" dest="7">
+            <expression fixchars="2">hoverOpacity&quot; id=([0-9]+)&gt;&lt;p[^&gt;]+&gt;(.*?)&lt;/p.*?Delete=\1.{2,300}\[opis dystrybutora</expression>
+        </RegExp>
+        <RegExp input="$$6" output="&lt;plot&gt;\2 [opis dystrybutora DVD]&lt;/plot&gt;" dest="7">
+            <expression fixchars="2">hoverOpacity&quot; id=([0-9]+)&gt;&lt;p[^&gt;]+&gt;(.*?)&lt;/p.*?Delete=\1.{2,300}\[opis dystrybutora dvd</expression>
+        </RegExp>
+        <RegExp input="$$7" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" dest="5">
+            <expression noclean="1" />
+        </RegExp>
+    </DVD_PLOT>
+
+    <!-- ALL POSTER THUMB !-->
+    <ALL_POSTER_THUMB dest="5">
+        <RegExp input="$$1" output="\1" dest="6">
+            <expression noclean="1">&lt;ul class=&quot;block-list postersList&quot;&gt;(.*?)&lt;script</expression>
+        </RegExp>
+        <RegExp input="$$6" output="&lt;thumb preview=&quot;\12\2&quot;&gt;\13\2&lt;/thumb&gt;" dest="7">
+            <expression repeat ="yes" noclean="1">img src=&quot;([^\.]+\.[^\.]+\.[^\.]+\.)2([^"]+)&quot;</expression>
+        </RegExp>
+        <RegExp input="$$7" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" dest="5">
+            <expression noclean="1" />
+        </RegExp>
+    </ALL_POSTER_THUMB>
+
+    <!-- ID IMDB !-->
+    <ID_IMDB clearbuffers="no" dest="5">
+        
+        <RegExp input="$$1" output="\1" dest="14">
+            <expression noclean="1">title/(tt[0-9]*)/</expression>
+        </RegExp>
+        <RegExp input="$$14" output="&lt;id&gt;\1&lt;/id&gt;" dest="8">
+            <expression noclean="1" />
+        </RegExp>
+		<RegExp conditional="fanart" input="$$14" output="&lt;url function=&quot;FANART_TMDB&quot;&gt;http://api.themoviedb.org/3/movie/\1/images?api_key=1009b5cde25c7b0692d51a7db6e49cbd&lt;/url&gt;" dest="8+">
+            <expression noclean="1" encode="1" />
+        </RegExp>
+        <RegExp conditional="sets" input="$$14" output="&lt;url function=&quot;SETS_TMDB&quot;&gt;http://api.themoviedb.org/3/movie/\1?api_key=1009b5cde25c7b0692d51a7db6e49cbd&language=pl&lt;/url&gt;" dest="8+">
+            <expression noclean="1" encode="1" />
+        </RegExp>
+		<RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="5">
+            <expression noclean="1" />
+        </RegExp>
+	</ID_IMDB>
+	
+	<!-- FANART TMDB !-->
+    <FANART_TMDB clearbuffers="no" dest="5">
+	    <RegExp input="$$1" output="\1" dest="6">
+            <expression noclean="1">backdrops&quot;:\[([^\]]+)\]</expression>
+        </RegExp>
+        <RegExp input="$$6" output="&lt;thumb preview=&quot;http://cf2.imgobject.com/t/p/w780\1&quot;&gt;http://cf2.imgobject.com/t/p/original\1&lt;/thumb&gt;" dest="7">
+            <expression noclean="1" repeat="yes" clear="yes">file_path&quot;:&quot;([^&quot;]+)&quot;</expression>
+        </RegExp>
+		<RegExp input="$$7" output="&lt;fanart&gt;\1$$10&lt;/fanart&gt;" dest="8">
+            <expression noclean="1"></expression>
+        </RegExp>
+        <RegExp input="$$8" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" dest="5">
+            <expression noclean="1" />
+        </RegExp>
+	</FANART_TMDB>	
+
+    <!-- SETS !-->
+    <SETS_TMDB clearbuffers="no" dest="5">
+        <RegExp input="$$1" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;&lt;set&gt;\1&lt;/set&gt;&lt;/details&gt;" dest="5">
+            <expression noclean="1">belongs_to_collection&quot;:\{&quot;id&quot;:[^:]+:&quot;([^&quot;]+)&quot;</expression>
+        </RegExp>
+    </SETS_TMDB>
+    
+    <!-- TRAILERS !-->
+    <TRAILERS dest="5">
+        <RegExp input="$$1" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;&lt;trailer&gt;\1\2&lt;/trailer&gt;&lt;/details&gt;" dest="5">
+            <expression noclean="1">trailerVideoBoxContainer.*?src=&quot;(.*?)(\.mov|\.mp4|\.mpg|\.mpeg|\.ogv|\.wmv)&quot;</expression>
+        </RegExp>
+    </TRAILERS>
+</scraper>
