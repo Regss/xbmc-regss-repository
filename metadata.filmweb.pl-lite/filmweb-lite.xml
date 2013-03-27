@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<scraper name="Filmweb-lite" content="movies" framework="1.1" date="2013-02-02">
+<scraper name="Filmweb-lite" content="movies" framework="1.1" date="2013-03-27">
     <NfoUrl dest="3">
         <RegExp input="$$1" output="\1" dest="3">
             <expression></expression>
@@ -12,8 +12,8 @@
     </CreateSearchUrl>
     <GetSearchResults dest="5">
         <RegExp input="$$3" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="5">
-            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;&lt;url&gt;http://www.filmweb.pl/Film?id=\3&lt;/url&gt;&lt;/entity&gt;" dest="3">
-                <expression repeat="yes" fixchars="1">searchResultTitle.*?&gt;(.*?)&lt;/a&gt;.*?searchResultDetails&gt;([0-9]+).*?dropdownTarget ([0-9]+)</expression>
+            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;&lt;/year&gt;&lt;url&gt;http://www.filmweb.pl/Film?id=\2&lt;/url&gt;&lt;/entity&gt;" dest="3">
+                <expression repeat="yes" fixchars="1">hitDescWrapper&gt;&lt;h3&gt;(.*?)&lt;/h3&gt;.*?([0-9]*)_FILM_([0-9]*)</expression>
             </RegExp>
             <expression noclean="1"/>
         </RegExp>
