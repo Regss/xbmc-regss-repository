@@ -1,44 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addons>
-<addon id="metadata.filmweb.pl-lite" name="Filmweb-lite" version="1.0.12" provider-name="Regss">
-    <requires>
-    <import addon="xbmc.metadata" version="1.0"/>
-    </requires>
-    <extension point="xbmc.metadata.scraper.movies" language="pl" library="filmweb-lite.xml"/>
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Filmweb Movie Scraper</summary>
-        <summary lang="hu">Filmweb filmadat leolvasó</summary>
-        <summary lang="kr">Filmweb 영화 스크래퍼</summary>
-        <summary lang="pl">Scraper filmowy Filmweb</summary>
-        <summary lang="pt">Scraper de filmes Filmweb</summary>
-        <description lang="en">Download Movie information from www.filmweb.pl</description>
-        <description lang="hu">Film információk letöltése a www.filmweb.pl webhelyről</description>
-        <description lang="kr">www.filmweb.pl 에서 영화 정보 다운로드</description>
-        <description lang="pl">Filmweb - łeb pełen filmów! to największy polski serwis filmowy i druga największa baza filmowa na świecie.</description>
-        <description lang="pt">Descarregar informação de filmes de www.filmweb.pl</description>
-        <platform>all</platform>
-    </extension>
-</addon>
-
-<addon id="repository.regss" name="Regss Add-ons" version="1.2.0" provider-name="Regss">
-    <extension point="xbmc.addon.repository" name="Regss Add-ons">
-		<info compressed="true">https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
-		<checksum>https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://raw.github.com/Regss/xbmc-regss-repository/master</datadir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Regss Add-ons repository</summary>
-        <summary lang="pl">Regss - repozytorium dodatków</summary>
-        <description>Download Regss Add-ons</description>
-        <description lang="pl">Pobieraj i instaluj dodatki z repozytorium Regss'a</description>
-        <disclaimer> - </disclaimer>
-        <disclaimer lang="pl"> - </disclaimer>
-        <platform>all</platform>
-    </extension>
-</addon>
-</addons>
-=======
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
 <addon id="metadata.filmaster.pl"
@@ -105,4 +64,3 @@
     </extension>
 </addon>
 </addons>
->>>>>>> fix

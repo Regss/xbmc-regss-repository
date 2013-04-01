@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="metadata.filmweb.pl-lite" name="Filmweb-lite" version="1.0.12" provider-name="Regss">
-    <requires>
-    <import addon="xbmc.metadata" version="1.0"/>
-    </requires>
-    <extension point="xbmc.metadata.scraper.movies" language="pl" library="filmweb-lite.xml"/>
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Filmweb Movie Scraper</summary>
-        <summary lang="hu">Filmweb filmadat leolvasó</summary>
-        <summary lang="kr">Filmweb 영화 스크래퍼</summary>
-        <summary lang="pl">Scraper filmowy Filmweb</summary>
-        <summary lang="pt">Scraper de filmes Filmweb</summary>
-        <description lang="en">Download Movie information from www.filmweb.pl</description>
-        <description lang="hu">Film információk letöltése a www.filmweb.pl webhelyről</description>
-        <description lang="kr">www.filmweb.pl 에서 영화 정보 다운로드</description>
-        <description lang="pl">Filmweb - łeb pełen filmów! to największy polski serwis filmowy i druga największa baza filmowa na świecie.</description>
-        <description lang="pt">Descarregar informação de filmes de www.filmweb.pl</description>
-        <platform>all</platform>
-    </extension>
-=======
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="metadata.filmweb.pl-lite" name="Filmweb-lite" version="1.0.12" provider-name="Regss">
     <requires>
@@ -32,5 +11,4 @@
         <description lang="pl">Filmweb - łeb pełen filmów! to największy polski serwis filmowy i druga największa baza filmowa na świecie.</description>
         <platform>all</platform>
     </extension>
->>>>>>> fix
 </addon>
