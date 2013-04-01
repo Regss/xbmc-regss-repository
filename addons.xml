@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
 <addon id="metadata.filmweb.pl-lite" name="Filmweb-lite" version="1.0.12" provider-name="Regss">
@@ -37,3 +38,71 @@
     </extension>
 </addon>
 </addons>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="metadata.filmaster.pl"
+        name="Filmaster"
+        version="1.0.0"
+        provider-name="Regss">
+    <requires>
+        <import addon="xbmc.metadata" version="2.1.0"/>
+        <import addon="metadata.common.themoviedb.org" version="2.8.0"/>
+        <import addon="plugin.video.youtube" version="2.9.1" optional="true"/>
+    </requires>
+    <extension point="xbmc.metadata.scraper.movies"
+        language="pl"
+        library="filmaster.xml"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Filmaster Movie Scraper</summary>
+        <summary lang="pl">Scraper filmów z Filmaster.pl</summary>
+        <description lang="en">Download Movie information from filmaster.pl</description>
+        <description lang="pl">Pobiera informacje o filmach z filmaster.pl</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="metadata.filmweb.pl-lite" name="Filmweb-lite" version="1.0.12" provider-name="Regss">
+    <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+    </requires>
+    <extension point="xbmc.metadata.scraper.movies" language="pl" library="filmweb-lite.xml"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Filmweb Movie Scraper</summary>
+        <summary lang="pl">Scraper filmowy Filmweb</summary>
+        <description lang="en">Download Movie information from www.filmweb.pl</description>
+        <description lang="pl">Filmweb - łeb pełen filmów! to największy polski serwis filmowy i druga największa baza filmowa na świecie.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="metadata.joymii.com" name="JoyMii" version="1.0.1" provider-name="Regss">
+    <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+    </requires>
+    <extension point="xbmc.metadata.scraper.movies" language="pl" library="joymii.xml"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Joymii scraper</summary>
+        <description lang="en">Download Movie information from joymii.com</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="repository.regss" name="Regss Add-ons" version="1.2.0" provider-name="Regss">
+    <extension point="xbmc.addon.repository" name="Regss Add-ons">
+		<info compressed="true">https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
+		<checksum>https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.github.com/Regss/xbmc-regss-repository/master</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Regss Add-ons repository</summary>
+        <summary lang="pl">Regss - repozytorium dodatków</summary>
+        <description>Download Regss Add-ons</description>
+        <description lang="pl">Pobieraj i instaluj dodatki z repozytorium Regss'a</description>
+        <disclaimer> - </disclaimer>
+        <disclaimer lang="pl"> - </disclaimer>
+        <platform>all</platform>
+    </extension>
+</addon>
+</addons>
+>>>>>>> fix

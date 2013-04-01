@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="metadata.filmaster.pl"
+        name="Filmaster"
+        version="1.0.0"
+        provider-name="Regss">
+    <requires>
+        <import addon="xbmc.metadata" version="2.1.0"/>
+        <import addon="metadata.common.themoviedb.org" version="2.8.0"/>
+        <import addon="plugin.video.youtube" version="2.9.1" optional="true"/>
+    </requires>
+    <extension point="xbmc.metadata.scraper.movies"
+        language="pl"
+        library="filmaster.xml"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Filmaster Movie Scraper</summary>
+        <summary lang="pl">Scraper filmów z Filmaster.pl</summary>
+        <description lang="en">Download Movie information from filmaster.pl</description>
+        <description lang="pl">Pobiera informacje o filmach z filmaster.pl</description>
+        <platform>all</platform>
+    </extension>
+</addon>

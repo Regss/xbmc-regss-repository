@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<<<<<<< HEAD
 <scraper name="Filmweb-lite" content="movies" framework="1.1" date="2013-03-27">
+=======
+<scraper name="Filmweb-lite" content="movies" framework="1.1" date="2013-04-01">
+>>>>>>> fix
     <NfoUrl dest="3">
         <RegExp input="$$1" output="\1" dest="3">
             <expression></expression>
@@ -47,7 +51,7 @@
 
             <!-- Director's names !-->
             <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1">reżyseria:(.*?)&lt;/ul&gt;</expression>
+                <expression clear="yes" noclean="1">reżyseria:(.*?)&lt;/ul&gt;</expression>
             </RegExp>
             <RegExp input="$$6" output="&lt;director&gt;\1&lt;/director&gt;" dest="7">
                 <expression repeat="yes" fixchars="1" trim="1">v:directedBy&quot;&gt;([^&lt;]+)&lt;</expression>
@@ -58,7 +62,7 @@
 
             <!-- Credits !-->
             <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1">scenariusz:(.*?)&lt;/ul&gt;</expression>
+                <expression clear="yes" noclean="1">scenariusz:(.*?)&lt;/ul&gt;</expression>
             </RegExp>
             <RegExp input="$$6" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7">
                 <expression repeat="yes" fixchars="1" trim="1">title=[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
@@ -69,7 +73,7 @@
 
             <!-- Genres !-->
             <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1">gatunek:(.*?)&lt;/ul</expression>
+                <expression clear="yes" noclean="1">gatunek:(.*?)&lt;/ul</expression>
             </RegExp>
             <RegExp input="$$6" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
                 <expression repeat="yes" fixchars="1" trim="1">a href=[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
@@ -80,7 +84,7 @@
 
             <!-- Actors !-->
             <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1">class=&quot;pageBox filmCastBox&quot;&gt;(.*?)zobacz pełną</expression>
+                <expression clear="yes" noclean="1">class=&quot;pageBox filmCastBox&quot;&gt;(.*?)zobacz pełną</expression>
             </RegExp>
             <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;role&gt;\3&lt;/role&gt;&lt;thumb&gt;\1&lt;/thumb&gt;&lt;/actor&gt;" dest="7">
                 <expression repeat="yes" fixchars="2,3" trim="2,3">li&gt;.*?src=&quot;(.*?)&quot;.*?v:starring&quot;&gt;(.*?)&lt;/a.*?roleName&gt;(.*?)&lt;/span.*?&lt;/li</expression>
@@ -103,11 +107,8 @@
             </RegExp>
 
             <!-- Outline !-->
-            <RegExp input="" output="Ten film nie posiada jeszcze zarysu fabuły." dest="6">
-                <expression />
-            </RegExp>
             <RegExp input="$$1" output="\1" dest="6">
-                <expression fixchars="1">filmPlot&gt;&lt;p&gt;([^&lt;]+)</expression>
+                <expression clear="yes" fixchars="1">filmPlot&gt;&lt;p&gt;([^&lt;]+)</expression>
             </RegExp>
             <RegExp input="$$6" output="&lt;outline&gt;\1&lt;/outline&gt;" dest="5+">
                 <expression />
@@ -115,7 +116,7 @@
 
             <!-- Country !-->
             <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1">produkcja:(.*?)&lt;/ul</expression>
+                <expression clear="yes" noclean="1">produkcja:(.*?)&lt;/ul</expression>
             </RegExp>
             <RegExp input="$$6" output="&lt;country&gt;\1&lt;/country&gt;" dest="7">
                 <expression repeat="yes" fixchars="1" trim="1">a href=[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
@@ -144,7 +145,7 @@
 
             <!-- Fanart !-->
             <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1">zdjęcia&lt;/a&gt;(.*?)&lt;script</expression>
+                <expression clear="yes" noclean="1">zdjęcia&lt;/a&gt;(.*?)&lt;script</expression>
             </RegExp>
             <RegExp conditional="!fanart" input="$$6" output="&lt;fanart&gt;&lt;thumb preview=&quot;\13\2&quot;&gt;\11\2&lt;/thumb&gt;&lt;/fanart&gt;" dest="5+">
                 <expression noclean="1">div class=col&gt;&lt;a href=&quot;([^\.]+\.[^\.]+\.[^\.]+\.)1([^"]+)&quot;</expression>
