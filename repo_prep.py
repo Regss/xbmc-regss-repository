@@ -29,7 +29,7 @@ import re
 ########## SETTINGS
 # Set whether you want your addons compressed or not. Values are True or False
 # NOTE: the settings.py of repository aggregator will override this
-compress_addons = True
+compress_addons = False
 
 #Optional set a custom directory of where your addons are. False will use the current directory.
 # NOTE: the settings.py of repository aggregator will override this
