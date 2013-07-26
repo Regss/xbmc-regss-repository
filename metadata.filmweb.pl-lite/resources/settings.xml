@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+    <category label="OGÓLNE">
+        <setting label="30000" type="bool" id="GetDVDPlot" default="true" />
+        <setting label="30001" type="bool" id="GetTrailer" default="true" />
+        <setting label="30002" type="bool" id="GetFullActors" default="true" />
+    </category>
+        <category label="TMDb">
+        <setting label="30010" type="bool" id="UseTMDb" default="true" />
+        <setting label="30011" type="bool" id="GetTMDbThumb" default="true" enable="eq(-1,true)" />
+        <setting label="30012" type="bool" id="GetTMDbFanart" default="true" enable="eq(-2,true)" />
+        <setting label="30013" type="bool" id="GetTMDbSets" default="true" enable="eq(-3,true)" />
+        <setting label="30014" type="bool" id="GetTMDbMPAA" default="true" enable="eq(-4,true)" />
+        <setting label="30015" type="bool" id="GetTMDbStudio" default="true" enable="eq(-5,true)" />
+    </category>
+</settings>
