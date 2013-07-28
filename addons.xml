@@ -15,7 +15,7 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Filmaster Movie Scraper</summary>
         <summary lang="pl">Scraper filmów z Filmaster.pl</summary>
-        <description lang="en">Download Movie information from filmaster.pl</description>
+        <description lang="en">Download movie information from filmaster.pl</description>
         <description lang="pl">Pobiera informacje o filmach z filmaster.pl</description>
         <platform>all</platform>
     </extension>
@@ -60,9 +60,9 @@
 
 <addon id="repository.regss" name="Regss Add-ons" version="1.2.0" provider-name="Regss">
     <extension point="xbmc.addon.repository" name="Regss Add-ons">
-		<info compressed="true">https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
+		<info compressed="false">https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
 		<checksum>https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://raw.github.com/Regss/xbmc-regss-repository/master</datadir>
+		<datadir zip="false">https://raw.github.com/Regss/xbmc-regss-repository/master</datadir>
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Regss Add-ons repository</summary>

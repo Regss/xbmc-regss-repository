@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+    <string id="30000">Preferuj opis DVD</string>
+    <string id="30001">Pobieraj Trailer</string>
+    <string id="30002">Pobieraj pełną obsadę</string>
+    
+    <string id="30010">Używaj i zapisuj TMDb oraz IMDb ID</string>
+    <string id="30011">Okładki</string>
+    <string id="30012">Fanarty</string>
+    <string id="30013">Kolekcje</string>
+    <string id="30014">Certyfikat MPAA</string>
+    <string id="30015">Studio</string>
+</strings>
