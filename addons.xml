@@ -2,7 +2,7 @@
 <addons>
 <addon id="metadata.filmweb.pl-lite"
        name="Filmweb Lite [Eden]"
-       version="1.2.0"
+       version="1.2.2"
        provider-name="Regss">
     <requires>
     <import addon="xbmc.metadata" version="1.0" />
