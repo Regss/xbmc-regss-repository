@@ -14,7 +14,7 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Filmaster Movie Scraper</summary>
         <summary lang="pl">Scraper filmów z Filmaster.pl</summary>
-        <description lang="en">Download Movie information from filmaster.pl</description>
+        <description lang="en">Download movie information from filmaster.pl</description>
         <description lang="pl">Pobiera informacje o filmach z filmaster.pl</description>
         <platform>all</platform>
     </extension>
