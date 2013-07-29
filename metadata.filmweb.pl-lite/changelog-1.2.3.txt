@@ -1,4 +1,7 @@
-﻿[B]1.2.0[/B]
+[B]1.2.3[/B]
+- Poprawka: Aktorzy i Trailer
+
+[B]1.2.2[/B]
 - Poprawka: Wyszukiwanie na filmweb.pl
 
 [B]1.2.0[/B]
