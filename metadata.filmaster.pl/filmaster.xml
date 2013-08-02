@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
+    GLOBALNE:
+    $$20 - IMDb ID
+!-->
+<scraper framework="1.0" date="2013-04-01">
+    <NfoUrl dest="3">
+        <RegExp input="$$1" output="1" dest="3">
+            <expression />
+        </RegExp>
+    </NfoUrl>
+    <CreateSearchUrl dest="3">
+        <RegExp input="$$1" output="&lt;url&gt;http://api.filmaster.pl/1.1/search/film/?phrase=$$1&lt;/url&gt;" dest="3">
+            <expression noclean="1"/>
+        </RegExp>
+    </CreateSearchUrl>
+    <GetSearchResults dest="8">
+        <RegExp input="$$5" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="8">
+            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\2&lt;/year&gt;&lt;url&gt;http://api.filmaster.pl\3&lt;/url&gt;&lt;/entity&gt;" dest="5">
+                <expression repeat="yes" fixchars="1">title_localized&quot;: &quot;([^&quot;]+)&quot;[^\}]+release_year&quot;: ([0-9]+)[^\}]+resource_uri&quot;: &quot;([^&quot;]+)&quot;</expression>
+            </RegExp>
+            <expression noclean="1"/>
+        </RegExp>
+    </GetSearchResults>
+    <GetDetails dest="3">
+        <RegExp input="$$5" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" dest="3">
+            
+            <!-- TITLE !-->
+            <RegExp input="$$1" output="&lt;title&gt;\1&lt;/title&gt;" dest="5">
+                <expression fixchars="1" trim="1">title_localized&quot;: &quot;([^&quot;]+)&quot;</expression>
+            </RegExp>
+
+            <!-- ORIGINALTITLE !-->
+            <RegExp input="$$1" output="&lt;originaltitle&gt;\1&lt;/originaltitle&gt;" dest="5+">
+                <expression fixchars="1" trim="1">title&quot;: &quot;([^&quot;]+)&quot;</expression>
+            </RegExp>
+            
+            <!-- ID !-->
+            <RegExp input="$$1" output="tt\1" dest="20">
+                <expression clear="yes" fixchars="1">imdb_code&quot;: &quot;([0-9]+)&quot;</expression>
+            </RegExp>
+            <RegExp input="$$20" output="&lt;id&gt;\1&lt;/id&gt;" dest="5+">
+                <expression>(.+)</expression>
+            </RegExp>
+            
+            <!-- YEAR !-->
+            <RegExp input="$$1" output="&lt;year&gt;\1&lt;/year&gt;" dest="5+">
+                <expression fixchars="1">release_year&quot;: ([0-9]+)</expression>
+            </RegExp>
+            
+            <!-- PLOT !-->
+            <RegExp input="$$1" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="5+">
+                <expression fixchars="1" trim="1">description&quot;: &quot;([^\[]+)&quot;,</expression>
+            </RegExp>
+            
+            <!-- DIRECTOR !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression clear="yes" noclean="1">directors&quot;: \[([^\]]+)\]</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;director&gt;\2 \1&lt;/director&gt;" dest="5+">
+                <expression fixchars="1" trim="1">surname&quot;: &quot;([^&quot;]+)&quot;[^\}]+name&quot;: &quot;([^&quot;]+)&quot;</expression>
+            </RegExp>
+            
+            <!-- RATING !-->
+            <RegExp input="$$1" output="&lt;rating&gt;\1.\2&lt;/rating&gt;" dest="5+">
+                <expression fixchars="1">average_score&quot;: &quot;([0-9]).([0-9])</expression>
+            </RegExp>
+            
+            <!-- VOTES !-->
+            <RegExp input="$$1" output="&lt;votes&gt;\1&lt;/votes&gt;" dest="5+">
+                <expression fixchars="1">number_of_votes&quot;: ([0-9]+)</expression>
+            </RegExp>
+            
+            <!-- COUNTRY !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression clear="yes" noclean="1">production_country_list&quot;: \[([^\]]+)\]</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;country&gt;\1&lt;/country&gt;" dest="5+">
+                <expression fixchars="1" repeat="yes" trim="1">&quot;([^,]+)&quot;</expression>
+            </RegExp>
+            
+            <!-- GENRES !-->
+            <RegExp input="$$1" output="\1" dest="6">
+                <expression clear="yes" noclean="1">tags&quot;: \[([^\]]+)\]</expression>
+            </RegExp>
+            <RegExp input="$$6" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="5+">
+                <expression fixchars="1" repeat="yes" trim="1">&quot;(animowany|biograficzny|dokumentalny|dramat|dreszczowiec|familijny|fantasy|historyczny|horror|komedia|kryminalny|krótkometrażowy|muzyka|obyczajowy|przygodowy|romans|science-fiction|sensacyjny|wojenny)&quot;</expression>
+            </RegExp>
+            
+            <!-- POSTERS !-->
+            <RegExp conditional="!UseTMDbPosters" input="$$1" output="&lt;thumb preview=&quot;http://filmaster.pl\1180xauto.jpg&quot;&gt;http://filmaster.pl\1400xauto.jpg&lt;/thumb&gt;" dest="5+">
+                <expression noclean="1">imdb_code[^\{]+hires_image&quot;: &quot;([^&quot;]+)180xauto.jpg&quot;</expression>
+            </RegExp>
+            <RegExp conditional="UseTMDbPosters" input="" output="&lt;chain function=&quot;GetTMDBThumbsByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+
+            <!-- ACTORS !-->
+            <RegExp conditional="!UseTMDbActors" input="$$1" output="&lt;url function=&quot;ACTORS&quot;&gt;http://api.filmaster.pl\1&lt;/url&gt;" dest="5+">
+                <expression noclean="1">characters_uri&quot;: &quot;([^&quot;]+)&quot;</expression>
+            </RegExp>
+            <RegExp conditional="UseTMDbActors" input="" output="&lt;chain function=&quot;GetTMDBCastByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+            
+            <!-- FANARTS !-->
+            <RegExp conditional="UseTMDbFanarts" input="" output="&lt;chain function=&quot;GetTMDBFanartByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+            
+            <!-- SETS !-->
+            <RegExp conditional="UseTMDbSets" input="" output="&lt;chain function=&quot;GetTMDBSetByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+            
+            <!-- MPAA !-->
+            <RegExp conditional="UseTMDbMPAA" input="" output="&lt;chain function=&quot;GetTMDBCertificationsByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+            
+            <!-- STUDIO !-->
+            <RegExp conditional="UseTMDbStudio" input="" output="&lt;chain function=&quot;GetTMDBStudioByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+            
+            <!-- TAGLINE !-->
+            <RegExp conditional="UseTMDbTagline" input="" output="&lt;chain function=&quot;GetTMDBTaglineByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+            
+            <!-- WRITERS !-->
+            <RegExp conditional="UseTMDbWriters" input="" output="&lt;chain function=&quot;GetTMDBWitersByIdChain&quot;&gt;$$20&lt;/chain&gt;" dest="5+">
+                <expression />
+            </RegExp>
+            
+            <!-- TRAILER !-->
+            <RegExp input="$$1" output="&lt;url function=&quot;TRAILER&quot;&gt;http://api.filmaster.pl\1&lt;/url&gt;" dest="5+">
+                <expression>video_uri&quot;: &quot;([^&quot;]+)&quot;</expression>
+            </RegExp>
+            <expression noclean="1" />
+        </RegExp>
+    </GetDetails>
+    
+    <!-- ACTORS !-->
+    <ACTORS dest="5">
+        <RegExp input="$$1" output="\1" dest="6">
+            <expression clear="yes" noclean="1">objects&quot;: \[([^\]]+)\]</expression>
+        </RegExp>
+        <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2 \1&lt;/name&gt;&lt;role&gt;\4&lt;/role&gt;&lt;thumb&gt;http://filmaster.pl\3&lt;/thumb&gt;&lt;/actor&gt;" dest="7">
+            <expression repeat="yes" noclean="1">surname&quot;: &quot;([^&quot;]+)&quot;[^\{]+name&quot;: &quot;([^&quot;]+)&quot;[^\{]+hires_image&quot;: &quot;([^&quot;]+)&quot;[^\{]+character&quot;: &quot;([^&quot;]+)&quot;</expression>
+        </RegExp>
+        <RegExp input="$$7" output="&lt;details&gt;\1&lt;/details&gt;" dest="5">
+            <expression noclean="1">(.+)</expression>
+        </RegExp>
+    </ACTORS>
+    
+    <!-- TRAILER !-->
+    <TRAILER dest="5">
+        <RegExp input="$$1" output="&lt;details&gt;&lt;trailer&gt;\1&lt;/trailer&gt;&lt;/details&gt;" dest="5">
+            <expression noclean="1">url&quot;: &quot;([^&quot;]+)&quot;</expression>
+        </RegExp>
+    </TRAILER>
+</scraper>
