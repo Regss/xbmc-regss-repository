@@ -20,7 +20,7 @@
     
     <!-- Tworzy adres URL wyszukiwania !-->
     <CreateSearchUrl dest="3">
-        <RegExp input="$$1" output="&lt;url&gt;http://www.filmweb.pl/search/film?q=\1&amp;startYear=$$2&amp;endYear=$$2&lt;/url&gt;" dest="3">
+        <RegExp input="$$1" output="&lt;url&gt;http://www.filmweb.pl/search/live?q=&quot;\1&lt;/url&gt;" dest="3">
             <expression noclean="1" />
         </RegExp>
     </CreateSearchUrl>
@@ -28,8 +28,11 @@
     <!-- Tworzy adresy URL dla znalezionych pozycji !-->
     <GetSearchResults dest="8">
         <RegExp input="$$5" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;results&gt;\1&lt;/results&gt;" dest="8">
-            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\1&lt;/title&gt;&lt;year&gt;\3&lt;/year&gt;&lt;url cache=&quot;filmweb-\2&quot;&gt;http://www.filmweb.pl/Film?id=\2&lt;/url&gt;&lt;/entity&gt;" dest="5">
-                <expression repeat="yes" fixchars="1">hitDescWrapp[^&lt;]+&lt;h3&gt;(.*?)&lt;/h3&gt;.*?([0-9]*)_FILM_([0-9]*)</expression>
+            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;year&gt;\3&lt;/year&gt;&lt;url cache=&quot;filmweb-\1&quot;&gt;http://www.filmweb.pl/Film?id=\1&lt;/url&gt;&lt;/entity&gt;" dest="5+">
+                <expression repeat="yes" fixchars="1">f\\c([0-9]+)\\[^\\]+\\c([^\\]+)\\c\\[^\\]+\\c([0-9]+)\\c</expression>
+            </RegExp>
+            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\3 / \2&lt;/title&gt;&lt;year&gt;\4&lt;/year&gt;&lt;url cache=&quot;filmweb-\1&quot;&gt;http://www.filmweb.pl/Film?id=\1&lt;/url&gt;&lt;/entity&gt;" dest="5+">
+                <expression repeat="yes" fixchars="1">f\\c([0-9]+)\\[^\\]+\\c([^\\]+)\\c([^\\]+)\\[^\\]+\\c([0-9]+)\\c</expression>
             </RegExp>
             <expression noclean="1" />
         </RegExp>
