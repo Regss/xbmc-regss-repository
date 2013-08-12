@@ -14,12 +14,8 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Filmweb Movie Scraper</summary>
         <summary lang="pl">Scraper filmowy Filmweb</summary>
-        <summary lang="de">Film Scraper für Filmweb</summary>
-        <summary lang="fr">Collecteur de Films Filmweb</summary>
         <description lang="en">Download Movie information from filmweb.pl</description>
         <description lang="pl">Pobiera informacje o filmie ze strony www.filmweb.pl Umożliwia konfigurację poprzez wyłączenie poszczególnych funkcji w celu przyspieszenia działania</description>
-        <description lang="de">Herunterladen Film Informationen aus filmweb.pl</description>
-        <description lang="fr">Informations sur le téléchargement de films à partir de filmweb.pl</description>
         <platform>all</platform>
     </extension>
 </addon>
