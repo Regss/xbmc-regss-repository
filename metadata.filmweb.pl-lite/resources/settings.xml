@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
-    <setting label="30000" type="bool" id="GetDVDPlot" default="true" />
+    <setting label="29999" type="bool" id="UseLive" default="false" />
+    <setting label="30000" type="bool" id="GetDVDPlot" default="false" />
     <setting label="30001" type="bool" id="GetTrailer" default="true" />
-    <setting label="30002" type="bool" id="GetFullActors" default="true" />
-    <setting label="30010" type="bool" id="UseTMDb" default="true" />
+    <setting label="30002" type="bool" id="GetFullActors" default="false" />
+    <setting label="30011" type="bool" id="NFOUrl" default="true" />
 </settings>

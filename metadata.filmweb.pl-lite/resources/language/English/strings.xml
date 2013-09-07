@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
+    <string id="29999">Use other search (fastest)</string>
     <string id="30000">Prefer DVD Plot</string>
     <string id="30001">Get Trailer</string>
     <string id="30002">Get full Cast</string>
-    <string id="30010">Use TMDb</string>
+    <string id="30011">Search all NFO's</string>
 </strings>
