@@ -1,3 +1,7 @@
+[B]1.2.5[/B]
+- Dodano alternatywną wyszukiwarkę
+- Zoptymalizowano
+
 [B]1.2.3[/B]
 - Poprawka: Aktorzy i Trailer
 
@@ -14,7 +18,7 @@
 - Poprawka: Parę drobnych poprawek 
 
 [B]1.1.1[/B]
-- Added: Opcjonalne wyszukiwanie tagów na TMDb za pomocą IMDb ID
+- Dodano: Opcjonalne wyszukiwanie tagów na TMDb za pomocą IMDb ID
 
 [B]1.1.0[/B]
 - Dodano: Wyszukanie i zapisanie IMDb ID
