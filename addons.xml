@@ -23,7 +23,7 @@
 
 <addon id="metadata.filmweb.pl-lite"
        name="Filmweb Lite"
-       version="1.2.5"
+       version="1.2.6"
        provider-name="Regss">
     <requires>
     <import addon="xbmc.metadata" version="2.1.0" />
@@ -50,6 +50,25 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Joymii scraper</summary>
         <description lang="en">Download Movie information from joymii.com</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.filmweb.pl.premiery.dvd"
+    name="Filmweb.pl - Premiery DVD"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.0" />
+        <import addon="plugin.video.youtube" version="2.9.1" optional="true" />
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+        library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Filmweb.pl - Premiery DVD</summary>
+        <description>Wyświetla trailery filmów premierowych DVD</description>
         <platform>all</platform>
     </extension>
 </addon>

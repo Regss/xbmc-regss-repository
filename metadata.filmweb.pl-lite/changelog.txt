@@ -1,3 +1,6 @@
+[B]1.2.6[/B]
+- Poprawka: Rodzajnik z przodu tytułu
+
 [B]1.2.5[/B]
 - Dodano alternatywną wyszukiwarkę
 - Zoptymalizowano
