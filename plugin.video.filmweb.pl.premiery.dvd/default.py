@@ -1,15 +1,23 @@
 # -*- coding: utf-8 -*-
-import urllib2, re, sys
-import xbmcaddon, xbmcplugin, xbmcgui
+import urllib2
+import re
+import sys
+import xbmcaddon
+import xbmcplugin
+import xbmcgui
+import HTMLParser
 
 class PremieresDVD:
 
     # definicja zmiennych globalnych
     def __init__(self):
+        __settings__ = xbmcaddon.Addon("plugin.video.filmweb.pl.premiery.dvd")
+        self.autoPlay = __settings__.getSetting("autoPlay")
         self.URL = 'http://www.filmweb.pl'
         self.COOKIE = 'welcomeScreen=welcome_screen'
         self.MOVIES = []
-    
+        self.parseHtml = HTMLParser.HTMLParser()
+        
     def getTrailers(self):
     
         # połączenie z adresem URL, ustawienie ciasteczek, pobranie zawartości strony z premierami
@@ -31,14 +39,15 @@ class PremieresDVD:
             if len(matchesTitle) == 0:
                 self.movieTitle = ''
             else:
-                self.movieTitle = matchesTitle[0]
-            
+                # konwertuje znaki HTML do UTF-8
+                self.movieTitle = self.parseHtml.unescape(unicode(matchesTitle[0],'utf-8'))
+                
             # Tytuł oryginalny
             matchesOriginalTitle = re.compile('<h2 class="text-large[^>]+>([^<]+)<').findall(pageMovie)
             if len(matchesOriginalTitle) == 0:
                 self.movieOriginalTitle = ''
             else:
-                self.movieOriginalTitle = matchesOriginalTitle[0]
+                self.movieOriginalTitle = self.parseHtml.unescape(unicode(matchesOriginalTitle[0],'utf-8'))
             
             # Okładka
             matchesPoster = re.compile('v:image" href="([^"]+\.jpg)').findall(pageMovie)
@@ -74,10 +83,10 @@ class PremieresDVD:
             # jeśli istnieje trailer pobiera informacje
             if len(matchesMovieTrailer) != 0:
                 trailerLink = matchesMovieTrailer[0]
-                self.parseTrailerPage(trailerLink, movieLink)
+                self.parseTrailerPage(trailerLink)
                 
     # pobranie informacji o trailerze
-    def parseTrailerPage(self, trailerLink, movieLink):
+    def parseTrailerPage(self, trailerLink):
 
         # połaczenie z adresem, pobranie zawartości strony z trailerem
         opener = urllib2.build_opener()
@@ -111,10 +120,21 @@ class PremieresDVD:
             xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=trailerVideos[0], listitem=listitem, isFolder=False)
             self.MOVIES.append({"url": trailerVideos[0], "title": self.movieTitle, "item": listitem, "poster": self.moviePoster})
         
-    def play(self):
+    def playList(self):
+        xbmcplugin.setContent(int(sys.argv[1]),'movies')
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
-        xbmc.executebuiltin('playlist.playoffset(video , 0)')
+        
+        # utworzenie Playlisty
+        playList = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+        playList.clear()
+        for playListItem in self.MOVIES:
+            playList.add(playListItem["url"], playListItem["item"])
+        xbmc.executebuiltin("xbmc.playercontrol(RepeatAll)")
+        
+        # autoodtwarzanie playlisty
+        if self.autoPlay == 'true':
+            xbmc.Player().play(playList)
 
 runPremiereDVD = PremieresDVD()
 runPremiereDVD.getTrailers()
-runPremiereDVD.play()
+runPremiereDVD.playList()

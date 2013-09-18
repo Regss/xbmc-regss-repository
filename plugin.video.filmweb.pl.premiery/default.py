@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
-import urllib2, re, sys
-import xbmcaddon, xbmcplugin, xbmcgui
+import urllib2
+import re
+import sys
+import xbmcaddon
+import xbmcplugin
+import xbmcgui
+import HTMLParser
 
 class Premieres:
 
@@ -11,13 +16,9 @@ class Premieres:
         self.URL = 'http://www.filmweb.pl'
         self.COOKIE = 'welcomeScreen=welcome_screen'
         self.MOVIES = []
-        self.chars = {
-        "&oacute;": "ó",
-        "&quot;": "\""
-        }
+        self.parseHtml = HTMLParser.HTMLParser()
         
     def getTrailers(self):
-        #xbmcgui.Dialog().ok('d', self.autoPlay)
         
         # połączenie z adresem URL, ustawienie ciasteczek, pobranie zawartości strony z premierami
         opener = urllib2.build_opener()
@@ -35,14 +36,15 @@ class Premieres:
             if len(matchesTitle) == 0:
                 self.movieTitle = ''
             else:
-                self.movieTitle = matchesTitle[0]
+                # konwertuje znaki HTML do UTF-8
+                self.movieTitle = self.parseHtml.unescape(unicode(matchesTitle[0],'utf-8'))
 
             # Tytuł oryginalny
             matchesOriginalTitle = re.compile('class=filmSubtitle> ([^<]+) <').findall(pageMovie)
             if len(matchesOriginalTitle) == 0:
                 self.movieOriginalTitle = ''
             else:
-                self.movieOriginalTitle = matchesOriginalTitle[0]
+                self.movieOriginalTitle = self.parseHtml.unescape(unicode(matchesOriginalTitle[0],'utf-8'))
             
             # Okładka
             matchesPoster = re.compile('img src="([^"]+).2.jpg"').findall(pageMovie)
@@ -77,7 +79,7 @@ class Premieres:
             if len(matchesMoviePlot) == 0:
                 self.moviePlot = ''
             else:
-                self.moviePlot = matchesMoviePlot[0]
+                self.moviePlot = self.parseHtml.unescape(unicode(matchesMoviePlot[0],'utf-8'))
 
             # Director
             matchesMovieDirector = re.compile('reżyser:</dt><dd><[^>]+>([^<]+)<').findall(pageMovie)
@@ -89,11 +91,6 @@ class Premieres:
             # Trailer URL
             matchesMovieTrailer = re.compile('href="(/video/trailer/[^"]+)"').findall(pageMovie)
             
-            # HTML to UTF-8
-            for val in self.chars:
-                self.movieTitle = self.movieTitle.replace(val, self.chars[val])
-                self.moviePlot = self.moviePlot.replace(val, self.chars[val])
-                
             # jeśli istnieje trailer pobiera informacje
             if len(matchesMovieTrailer) != 0:
                 trailerLink = matchesMovieTrailer[0]
@@ -136,22 +133,21 @@ class Premieres:
             xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=trailerVideos[0], listitem=listitem, isFolder=False)
             self.MOVIES.append({"url": trailerVideos[0], "title": self.movieTitle, "item": listitem, "poster": self.moviePoster})
         
-    def play(self):
+    def playList(self):
         xbmcplugin.setContent(int(sys.argv[1]),'movies')
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
         
-        # tworzy playlistę
+        # utworzenie Playlisty
         playList = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playList.clear()
-       
-        for item in self.MOVIES:
-            playList.add(item["url"])
+        for playListItem in self.MOVIES:
+            playList.add(playListItem["url"], playListItem["item"])
+        xbmc.executebuiltin("xbmc.playercontrol(RepeatAll)")
         
-        # automatyczne odtwarzanie playlisty
-        
+        # autoodtwarzanie playlisty
         if self.autoPlay == 'true':
-            xbmc.executebuiltin('playlist.playoffset(video , 0)')
+            xbmc.Player().play(playList)
 
 runPremiere = Premieres()
 runPremiere.getTrailers()
-runPremiere.play()
+runPremiere.playList()

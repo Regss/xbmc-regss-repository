@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.filmweb.pl.premiery.dvd"
-    name="Filmweb.pl - Premiery DVD"
-    version="1.0.1"
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.filmweb.pl.premiery"
+    name="Filmweb.pl - Premiery"
+    version="1.0.0"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.0" />
@@ -12,8 +12,8 @@
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary>Filmweb.pl - Premiery DVD</summary>
-        <description>Wyświetla trailery filmów premierowych DVD</description>
+        <summary>Filmweb.pl - Premiery</summary>
+        <description>Wyświetla trailery premierowych filmów</description>
         <platform>all</platform>
     </extension>
 </addon>
