@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<settings>
-    <setting label="40000" type="bool" id="autoPlay" default="true" />
-</settings>
