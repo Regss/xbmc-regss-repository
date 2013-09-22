@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
+    <string id="40001">Login Filmweb</string>
     <string id="40000">Automatycznie odtwarzaj</string>
+    <string id="40002">Miasto</string>
+    <string id="40003">Pobieraj wszystkie informacje</string>
 </strings>
