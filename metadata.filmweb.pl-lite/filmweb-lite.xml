@@ -12,7 +12,7 @@
     $$12 - Plot
     $$11 - URL do filmu
 !-->
-<scraper framework="1.1" date="2013-09-17">
+<scraper framework="1.1" date="2013-10-15">
 
     <!-- Sprawdza plik NFO !-->
     <NfoUrl dest="3">
@@ -159,11 +159,11 @@
             </RegExp>
 
             <!-- MUZYKA !-->
-            <RegExp input="$$6" output="&lt;tag&gt;Muzyka: \1&lt;/tag&gt;" dest="5+">
+            <RegExp conditional="GetMusic" input="$$6" output="&lt;tag&gt;Muzyka: \1&lt;/tag&gt;" dest="5+">
                 <RegExp input="$$1" output="\1" dest="6">
                     <expression noclean="1" clear="yes">muzyka:(.*?)&lt;/dd</expression>
                 </RegExp>
-                <expression fixchars="1" repeat="yes">&gt;([^&lt;]+)&lt;/a</expression>
+                <expression fixchars="1" repeat="yes">&gt;([^&lt;]+[^\)])&lt;/a</expression>
             </RegExp>
 
             <!-- PLOT !-->
