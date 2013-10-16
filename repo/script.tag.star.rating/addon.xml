@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.tag.star.rating"
+    name="Tag Star Rating"
+    version="1.1.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="service.tag.star.rating" version="1.0.0" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Easy way to rate yor video with the stars</summary>
+        <summary lang="pl">Prosty sposób na ocenę swoich filmów za pomocą systemu gwiazdek</summary>
+        <description lang="en">Display a star rating system and save it as movie tag.[CR]Script run automatically when player stops.[CR]To use manualy add to your keymap file:[CR]RunScript(script.tag.star.rating, $INFO[ListItem.DBID])[CR]To disable auto start turn off Tag Star Rating Service</description>
+        <description lang="pl">Wyświetla system oceny i zapisuje wyniki jako tagi filmów.[CR]Skrypt uruchamia się automatycznie po zatrzymaniu filmów[CR]Aby użyć manualnie dodaj do swojego pliku z definicjami klawiszy:[CR]RunScript(script.tag.star.rating, $INFO[ListItem.DBID])[CR]Aby wyłączyć automatyczne uruchamianie wyłącz usługę Tag Star Rating Service</description>
+        <platform>all</platform>
+    </extension>
+</addon>
