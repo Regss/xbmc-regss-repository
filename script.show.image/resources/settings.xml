@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+    <setting label="32001" type="image" id="image1" />
+    <setting label="32002" type="image" id="image2" />
+    <setting label="32003" type="image" id="image3" />
+    <setting label="32004" type="image" id="image4" />
+    <setting label="32005" type="image" id="image5" />
+    <setting label="32006" type="image" id="image6" />
+    <setting label="32007" type="image" id="image7" />
+    <setting label="32008" type="image" id="image8" />
+</settings>

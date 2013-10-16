@@ -90,6 +90,24 @@
     </extension>
 </addon>
 
+<addon id="script.show.image"
+    name="Show Image"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="script.module.pil" version="1.1.7" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Displays the selected image in any location</summary>
+        <summary lang="pl">Wyświetla wybrany obrazek w dowolnym miejscu[CR]</summary>
+        <description lang="en">Displays the selected image in any location[CR]Use:[CR]RunScript(script.show.window, [image number])</description>
+        <description lang="pl">Wyświetla wybrany obrazek w dowolnym miejscu[CR]Użyj:[CR]RunScript(script.show.window, [image number])</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="script.tag.star.rating"
     name="Tag Star Rating"
     version="1.1.0"
