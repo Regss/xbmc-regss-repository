@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.filmweb.pl.trailery"
+    name="Filmweb.pl - Trailery"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.0" />
+        <import addon="plugin.video.youtube" version="2.9.1" optional="true" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Trailers from Filmweb.pl</summary>
+        <summary lang="pl">Trailery z Filmweb.pl</summary>
+        <description lang="en">Display and create playlist for trailers from Filmweb.pl</description>
+        <description lang="pl">Wyświetla i tworzy playlisty dla trailerów Filmweb.pl</description>
+        <platform>all</platform>
+    </extension>
+</addon>

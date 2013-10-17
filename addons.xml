@@ -73,6 +73,26 @@
     </extension>
 </addon>
 
+<addon id="plugin.video.filmweb.pl.trailery"
+    name="Filmweb.pl - Trailery"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.0" />
+        <import addon="plugin.video.youtube" version="2.9.1" optional="true" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Trailers from Filmweb.pl</summary>
+        <summary lang="pl">Trailery z Filmweb.pl</summary>
+        <description lang="en">Display and create playlist for trailers from Filmweb.pl</description>
+        <description lang="pl">Wyświetla i tworzy playlisty dla trailerów Filmweb.pl</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="repository.regss" name="Regss Add-ons" version="1.2.1" provider-name="Regss">
     <extension point="xbmc.addon.repository" name="Regss Add-ons">
 		<info compressed="true">https://raw.github.com/Regss/xbmc-regss-repository/master/addons.xml</info>
@@ -92,7 +112,7 @@
 
 <addon id="script.show.image"
     name="Show Image"
-    version="1.0.0"
+    version="1.0.1"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
