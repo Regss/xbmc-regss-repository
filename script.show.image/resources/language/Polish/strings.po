@@ -1,4 +1,4 @@
-# script.tag.star.rating language file
+# script.show.image language file
 msgid ""
 msgstr ""
 "Language: pl\n"
