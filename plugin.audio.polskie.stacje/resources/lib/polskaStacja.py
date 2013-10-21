@@ -64,7 +64,7 @@ class Main:
         
             opener = urllib2.build_opener()
             pageRadioPLS = opener.open(URL + '/play/' + self.opt2).read()
-            xbmc.log('DDDDDDDDD' + pageRadioPLS)
+            
             matchesIP = re.compile('(http://[^\s]+)\s').findall(pageRadioPLS)
             matchesTitle = re.compile('<<<- (.+) - HQ\n').findall(pageRadioPLS)
             if len(matchesTitle) == 0:

@@ -43,10 +43,18 @@ class Radio:
             import radioEska as start
         elif self.opt == 'zet':
             import radioZet as start
+        elif self.opt == 'rmf':
+            import radioRmf as start
         elif self.opt == 'plst':
             import polskaStacja as start
         elif self.opt == 'polskie':
             import radioPolskie as start
+        elif self.opt == 'plus':
+            import radioPlus as start
+        elif self.opt == 'anty':
+            import radioAnty as start
+        elif self.opt == 'regionalne':
+            import radioRegionalne as start
         else:
             import radioMenu as start
             

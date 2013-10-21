@@ -31,17 +31,19 @@ class Main:
         self = selfGet
         
         list = [
-        ['Radio ESKA', sys.argv[0] + '?eska', 'http://www.odsluchane.eu/images/loga/eska_logo.png', True, ''],
-        ['Radio Zet', sys.argv[0] + '?zet', 'http://www.odsluchane.eu/images/loga/radio_zet_logo.png', True, ''],
-        ['Polska Stacja - radio internetowe', sys.argv[0] + '?plst', 'http://cdn.polskastacja.pl/images/polskastacja.gif', True, ''],
-        ['Polskie Radio', sys.argv[0] + '?polskie', '', True, ''],
-        ['Radio Plus', sys.argv[0] + '?4', 'http://www.odsluchane.eu/images/loga/radio_plus_logo.png', False, 'http://94.23.89.48:8500'],
-        ['Radio Gorzów', sys.argv[0] + '?5', '', False, 'http://stream01.zachod.pl:10105']
+        ['Radio ESKA', sys.argv[0] + '?eska', 'eska.png', ''],
+        ['Radio Zet', sys.argv[0] + '?zet', 'zet.png', ''],
+        ['Radio RMF', sys.argv[0] + '?rmf', 'rmf.png', ''],
+        ['Radio Plus', sys.argv[0] + '?plus', 'plus.png', ''],
+        ['Polskie Radio', sys.argv[0] + '?polskie', 'polskieradio.png', ''],
+        ['Regionalne', sys.argv[0] + '?regionalne', 'regionalne.png', ''],
+        ['Polska Stacja', sys.argv[0] + '?plst', 'polskastacja.png', ''],
+        ['Anty Radio', sys.argv[0] + '?anty', 'anty.png', '']
             ]
                 
         for v in list:
-            listItem = xbmcgui.ListItem(label=v[0], iconImage=v[2])
-            xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=v[1], listitem=listItem, isFolder=v[3])
+            listItem = xbmcgui.ListItem(label=v[0], iconImage=__path_img__ + '//' + v[2])
+            xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=v[1], listitem=listItem, isFolder=True)
         
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
         
@@ -49,7 +51,7 @@ class Main:
             
             Title = list[int(self.opt)][0]
             Icon = list[int(self.opt)][2]
-            URL = list[int(self.opt)][4]
+            URL = list[int(self.opt)][3]
             
             import radioPlayer as player
             player.Main().start(Title, Icon, URL)
