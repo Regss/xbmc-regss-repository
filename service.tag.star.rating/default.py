@@ -21,10 +21,15 @@ class MyPlayer(xbmc.Player):
         xbmc.Player.__init__(self)
         
     def onPlayBackEnded(self):
-        if self.mediaType == 'movie' or self.mediaType == 'tvshow':
-            if self.movieID != '':
-                xbmc.executebuiltin('XBMC.RunScript(' + serviceForScript + ', ' + self.movieID + ', ' + self.mediaType + ')')
-                self.movieID = ''
+        try:
+            self.mediaType
+        except:
+            pass
+        else:
+            if self.mediaType == 'movie' or self.mediaType == 'tvshow':
+                if self.movieID != '':
+                    xbmc.executebuiltin('XBMC.RunScript(' + serviceForScript + ', ' + self.movieID + ', ' + self.mediaType + ')')
+                    self.movieID = ''
             
     def onPlayBackStarted(self):
     
@@ -39,7 +44,6 @@ class MyPlayer(xbmc.Player):
         # get movie played ID
         jsonGetMovieID = '{"jsonrpc": "2.0", "method": "Player.GetItem", "params": { "playerid": ' + self.playerID + ' }, "id": 1}'
         jsonGetMovieIDResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieID))
-        xbmc.log(str(jsonGetMovieIDResponse['result']['item']))
         
         try:
             self.mediaType = jsonGetMovieIDResponse['result']['item']['type']
@@ -52,10 +56,15 @@ class MyPlayer(xbmc.Player):
             self.movieID = ''
         
     def onPlayBackStopped(self):
-        if self.mediaType == 'movie' or self.mediaType == 'tvshow':
-            if self.movieID != '':
-                xbmc.executebuiltin('XBMC.RunScript(' + serviceForScript + ', ' + self.movieID + ', ' + self.mediaType + ')')
-                self.movieID = ''
+        try:
+            self.mediaType
+        except:
+            pass
+        else:
+            if self.mediaType == 'movie' or self.mediaType == 'tvshow':
+                if self.movieID != '':
+                    xbmc.executebuiltin('XBMC.RunScript(' + serviceForScript + ', ' + self.movieID + ', ' + self.mediaType + ')')
+                    self.movieID = ''
         
 player = MyPlayer()
 
