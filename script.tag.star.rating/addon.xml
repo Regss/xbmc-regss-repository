@@ -5,7 +5,7 @@
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
-        <import addon="service.tag.star.rating" version="1.0.0" />
+        <import addon="service.tag.star.rating" />
     </requires>
     <extension point="xbmc.python.script" library="default.py" />
     <extension point="xbmc.addon.metadata">
