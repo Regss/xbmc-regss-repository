@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+    <setting label="32010" type="lsep" id="separator" />
+    <setting label="32000" type="text" id="url" default="http://" />
+    <setting label="32001" type="text" id="token" />
+    <setting label="32011" type="lsep" id="separator" />
+    <setting label="32002" type="bool" id="notify" default="true" />
+    <setting label="32003" type="bool" id="debug" default="false" />
+</settings>

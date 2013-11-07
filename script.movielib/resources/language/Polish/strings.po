@@ -1,0 +1,40 @@
+# script.movielib language file
+msgid ""
+msgstr ""
+"Language: pl\n"
+
+#. Separator
+#: resources/settings.xml
+msgctxt "#32010"
+msgid "Login settings"
+msgstr "Ustawienia logowania"
+
+#. Script URL
+#: resources/settings.xml
+msgctxt "#32000"
+msgid "URL"
+msgstr "Adres URL"
+
+#. Script Token
+#: resources/settings.xml
+msgctxt "#32001"
+msgid "Token"
+msgstr "Token"
+
+#. Separator
+#: resources/settings.xml
+msgctxt "#32011"
+msgid "Debug settings"
+msgstr "Ustawienia debugowania i informowania"
+
+#. Notify
+#: resources/settings.xml
+msgctxt "#32002"
+msgid "Notification"
+msgstr "Informacje"
+
+#. Debug
+#: resources/settings.xml
+msgctxt "#32003"
+msgid "Debug"
+msgstr "Debugowanie"
