@@ -174,8 +174,6 @@ class Movielib:
                 addedCount = addedCount + 1
             
             self.debug(output)
-            
-            break
 
         if addedCount > 0:
             self.notify('Added ' + str(addedCount))

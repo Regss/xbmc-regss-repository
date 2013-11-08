@@ -9,10 +9,10 @@
     </requires>
     <extension point="xbmc.python.script" library="default.py" />
     <extension point="xbmc.addon.metadata">
-        <summary lang="en"></summary>
-        <summary lang="pl"></summary>
-        <description lang="en"></description>
-        <description lang="pl"></description>
+        <summary lang="en">Script for internet movie collection</summary>
+        <summary lang="pl">Skrypt dla internetowej kolekcji filmów</summary>
+        <description lang="en">Script updates internet movie collection. </description>
+        <description lang="pl">Skrypt aktualizuje na bieżąco internetową kolekcję filmów. Which can be downloaded from https://github.com/Regss/movielib</description>
         <platform>all</platform>
     </extension>
 </addon>

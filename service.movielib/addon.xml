@@ -9,10 +9,10 @@
     </requires>
     <extension point="xbmc.service" library="default.py" start="[login|startup]" />
     <extension point="xbmc.addon.metadata">
-        <summary lang="en"></summary>
-        <summary lang="pl"></summary>
-        <description lang="en"></description>
-        <description lang="pl"></description>
+        <summary lang="en">Service for movielib script</summary>
+        <summary lang="pl">Usługa dla skryptu movielib</summary>
+        <description lang="en">Service for movielib script</description>
+        <description lang="pl">Usługa dla skryptu movielib</description>
         <platform>all</platform>
     </extension>
 </addon>
