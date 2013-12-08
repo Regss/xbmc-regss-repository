@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.movielib"
     name="Movielib"
-    version="1.0.0"
+    version="1.0.1"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
@@ -9,10 +9,10 @@
     </requires>
     <extension point="xbmc.python.script" library="default.py" />
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">Script for internet movie collection</summary>
+        <summary lang="en">Script for web movie collection</summary>
         <summary lang="pl">Skrypt dla internetowej kolekcji filmów</summary>
-        <description lang="en">Script updates internet movie collection. </description>
-        <description lang="pl">Skrypt aktualizuje na bieżąco internetową kolekcję filmów. Which can be downloaded from https://github.com/Regss/movielib</description>
+        <description lang="en">Script updates web movie collection. Which can be downloaded from https://github.com/Regss/movielib</description>
+        <description lang="pl">Skrypt aktualizuje na bieżąco internetową kolekcję filmów. Która jest do ściągnięcia z https://github.com/Regss/movielib</description>
         <platform>all</platform>
     </extension>
 </addon>
