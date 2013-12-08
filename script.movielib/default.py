@@ -52,7 +52,12 @@ class Movielib:
     def checkToken(self):
             opener = urllib2.build_opener()
             URL = self.settingsURL + 'admin.php?option=checktoken' + self.token
-            response = opener.open(URL)
+            try:
+                response = opener.open(URL)
+            except:
+                self.notify('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL)
+                return False
             checkToken = response.read()
             self.debug(URL)
             self.debug('Check Token')
@@ -81,7 +86,12 @@ class Movielib:
         # GET MOVIE ID FROM MOVIELIB DATABASE
         opener = urllib2.build_opener()
         URL = self.settingsURL + 'admin.php?option=showid' + self.token
-        response = opener.open(URL)
+        try:
+            response = opener.open(URL)
+        except:
+            self.notify('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL)
+            return False
         movielibID = response.read().split()
         self.debug('movielibID: ' + str(movielibID))
         
@@ -130,7 +140,7 @@ class Movielib:
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
             
             self.debug(str(jsonGetMovieDetailsResponse))
-            
+
             values = {
                 'id': id,
                 'title': movie['title'].encode('utf-8'),
@@ -144,13 +154,13 @@ class Movielib:
                 'director': ' / '.join(movie['director']).encode('utf-8'),
                 'originaltitle': movie['originaltitle'].encode('utf-8'),
                 'country': ' / '.join(movie['country']).encode('utf-8'),
-                'v_codec': movie['streamdetails']['video'][0]['codec'] if 'codec' in movie['streamdetails']['video'] else '',
-                'v_aspect': movie['streamdetails']['video'][0]['aspect'] if 'aspect' in movie['streamdetails']['video'] else '',
-                'v_width': movie['streamdetails']['video'][0]['width'] if 'width' in movie['streamdetails']['video'] else '',
-                'v_height': movie['streamdetails']['video'][0]['height'] if 'height' in movie['streamdetails']['video'] else '',
-                'v_duration': movie['streamdetails']['video'][0]['duration'] / 60 if 'duration' in movie['streamdetails']['video'] else '',
-                'a_codec': movie['streamdetails']['audio'][0]['codec'] if 'codec' in movie['streamdetails']['audio'] else '',
-                'a_channels': movie['streamdetails']['audio'][0]['channels'] if 'channels' in movie['streamdetails']['audio'] else '',
+                'v_codec': movie['streamdetails']['video'][0]['codec'] if len(movie['streamdetails']['video']) > 0 else '',
+                'v_aspect': movie['streamdetails']['video'][0]['aspect'] if len(movie['streamdetails']['video']) > 0 else '',
+                'v_width': movie['streamdetails']['video'][0]['width'] if len(movie['streamdetails']['video']) > 0 else '',
+                'v_height': movie['streamdetails']['video'][0]['height'] if len(movie['streamdetails']['video']) > 0 else '',
+                'v_duration': movie['streamdetails']['video'][0]['duration'] / 60 if len(movie['streamdetails']['video']) > 0 else '',
+                'a_codec': movie['streamdetails']['audio'][0]['codec'] if len(movie['streamdetails']['audio']) > 0 else '',
+                'a_channels': movie['streamdetails']['audio'][0]['channels'] if len(movie['streamdetails']['audio']) > 0 else '',
                 'playcount': movie['playcount'],
                 'lastplayed': movie['lastplayed'],
                 'dateadded': movie['dateadded']
@@ -161,7 +171,12 @@ class Movielib:
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
             URL = self.settingsURL + 'admin.php?option=addmovie' + self.token
-            response = opener.open(URL, data)
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL)
+                return False
             output = response.read()
             
             self.debug(URL)
@@ -185,7 +200,12 @@ class Movielib:
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
             URL = self.settingsURL + 'admin.php?option=removemovie' + self.token
-            response = opener.open(URL, data)
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL)
+                return False
             output = response.read()
             
             self.debug(URL)
@@ -209,7 +229,12 @@ class Movielib:
         # GET WATCHED MOVIE ID FROM MOVIELIB DATABASE
         opener = urllib2.build_opener()
         URL = self.settingsURL + 'admin.php?option=showwatchedid' + self.token
-        response = opener.open(URL)
+        try:
+            response = opener.open(URL)
+        except:
+            self.notify('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL)
+            return False
         movielibWatchedID = response.read().split()
         
         self.debug('movielibWatchedID: ' + str(movielibWatchedID))
@@ -275,7 +300,12 @@ class Movielib:
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
             URL = self.settingsURL + 'admin.php?option=watchedmovie' + self.token
-            response = opener.open(URL, data)
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL)
+                return False
             output = response.read()
             
             self.debug(URL)
@@ -311,7 +341,12 @@ class Movielib:
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
             URL = self.settingsURL + 'admin.php?option=unwatchedmovie' + self.token
-            response = opener.open(URL, data)
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL)
+                return False
             output = response.read()
             
             self.debug(URL)
@@ -334,7 +369,12 @@ class Movielib:
         # GET LASTPLAYED DATE FROM MOVIELIB DATABASE
         opener = urllib2.build_opener()
         URL = self.settingsURL + 'admin.php?option=showlastplayed' + self.token
-        response = opener.open(URL)
+        try:
+            response = opener.open(URL)
+        except:
+            self.notify('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL)
+            return False
         movielibLastPlayed = str(response.read())
         
         self.debug('movielibLastPlayed: ' + movielibLastPlayed)
@@ -377,7 +417,12 @@ class Movielib:
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
             URL = self.settingsURL + 'admin.php?option=lastplayed' + self.token
-            response = opener.open(URL, data)
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL)
+                return False
             output = response.read()
             
             self.debug(URL)
