@@ -24,7 +24,7 @@ msgstr "Token"
 #. Separator
 #: resources/settings.xml
 msgctxt "#32011"
-msgid "Debug settings"
+msgid "Debug & Notification settings"
 msgstr "Ustawienia debugowania i informowania"
 
 #. Notify
@@ -38,3 +38,39 @@ msgstr "Informacje"
 msgctxt "#32003"
 msgid "Debug"
 msgstr "Debugowanie"
+
+#. Can't connect to
+#: GUI
+msgctxt "#32100"
+msgid "Can\'t connect to: "
+msgstr "Nie można połączyć z: "
+
+#. Wrong Token
+#: GUI
+msgctxt "#32101"
+msgid "Wrong Token"
+msgstr "Nieprawidłowy token"
+
+#. Sync Error
+#: GUI
+msgctxt "#32102"
+msgid "Sync Error"
+msgstr "Błąd Synchronizacji"
+
+#. Skipped
+#: GUI
+msgctxt "#32103"
+msgid "Skipped "
+msgstr "Pominięto "
+
+#. Added
+#: GUI
+msgctxt "#32104"
+msgid "Added "
+msgstr "Dodano "
+
+#. Removed
+#: GUI
+msgctxt "#32105"
+msgid "Removed "
+msgstr "Usunięto "

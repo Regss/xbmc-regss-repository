@@ -38,3 +38,39 @@ msgstr ""
 msgctxt "#32003"
 msgid "Debug"
 msgstr ""
+
+#. Can't connect to
+#: GUI
+msgctxt "#32100"
+msgid "Can\'t connect to: "
+msgstr ""
+
+#. Wrong Token
+#: GUI
+msgctxt "#32101"
+msgid "Wrong Token"
+msgstr ""
+
+#. Sync Error
+#: GUI
+msgctxt "#32102"
+msgid "Sync Error"
+msgstr ""
+
+#. Skipped
+#: GUI
+msgctxt "#32103"
+msgid "Skipped "
+msgstr ""
+
+#. Added
+#: GUI
+msgctxt "#32104"
+msgid "Added "
+msgstr ""
+
+#. Removed
+#: GUI
+msgctxt "#32105"
+msgid "Removed "
+msgstr ""
