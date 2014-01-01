@@ -35,34 +35,37 @@ class Movielib:
         # prepare URL
         if self.settingsURL[-1:] != '/':
             self.settingsURL = self.settingsURL + '/'
-        self.settingsURL = self.settingsURL + 'sync.php?option='
+        if self.settingsURL[:7] != 'http://':
+            self.settingsURL = 'http://' + self.settingsURL
+        
+        self.optionURL = 'sync.php?option='
         
         # add token var
-        self.token = '&token=' + self.settingsToken
+        self.tokenURL = '&token=' + self.settingsToken
 
         self.checkConn()
     
     # check connection
     def checkConn(self):
         try:
-            urllib2.urlopen(self.settingsURL + 'showid' + self.token,timeout=2)
+            urllib2.urlopen(self.settingsURL + self.optionURL + 'showid' + self.tokenURL,timeout=2)
         except:
             self.notify(__lang__(32100) + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
             return False
         else:
-            self.debug('Connected to: ' + self.settingsURL)
+            self.debug('Connected to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
             self.checkToken()
     
     # check token
     def checkToken(self):
         opener = urllib2.build_opener()
-        URL = self.settingsURL + 'checktoken' + self.token
+        URL = self.settingsURL + self.optionURL + 'checktoken' + self.tokenURL
         try:
             response = opener.open(URL)
         except:
             self.notify(__lang__(32100) + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + 'checktoken' + self.tokenURL)
             return False
         checkToken = response.read()
         self.debug(URL)

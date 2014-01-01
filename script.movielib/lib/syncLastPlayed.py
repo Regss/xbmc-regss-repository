@@ -33,22 +33,25 @@ class syncLastPlayed:
         # prepare URL
         if self.settingsURL[-1:] != '/':
             self.settingsURL = self.settingsURL + '/'
-        self.settingsURL = self.settingsURL + 'sync.php?option='
+        if self.settingsURL[:7] != 'http://':
+            self.settingsURL = 'http://' + self.settingsURL
+        
+        self.optionURL = 'sync.php?option='
         
         # add token var
-        self.token = '&token=' + self.settingsToken
+        self.tokenURL = '&token=' + self.settingsToken
         
         self.syncLastPlayed()
         
     def syncLastPlayed(self):
         # get lastplayed date from movielib database
         opener = urllib2.build_opener()
-        URL = self.settingsURL + 'showlastplayed' + self.token
+        URL = self.settingsURL + self.optionURL + 'showlastplayed' + self.tokenURL
         try:
             response = opener.open(URL)
         except:
             self.notify(__lang__(32100) + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showlastplayed' + self.tokenURL)
             return False
         movielibLastPlayed = str(response.read())
         
@@ -90,12 +93,12 @@ class syncLastPlayed:
     
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
-            URL = self.settingsURL + 'lastplayed' + self.token
+            URL = self.settingsURL + self.optionURL + 'lastplayed' + self.tokenURL
             try:
                 response = opener.open(URL, data)
             except:
                 self.notify(__lang__(32100) + self.settingsURL)
-                self.debug('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'lastplayed' + self.tokenURL)
                 return False
             output = response.read()
             

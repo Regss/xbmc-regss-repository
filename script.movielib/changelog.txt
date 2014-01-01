@@ -1,0 +1,8 @@
+[B]1.1.1[/B]
+- Fix: Check and add prefix http:// if user does not specify
+
+[B]1.1.0[/B]
+- Add: Sync Watched, LastPlayed, RecentlyAdded
+
+[B]1.0.0[/B]
+- Initial

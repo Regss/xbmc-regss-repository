@@ -33,22 +33,25 @@ class syncMovie:
         # prepare URL
         if self.settingsURL[-1:] != '/':
             self.settingsURL = self.settingsURL + '/'
-        self.settingsURL = self.settingsURL + 'sync.php?option='
+        if self.settingsURL[:7] != 'http://':
+            self.settingsURL = 'http://' + self.settingsURL
+        
+        self.optionURL = 'sync.php?option='
         
         # add token var
-        self.token = '&token=' + self.settingsToken
+        self.tokenURL = '&token=' + self.settingsToken
         
         self.syncMovie()
         
     def syncMovie(self):
         # get movie id from movielib database
         opener = urllib2.build_opener()
-        URL = self.settingsURL + 'showid' + self.token
+        URL = self.settingsURL + self.optionURL + 'showid' + self.tokenURL
         try:
             response = opener.open(URL)
         except:
             self.notify(__lang__(32100) + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
             return False
         movielibID = response.read().split()
         self.debug('movielibID: ' + str(movielibID))
@@ -131,7 +134,7 @@ class syncMovie:
             
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
-            URL = self.settingsURL + 'addmovie' + self.token
+            URL = self.settingsURL + self.optionURL + 'addmovie' + self.tokenURL
             
             if len(movie['streamdetails']['video']) > 0:
             
@@ -139,7 +142,7 @@ class syncMovie:
                     response = opener.open(URL, data)
                 except:
                     self.notify(__lang__(32100) + self.settingsURL)
-                    self.debug('Can\'t connect to: ' + self.settingsURL)
+                    self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addmovie' + self.tokenURL)
                     return False
                 output = response.read()
             
@@ -168,12 +171,12 @@ class syncMovie:
             values = { 'id': id }
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
-            URL = self.settingsURL + 'removemovie' + self.token
+            URL = self.settingsURL + self.optionURL + 'removemovie' + self.tokenURL
             try:
                 response = opener.open(URL, data)
             except:
                 self.notify(__lang__(32100) + self.settingsURL)
-                self.debug('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'removemovie' + self.tokenURL)
                 return False
             output = response.read()
             

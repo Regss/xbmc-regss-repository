@@ -33,22 +33,25 @@ class syncWatched:
         # prepare URL
         if self.settingsURL[-1:] != '/':
             self.settingsURL = self.settingsURL + '/'
-        self.settingsURL = self.settingsURL + 'sync.php?option='
+        if self.settingsURL[:7] != 'http://':
+            self.settingsURL = 'http://' + self.settingsURL
+        
+        self.optionURL = 'sync.php?option='
         
         # add token var
-        self.token = '&token=' + self.settingsToken
+        self.tokenURL = '&token=' + self.settingsToken
         
         self.syncWatched()
         
     def syncWatched(self):
         # get watched id from movielib database
         opener = urllib2.build_opener()
-        URL = self.settingsURL + 'showwatchedid' + self.token
+        URL = self.settingsURL + self.optionURL + 'showwatchedid' + self.tokenURL
         try:
             response = opener.open(URL)
         except:
             self.notify(__lang__(32100) + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showwatchedid' + self.tokenURL)
             return False
         movielibWatchedID = response.read().split()
         
@@ -114,12 +117,12 @@ class syncWatched:
             
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
-            URL = self.settingsURL + 'watchedmovie' + self.token
+            URL = self.settingsURL + self.optionURL + 'watchedmovie' + self.tokenURL
             try:
                 response = opener.open(URL, data)
             except:
                 self.notify(__lang__(32100) + self.settingsURL)
-                self.debug('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'watchedmovie' + self.tokenURL)
                 return False
             output = response.read()
             
@@ -150,12 +153,12 @@ class syncWatched:
             
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
-            URL = self.settingsURL + 'unwatchedmovie' + self.token
+            URL = self.settingsURL + self.optionURL + 'unwatchedmovie' + self.tokenURL
             try:
                 response = opener.open(URL, data)
             except:
                 self.notify(__lang__(32100) + self.settingsURL)
-                self.debug('Can\'t connect to: ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'unwatchedmovie' + self.tokenURL)
                 return False
             output = response.read()
             
