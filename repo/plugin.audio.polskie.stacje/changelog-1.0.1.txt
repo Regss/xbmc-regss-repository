@@ -1,0 +1,5 @@
+[B]1.0.1[/B]
+- Fix: getting addon path in linux
+
+[B]1.0.0[/B]
+- Init
