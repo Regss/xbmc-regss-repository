@@ -50,7 +50,7 @@ class syncLastPlayed:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + self.settingsURL)
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showlastplayed' + self.tokenURL)
             return False
         movielibLastPlayed = str(response.read())
@@ -99,7 +99,7 @@ class syncLastPlayed:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + self.settingsURL)
+                self.notify(__lang__(32100) + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'lastplayed' + self.tokenURL)
                 return False
             output = response.read()

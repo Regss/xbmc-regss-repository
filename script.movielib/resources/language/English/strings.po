@@ -1,76 +1,66 @@
 # script.movielib language file
 msgid ""
 msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Language: en\n"
 
-#. Separator
-#: resources/settings.xml
+#: Settings
 msgctxt "#32010"
 msgid "Login settings"
 msgstr ""
 
-#. Script URL
-#: resources/settings.xml
+#: Settings
 msgctxt "#32000"
 msgid "URL"
 msgstr ""
 
-#. Script Token
-#: resources/settings.xml
+#: Settings
 msgctxt "#32001"
 msgid "Token"
 msgstr ""
 
-#. Separator
-#: resources/settings.xml
+#: Settings
 msgctxt "#32011"
 msgid "Debug & Notification settings"
 msgstr ""
 
-#. Notify
-#: resources/settings.xml
+#: Settings
 msgctxt "#32002"
 msgid "Notification"
 msgstr ""
 
-#. Debug
-#: resources/settings.xml
+#: Settings
 msgctxt "#32003"
 msgid "Debug"
 msgstr ""
 
-#. Can't connect to
-#: GUI
+#: Notification
 msgctxt "#32100"
-msgid "Can\'t connect to: "
+msgid "Can't connect to"
 msgstr ""
 
-#. Wrong Token
-#: GUI
+#: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
 msgstr ""
 
-#. Sync Error
-#: GUI
+#: Notification
 msgctxt "#32102"
 msgid "Sync Error"
 msgstr ""
 
-#. Skipped
-#: GUI
+#: Notification
 msgctxt "#32103"
-msgid "Skipped "
+msgid "Skipped"
 msgstr ""
 
-#. Added
-#: GUI
+#: Notification
 msgctxt "#32104"
-msgid "Added "
+msgid "Added"
 msgstr ""
 
-#. Removed
-#: GUI
+#: Notification
 msgctxt "#32105"
-msgid "Removed "
+msgid "Removed"
 msgstr ""

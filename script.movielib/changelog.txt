@@ -1,3 +1,6 @@
+[B]1.1.3[/B]
+- Ready to translate by Transifex
+
 [B]1.1.2[/B]
 - Fix: JSONRPC unicode request
 

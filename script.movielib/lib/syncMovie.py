@@ -7,6 +7,7 @@ import os
 import urllib
 import urllib2
 import json
+import xbmcvfs
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
@@ -50,7 +51,7 @@ class syncMovie:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + self.settingsURL)
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
             return False
         movielibID = response.read().split()
@@ -105,6 +106,22 @@ class syncMovie:
             jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
             
+            #poster
+            if (movie['thumbnail'][8:12] == 'http'):
+                poster = urllib2.unquote(movie['thumbnail'][8:][:-1])
+            else:
+                poster_bin = xbmcvfs.File(urllib2.unquote(movie['thumbnail'][8:][:-1]))
+                poster = poster_bin.read()
+                poster_bin.close()
+            
+            # fanart
+            if (movie['fanart'][8:12] == 'http'):
+                fanart = urllib2.unquote(movie['fanart'][8:][:-1])
+            else:
+                fanart_bin = xbmcvfs.File(urllib2.unquote(movie['fanart'][8:][:-1]))
+                fanart = fanart_bin.read()
+                fanart_bin.close()
+            
             # trailer
             if (movie['trailer'][:4] == 'http'):
                 trailer = movie['trailer']
@@ -121,8 +138,8 @@ class syncMovie:
                 'plot': movie['plot'].encode('utf-8'),
                 'rating': movie['rating'],
                 'year': movie['year'],
-                'poster': urllib2.unquote(movie['thumbnail'][8:][:-1]) if movie['thumbnail'][8:12] == 'http' else '',
-                'fanart': urllib2.unquote(movie['fanart'][8:][:-1]) if movie['fanart'][8:12] == 'http' else '',
+                'poster': poster,
+                'fanart': fanart,
                 'trailer': trailer,
                 'runtime': movie['runtime'] / 60,
                 'genre': ' / '.join(movie['genre']).encode('utf-8'),
@@ -152,7 +169,7 @@ class syncMovie:
                 try:
                     response = opener.open(URL, data)
                 except:
-                    self.notify(__lang__(32100) + self.settingsURL)
+                    self.notify(__lang__(32100) + ': ' + self.settingsURL)
                     self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addmovie' + self.tokenURL)
                     return False
                 output = response.read()
@@ -171,9 +188,9 @@ class syncMovie:
                 skippedCount = skippedCount + 1
                 
         if skippedCount > 0:
-            self.notify(__lang__(32103) + str(skippedCount))
+            self.notify(__lang__(32103) + ' ' + str(skippedCount))
         if addedCount > 0:
-            self.notify(__lang__(32104) + str(addedCount))
+            self.notify(__lang__(32104) + ' ' + str(addedCount))
 
     # remove movies from database
     def removeMovie(self, toRemoveID):
@@ -186,7 +203,7 @@ class syncMovie:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + self.settingsURL)
+                self.notify(__lang__(32100) + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'removemovie' + self.tokenURL)
                 return False
             output = response.read()
@@ -204,4 +221,4 @@ class syncMovie:
             self.debug(output)
 
         if removedCount > 0:
-            self.notify(__lang__(32105) + str(removedCount))
+            self.notify(__lang__(32105) + ' ' + str(removedCount))

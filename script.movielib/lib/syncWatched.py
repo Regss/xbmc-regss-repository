@@ -50,7 +50,7 @@ class syncWatched:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + self.settingsURL)
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showwatchedid' + self.tokenURL)
             return False
         movielibWatchedID = response.read().split()
@@ -123,7 +123,7 @@ class syncWatched:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + self.settingsURL)
+                self.notify(__lang__(32100) + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'watchedmovie' + self.tokenURL)
                 return False
             output = response.read()
@@ -160,7 +160,7 @@ class syncWatched:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + self.settingsURL)
+                self.notify(__lang__(32100) + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'unwatchedmovie' + self.tokenURL)
                 return False
             output = response.read()

@@ -50,7 +50,7 @@ class Movielib:
         try:
             urllib2.urlopen(self.settingsURL + self.optionURL + 'showid' + self.tokenURL,timeout=2)
         except:
-            self.notify(__lang__(32100) + self.settingsURL)
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
             return False
         else:
@@ -64,7 +64,7 @@ class Movielib:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + self.settingsURL)
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + 'checktoken' + self.tokenURL)
             return False
         checkToken = response.read()
