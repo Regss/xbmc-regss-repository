@@ -58,8 +58,9 @@ class syncLastPlayed:
         self.debug('movielibLastPlayed: ' + movielibLastPlayed)
         
         # get lastplayed movie id from xbmc
-        jsonGetMovieID = '{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["lastplayed"], "filter": {"operator": "greaterthan", "field": "lastplayed", "value": "' + movielibLastPlayed + '"}}, "id": 1}'
-        jsonGetMovieIDResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieID))
+        jsonGetMovieID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["lastplayed"], "filter": {"operator": "greaterthan", "field": "lastplayed", "value": "' + movielibLastPlayed + '"}}, "id": 1}')
+        jsonGetMovieID = unicode(jsonGetMovieID, 'utf-8', errors='ignore')
+        jsonGetMovieIDResponse = json.loads(jsonGetMovieID)
         
         self.debug(str(jsonGetMovieIDResponse))
         
@@ -77,8 +78,9 @@ class syncLastPlayed:
         
     def lastPlayed(self, xbmcLastPlayedID):
         for id in xbmcLastPlayedID:
-            jsonGetMovieDetails = '{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed"], "movieid": ' + id + '}, "id": "1"}'
-            jsonGetMovieDetailsResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieDetails))
+            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
+            jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
             
             self.debug(str(jsonGetMovieDetailsResponse))

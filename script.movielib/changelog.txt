@@ -1,3 +1,6 @@
+[B]1.1.2[/B]
+- Fix: JSONRPC unicode request
+
 [B]1.1.1[/B]
 - Fix: Check and add prefix http:// if user does not specify
 

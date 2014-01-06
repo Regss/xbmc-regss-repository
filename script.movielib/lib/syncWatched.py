@@ -58,8 +58,9 @@ class syncWatched:
         self.debug('movielibWatchedID: ' + str(movielibWatchedID))
         
         # get watched id from xbmc
-        jsonGetMovieID = '{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["playcount"], "filter": {"operator": "greaterthan", "field": "playcount", "value": "0"}}, "id": 1}'
-        jsonGetMovieIDResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieID))
+        jsonGetMovieID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["playcount"], "filter": {"operator": "greaterthan", "field": "playcount", "value": "0"}}, "id": 1}')
+        jsonGetMovieID = unicode(jsonGetMovieID, 'utf-8', errors='ignore')
+        jsonGetMovieIDResponse = json.loads(jsonGetMovieID)
         
         self.debug(str(jsonGetMovieIDResponse))
     
@@ -100,8 +101,9 @@ class syncWatched:
     # sync watched movies
     def watchedMovie(self, toWatchedID):
         for id in toWatchedID:
-            jsonGetMovieDetails = '{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed", "dateadded"], "movieid": ' + id + '}, "id": "1"}'
-            jsonGetMovieDetailsResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieDetails))
+            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed", "dateadded"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
+            jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
             
             self.debug(str(jsonGetMovieDetailsResponse))
@@ -138,8 +140,9 @@ class syncWatched:
     # sync unwatched movies
     def unwatchedMovie(self, toUnwatchedID):
         for id in toUnwatchedID:
-            jsonGetMovieDetails = '{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["dateadded"], "movieid": ' + id + '}, "id": "1"}'
-            jsonGetMovieDetailsResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieDetails))
+            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["dateadded"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
+            jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
             
             self.debug(str(jsonGetMovieDetailsResponse))

@@ -57,8 +57,9 @@ class syncMovie:
         self.debug('movielibID: ' + str(movielibID))
         
         # get id from xbmc
-        jsonGetMovieID = '{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": []}, "id": 1}'
-        jsonGetMovieIDResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieID))
+        jsonGetMovieID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": []}, "id": 1}')
+        jsonGetMovieID = unicode(jsonGetMovieID, 'utf-8', errors='ignore')
+        jsonGetMovieIDResponse = json.loads(jsonGetMovieID)
         
         self.debug(str(jsonGetMovieIDResponse))
         
@@ -99,9 +100,18 @@ class syncMovie:
         skippedCount = 0
         
         for id in toAddID:
-            jsonGetMovieDetails = '{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails"], "movieid": ' + id + '}, "id": "1"}'
-            jsonGetMovieDetailsResponse = json.loads(xbmc.executeJSONRPC(jsonGetMovieDetails))
+            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
+            jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
+            
+            # trailer
+            if (movie['trailer'][:4] == 'http'):
+                trailer = movie['trailer']
+            elif (movie['trailer'][:29] == 'plugin://plugin.video.youtube'):
+                trailer = 'http://www.youtube.com/embed/' + movie['trailer'][-11:]
+            else:
+                trailer = ''
             
             self.debug(str(jsonGetMovieDetailsResponse))
 
@@ -113,6 +123,7 @@ class syncMovie:
                 'year': movie['year'],
                 'poster': urllib2.unquote(movie['thumbnail'][8:][:-1]) if movie['thumbnail'][8:12] == 'http' else '',
                 'fanart': urllib2.unquote(movie['fanart'][8:][:-1]) if movie['fanart'][8:12] == 'http' else '',
+                'trailer': trailer,
                 'runtime': movie['runtime'] / 60,
                 'genre': ' / '.join(movie['genre']).encode('utf-8'),
                 'director': ' / '.join(movie['director']).encode('utf-8'),
