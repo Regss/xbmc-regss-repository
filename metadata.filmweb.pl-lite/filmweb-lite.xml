@@ -64,7 +64,7 @@
             <!-- FILMWEB ID !-->
             <RegExp input="$$20" output="&lt;id_filmweb&gt;\1&lt;/id_filmweb&gt;" dest="5">
                 <RegExp input="$$1" output="\1" dest="20">
-                    <expression>filmId&gt;([0-9]*)</expression>
+                    <expression>filmId[^&gt;]+&gt;([0-9]*)</expression>
                 </RegExp>
                 <expression />
             </RegExp>

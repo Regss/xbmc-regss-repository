@@ -1,3 +1,6 @@
+[B]1.2.8[/B]
+- Poprawka: pobieranie opisu
+
 [B]1.2.7[/B]
 - Poprawka: opcja dla pobierania muzyki do tagu
 - Poprawka: muzyka do tagu, błędnie pobierany przycisk "więcej"
