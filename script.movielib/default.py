@@ -68,6 +68,7 @@ class Movielib:
             self.debug('Can\'t connect to: ' + self.settingsURL + 'checktoken' + self.tokenURL)
             return False
         checkToken = response.read()
+        checkToken = checkToken.replace(' ', '').replace('\n', '')
         self.debug(URL)
         self.debug('Check Token')
         self.debug(checkToken)
