@@ -1,3 +1,6 @@
+[B]1.2.9[/B]
+- Dodano: Możliwość pobierania tytułu oryginalnego zamiast polskiego
+
 [B]1.2.8[/B]
 - Poprawka: pobieranie opisu
 
