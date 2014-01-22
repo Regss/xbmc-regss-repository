@@ -8,6 +8,7 @@ import urllib
 import urllib2
 import json
 import xbmcvfs
+from PIL import Image
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
@@ -28,6 +29,7 @@ class syncMovie:
         self.settingsToken  = __addon__.getSetting('token')
         self.settingsNotify = __addon__.getSetting('notify')
         self.settingsDebug  = __addon__.getSetting('debug')
+        
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
         
@@ -94,7 +96,7 @@ class syncMovie:
             
         if len(toRemoveID) > 0:
             self.removeMovie(toRemoveID)
-
+    
     # add movies to database
     def addMovie(self, toAddID):
         addedCount = 0
@@ -110,7 +112,17 @@ class syncMovie:
             if (movie['thumbnail'][8:12] == 'http'):
                 poster = urllib2.unquote(movie['thumbnail'][8:][:-1])
             else:
-                poster_bin = xbmcvfs.File(urllib2.unquote(movie['thumbnail'][8:][:-1]))
+                path = xbmc.translatePath('special://profile/addon_data/'+__addon_id__)
+                if not xbmcvfs.exists(path):
+                    xbmcvfs.mkdir(path)
+                image = Image.open(urllib2.unquote(movie['thumbnail'][8:][:-1]))
+                print image.size
+                if (image.size[1] > 198):
+                    image.thumbnail((140, 198), Image.ANTIALIAS)
+                    image.save(path+'/temp_p', "JPEG")
+                    poster_bin = xbmcvfs.File(path+'/temp_p')
+                else:
+                    poster_bin = xbmcvfs.File(urllib2.unquote(movie['poster'][8:][:-1]))
                 poster = poster_bin.read()
                 poster_bin.close()
             
@@ -118,7 +130,17 @@ class syncMovie:
             if (movie['fanart'][8:12] == 'http'):
                 fanart = urllib2.unquote(movie['fanart'][8:][:-1])
             else:
-                fanart_bin = xbmcvfs.File(urllib2.unquote(movie['fanart'][8:][:-1]))
+                path = xbmc.translatePath('special://profile/addon_data/'+__addon_id__)
+                if not xbmcvfs.exists(path):
+                    xbmcvfs.mkdir(path)
+                image = Image.open(urllib2.unquote(movie['fanart'][8:][:-1]))
+                print image.size
+                if (image.size[0] > 1280):
+                    image.thumbnail((1280, 720), Image.ANTIALIAS)
+                    image.save(path+'/temp_f', "JPEG")
+                    fanart_bin = xbmcvfs.File(path+'/temp_f')
+                else:
+                    fanart_bin = xbmcvfs.File(urllib2.unquote(movie['fanart'][8:][:-1]))
                 fanart = fanart_bin.read()
                 fanart_bin.close()
             
@@ -131,7 +153,7 @@ class syncMovie:
                 trailer = ''
             
             self.debug(str(jsonGetMovieDetailsResponse))
-
+            
             values = {
                 'id': id,
                 'title': movie['title'].encode('utf-8'),
@@ -191,7 +213,7 @@ class syncMovie:
             self.notify(__lang__(32103) + ' ' + str(skippedCount))
         if addedCount > 0:
             self.notify(__lang__(32104) + ' ' + str(addedCount))
-
+    
     # remove movies from database
     def removeMovie(self, toRemoveID):
         removedCount = 0
@@ -219,6 +241,6 @@ class syncMovie:
                 removedCount = removedCount + 1
             
             self.debug(output)
-
+        
         if removedCount > 0:
             self.notify(__lang__(32105) + ' ' + str(removedCount))

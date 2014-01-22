@@ -2,6 +2,7 @@
 
 import xbmc
 import xbmcaddon
+import xbmcgui
 import sys
 import os
 import urllib
@@ -42,7 +43,7 @@ class Movielib:
         
         # add token var
         self.tokenURL = '&token=' + self.settingsToken
-
+        
         self.checkConn()
     
     # check connection
@@ -89,5 +90,15 @@ class Movielib:
         # start sync played
         self.debug('Run Sync LastPlayed')
         syncLastPlayed.syncLastPlayed()
-
-Movielib()
+    
+# check if script is running
+if(xbmcgui.Window(10000).getProperty(__addon_id__ + '_running') != 'True'):
+    
+    # create a lock prevent to run script duble time
+    xbmcgui.Window(10000).setProperty(__addon_id__ + '_running', 'True')
+    
+    Movielib()
+    
+    # remove lock
+    xbmcgui.Window(10000).clearProperty(__addon_id__ + '_running')
+    
