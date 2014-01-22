@@ -1,72 +1,73 @@
 # script.movielib language file
 # Translators:
+# Jucgshu <balayop@yahoo.fr>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-01-06 13:06+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/movielib-for-xbmc/language/pl/)\n"
+"PO-Revision-Date: 2014-01-19 17:21+0000\n"
+"Last-Translator: Jucgshu <balayop@yahoo.fr>\n"
+"Language-Team: French (France) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/fr_FR/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: Settings
 msgctxt "#32010"
 msgid "Login settings"
-msgstr "Ustawienia logowania"
+msgstr "Paramètres de connexion"
 
 #: Settings
 msgctxt "#32000"
 msgid "URL"
-msgstr "Adres URL"
+msgstr "URL"
 
 #: Settings
 msgctxt "#32001"
 msgid "Token"
-msgstr "Token"
+msgstr "Jeton"
 
 #: Settings
 msgctxt "#32011"
 msgid "Debug & Notification settings"
-msgstr "Ustawienia debugowania i informowania"
+msgstr "Paramètres de debug & notifications"
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr "Informacje"
+msgstr "Notification"
 
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
-msgstr "Debugowanie"
+msgstr "Debug"
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
-msgstr "Nie można połączyć z"
+msgstr "Impossible de se connecter à"
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr "Nieprawidłowy token"
+msgstr "Mauvais jeton"
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr "Błąd Synchronizacji"
+msgstr "Erreur de synchronisation"
 
 #: Notification
 msgctxt "#32103"
 msgid "Skipped"
-msgstr "Pominięto"
+msgstr "Ignoré"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Dodano"
+msgstr "Ajouté"
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr "Usunięto"
+msgstr "Retiré"

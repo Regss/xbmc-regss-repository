@@ -1,25 +1,26 @@
 # script.movielib language file
 # Translators:
+# MarkusK <Markus@koepke-online.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-01-06 13:06+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/movielib-for-xbmc/language/pl/)\n"
+"PO-Revision-Date: 2014-01-12 13:38+0000\n"
+"Last-Translator: MarkusK <Markus@koepke-online.com>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Settings
 msgctxt "#32010"
 msgid "Login settings"
-msgstr "Ustawienia logowania"
+msgstr "Login Einstellungen"
 
 #: Settings
 msgctxt "#32000"
 msgid "URL"
-msgstr "Adres URL"
+msgstr "URL"
 
 #: Settings
 msgctxt "#32001"
@@ -29,44 +30,44 @@ msgstr "Token"
 #: Settings
 msgctxt "#32011"
 msgid "Debug & Notification settings"
-msgstr "Ustawienia debugowania i informowania"
+msgstr "Einstellungen Fehlersuche & Benachrichtigung"
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr "Informacje"
+msgstr "Benachrichtigung"
 
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
-msgstr "Debugowanie"
+msgstr "Fehlersuche"
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
-msgstr "Nie można połączyć z"
+msgstr "Verbindung nicht möglich"
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr "Nieprawidłowy token"
+msgstr "Token falsch"
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr "Błąd Synchronizacji"
+msgstr "Fehler beim synchronisieren"
 
 #: Notification
 msgctxt "#32103"
 msgid "Skipped"
-msgstr "Pominięto"
+msgstr "Übersprungen"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Dodano"
+msgstr "Ergänzt"
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr "Usunięto"
+msgstr "Entfernt"
