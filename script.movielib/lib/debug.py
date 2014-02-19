@@ -6,9 +6,6 @@ import sys
 import os
 
 __addon__               = xbmcaddon.Addon()
-__addon_id__            = __addon__.getAddonInfo('id')
-__addonname__           = __addon__.getAddonInfo('name')
-__icon__                = __addon__.getAddonInfo('icon')
 __addonpath__           = xbmc.translatePath(__addon__.getAddonInfo('path')).decode('utf-8')
 __lang__                = __addon__.getLocalizedString
 

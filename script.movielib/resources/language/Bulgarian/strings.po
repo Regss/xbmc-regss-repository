@@ -1,16 +1,16 @@
 # script.movielib language file
 # Translators:
-# Jucgshu <balayop@yahoo.fr>, 2014
+# Kiril <neohidra@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
 "PO-Revision-Date: 2014-02-19 16:35+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
-"Language-Team: French (France) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/fr_FR/)\n"
+"Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/bg_BG/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: bg_BG\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Settings
 msgctxt "#32010"
@@ -20,12 +20,12 @@ msgstr ""
 #: Settings
 msgctxt "#32000"
 msgid "URL"
-msgstr "URL"
+msgstr "URL адрес"
 
 #: Settings
 msgctxt "#32001"
 msgid "Token"
-msgstr "Jeton"
+msgstr "Токен"
 
 #: Settings
 msgctxt "#32012"
@@ -55,12 +55,12 @@ msgstr ""
 #: Settings
 msgctxt "#32011"
 msgid "Debug & Notification settings"
-msgstr "Paramètres de debug & notifications"
+msgstr "Debug и настройки за известия"
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr "Notification"
+msgstr "Известия"
 
 #: Settings
 msgctxt "#32003"
@@ -70,29 +70,29 @@ msgstr "Debug"
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
-msgstr "Impossible de se connecter à"
+msgstr "Няма връзка с"
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr "Mauvais jeton"
+msgstr "Грешен токен"
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr "Erreur de synchronisation"
+msgstr "Грешка при синхронизирането"
 
 #: Notification
 msgctxt "#32103"
 msgid "Skipped"
-msgstr "Ignoré"
+msgstr "Пропуснат"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Ajouté"
+msgstr "Добавен"
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr "Retiré"
+msgstr "Премахнат"

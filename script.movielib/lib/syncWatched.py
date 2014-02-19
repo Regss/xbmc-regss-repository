@@ -9,9 +9,6 @@ import urllib2
 import json
 
 __addon__               = xbmcaddon.Addon()
-__addon_id__            = __addon__.getAddonInfo('id')
-__addonname__           = __addon__.getAddonInfo('name')
-__icon__                = __addon__.getAddonInfo('icon')
 __addonpath__           = xbmc.translatePath(__addon__.getAddonInfo('path')).decode('utf-8')
 __lang__                = __addon__.getLocalizedString
 
@@ -23,10 +20,8 @@ class syncWatched:
 
     def __init__(self):
         self.settingsURL    = __addon__.getSetting('url')
-        self.settingsLogin  = __addon__.getSetting('login')
         self.settingsToken  = __addon__.getSetting('token')
-        self.settingsNotify = __addon__.getSetting('notify')
-        self.settingsDebug  = __addon__.getSetting('debug')
+        
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
         

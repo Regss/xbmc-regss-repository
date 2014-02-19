@@ -1,8 +1,12 @@
+[B]1.1.7[/B]
+- Added: Sync actors thumbnail
+- Fix: Some bugs
+
 [B]1.1.6[/B]
 - Fix: getting poster and fanart
 
 [B]1.1.5[/B]
-- Fix: Prevent to run script duble time
+- Fix: Prevent to run script double time
 - Fix: Resize artwork stored localy to push it to movielib
 
 [B]1.1.4[/B]
@@ -18,7 +22,7 @@
 - Fix: Check and add prefix http:// if user does not specify
 
 [B]1.1.0[/B]
-- Add: Sync Watched, LastPlayed, RecentlyAdded
+- Added: Sync Watched, LastPlayed, RecentlyAdded
 
 [B]1.0.0[/B]
 - Initial

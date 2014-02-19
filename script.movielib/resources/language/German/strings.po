@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-01-12 13:38+0000\n"
-"Last-Translator: MarkusK <Markus@koepke-online.com>\n"
+"PO-Revision-Date: 2014-02-19 16:35+0000\n"
+"Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,8 +14,8 @@ msgstr ""
 
 #: Settings
 msgctxt "#32010"
-msgid "Login settings"
-msgstr "Login Einstellungen"
+msgid "Connection settings"
+msgstr ""
 
 #: Settings
 msgctxt "#32000"
@@ -26,6 +26,31 @@ msgstr "URL"
 msgctxt "#32001"
 msgid "Token"
 msgstr "Token"
+
+#: Settings
+msgctxt "#32012"
+msgid "Synchronization settings"
+msgstr ""
+
+#: Settings
+msgctxt "#32004"
+msgid "Sync actors thumbnails"
+msgstr ""
+
+#: Settings
+msgctxt "#32006"
+msgid "Sync posters"
+msgstr ""
+
+#: Settings
+msgctxt "#32007"
+msgid "Sync fanarts"
+msgstr ""
+
+#: Settings
+msgctxt "#32005"
+msgid "Force sync ISO files without stream details"
+msgstr ""
 
 #: Settings
 msgctxt "#32011"

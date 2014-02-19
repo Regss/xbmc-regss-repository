@@ -7,7 +7,7 @@ msgstr ""
 
 #: Settings
 msgctxt "#32010"
-msgid "Login settings"
+msgid "Connection settings"
 msgstr ""
 
 #: Settings
@@ -18,6 +18,31 @@ msgstr ""
 #: Settings
 msgctxt "#32001"
 msgid "Token"
+msgstr ""
+
+#: Settings
+msgctxt "#32012"
+msgid "Synchronization settings"
+msgstr ""
+
+#: Settings
+msgctxt "#32004"
+msgid "Sync actors thumbnails"
+msgstr ""
+
+#: Settings
+msgctxt "#32006"
+msgid "Sync posters"
+msgstr ""
+
+#: Settings
+msgctxt "#32007"
+msgid "Sync fanarts"
+msgstr ""
+
+#: Settings
+msgctxt "#32005"
+msgid "Force sync ISO files without stream details"
 msgstr ""
 
 #: Settings

@@ -5,7 +5,6 @@ import xbmcaddon
 import xbmcgui
 import sys
 import os
-import urllib
 import urllib2
 
 __addon__               = xbmcaddon.Addon()
@@ -13,6 +12,7 @@ __addon_id__            = __addon__.getAddonInfo('id')
 __addonname__           = __addon__.getAddonInfo('name')
 __icon__                = __addon__.getAddonInfo('icon')
 __addonpath__           = xbmc.translatePath(__addon__.getAddonInfo('path')).decode('utf-8')
+__datapath__            = xbmc.translatePath(os.path.join('special://profile/addon_data/', __addon_id__)).replace('\\', '/')
 __lang__                = __addon__.getLocalizedString
 
 sys.path.append(os.path.join(__addonpath__, "lib"))
@@ -26,10 +26,8 @@ class Movielib:
 
     def __init__(self):
         self.settingsURL    = __addon__.getSetting('url')
-        self.settingsLogin  = __addon__.getSetting('login')
         self.settingsToken  = __addon__.getSetting('token')
-        self.settingsNotify = __addon__.getSetting('notify')
-        self.settingsDebug  = __addon__.getSetting('debug')
+        
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
         
@@ -44,30 +42,21 @@ class Movielib:
         # add token var
         self.tokenURL = '&token=' + self.settingsToken
         
-        self.checkConn()
+        self.checkToken()
     
     # check connection
-    def checkConn(self):
-        try:
-            urllib2.urlopen(self.settingsURL + self.optionURL + 'showid' + self.tokenURL,timeout=2)
-        except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
-            return False
-        else:
-            self.debug('Connected to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
-            self.checkToken()
-    
-    # check token
     def checkToken(self):
         opener = urllib2.build_opener()
         URL = self.settingsURL + self.optionURL + 'checktoken' + self.tokenURL
         try:
             response = opener.open(URL)
-        except:
+        except Exception as Error:
             self.notify(__lang__(32100) + ': ' + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL + 'checktoken' + self.tokenURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'checktoken' + self.tokenURL)
+            self.debug(str(Error))
             return False
+        
+        # check token
         checkToken = response.read()
         checkToken = checkToken.replace(' ', '').replace('\n', '')
         self.debug(URL)
@@ -75,10 +64,12 @@ class Movielib:
         self.debug(checkToken)
         
         if checkToken != 'true':
-            self.debug('Wrong Token')
             self.notify(__lang__(32101))
+            self.debug('Wrong Token')
             return False
-        
+        else:
+            self.debug('Valid Token')
+            
         # start sync movies
         self.debug('Run Sync Movies')
         syncMovie.syncMovie()
