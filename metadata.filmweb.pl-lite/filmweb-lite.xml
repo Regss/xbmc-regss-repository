@@ -12,7 +12,7 @@
     $$12 - Plot
     $$11 - URL do filmu
 !-->
-<scraper framework="1.1" date="2013-10-15">
+<scraper framework="1.1" date="2014-02-21">
 
     <!-- Sprawdza plik NFO !-->
     <NfoUrl dest="3">
@@ -26,32 +26,16 @@
 
     <!-- Tworzy adres URL wyszukiwania !-->
     <CreateSearchUrl dest="3">
-        <RegExp conditional="!UseLive" input="$$1" output="&lt;url&gt;http://www.filmweb.pl/search/film?q=\1&amp;startYear=$$2&amp;endYear=$$2&lt;/url&gt;" dest="3">
-            <expression />
-        </RegExp>
-
-        <!-- Alternatywna wyszukiwarka !-->
-        <RegExp conditional="UseLive" input="$$1" output="&lt;url&gt;http://www.filmweb.pl/search/live?q=&quot;\1&lt;/url&gt;" dest="3">
+        <RegExp input="$$1" output="&lt;url&gt;http://www.filmweb.pl/search/film?q=\1&amp;startYear=$$2&amp;endYear=$$2&lt;/url&gt;" dest="3">
             <expression />
         </RegExp>
     </CreateSearchUrl>
 
     <!-- Tworzy adresy URL dla znalezionych pozycji !-->
     <GetSearchResults dest="8">
-        <RegExp conditional="!UseLive" input="$$5" output="&lt;results&gt;\1&lt;/results&gt;" dest="8">
+        <RegExp input="$$5" output="&lt;results&gt;\1&lt;/results&gt;" dest="8">
             <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2 / \4&lt;/title&gt;&lt;year&gt;\3&lt;/year&gt;&lt;url cache=&quot;filmweb-\1&quot;&gt;http://www.filmweb.pl/Film?id=\1&lt;/url&gt;&lt;/entity&gt;" dest="5">
                 <expression repeat="yes" fixchars="2" trim="4">li id=&quot;?film_([0-9]+)[^_]+&lt;h3&gt;([^_]+)&lt;/a&gt;[^_]+\(([0-9]+)\)[^_]+title=&quot;?([^&quot;]+)&quot;[^_]+dropdownTarget</expression>
-            </RegExp>
-            <expression noclean="1" />
-        </RegExp>
-
-        <!-- Alternatywna wyszukiwarka !-->
-        <RegExp conditional="UseLive" input="$$5" output="&lt;results&gt;\1&lt;/results&gt;" dest="8">
-            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\2&lt;/title&gt;&lt;year&gt;\3&lt;/year&gt;&lt;url cache=&quot;filmweb-\1&quot;&gt;http://www.filmweb.pl/Film?id=\1&lt;/url&gt;&lt;/entity&gt;" dest="5+">
-                <expression repeat="yes">f\\c([0-9]+)\\[^\\]+\\c([^\\]+)\\c\\[^\\]+\\c([0-9]+)\\c</expression>
-            </RegExp>
-            <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;\3 / \2&lt;/title&gt;&lt;year&gt;\4&lt;/year&gt;&lt;url cache=&quot;filmweb-\1&quot;&gt;http://www.filmweb.pl/Film?id=\1&lt;/url&gt;&lt;/entity&gt;" dest="5+">
-                <expression repeat="yes">f\\c([0-9]+)\\[^\\]+\\c([^\\]+)\\c([^\\]+)\\[^\\]+\\c([0-9]+)\\c</expression>
             </RegExp>
             <expression noclean="1" />
         </RegExp>
