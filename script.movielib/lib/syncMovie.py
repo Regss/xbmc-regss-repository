@@ -191,7 +191,8 @@ class syncMovie:
                 if (movie['trailer'][:4] == 'http'):
                     trailer = movie['trailer']
                 elif (movie['trailer'][:29] == 'plugin://plugin.video.youtube'):
-                    trailer = 'http://www.youtube.com/embed/' + movie['trailer'][-11:]
+                    ytid = movie['trailer'].split('=')
+                    trailer = 'http://www.youtube.com/embed/' + ytid[2][0:11]
                 else:
                     trailer = ''
                 
