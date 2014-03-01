@@ -2,7 +2,7 @@
 <addons>
 <addon id="metadata.filmweb.pl-lite"
        name="Filmweb Lite"
-       version="1.2.10"
+       version="1.2.11"
        provider-name="Regss">
     <requires>
     <import addon="xbmc.metadata" version="2.1.0" />
@@ -17,6 +17,18 @@
         <summary lang="pl">Scraper filmowy Filmweb</summary>
         <description lang="en">Download Movie information from filmweb.pl</description>
         <description lang="pl">Pobiera informacje o filmie ze strony www.filmweb.pl Umożliwia konfigurację poprzez wyłączenie poszczególnych funkcji w celu przyspieszenia działania</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="metadata.joymii.com" name="JoyMii" version="1.1.0" provider-name="Regss">
+    <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+    </requires>
+    <extension point="xbmc.metadata.scraper.tvshows" language="pl" library="joymii.xml"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Joymii scraper</summary>
+        <description lang="en">Download Movie information from joymii.com</description>
         <platform>all</platform>
     </extension>
 </addon>
@@ -42,7 +54,7 @@
 
 <addon id="plugin.video.filmweb.pl.trailery"
     name="Filmweb.pl - Trailery"
-    version="1.0.0"
+    version="1.0.1"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.0" />
@@ -79,7 +91,7 @@
 
 <addon id="script.movielib"
     name="Movielib"
-    version="1.1.8"
+    version="1.1.9"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />

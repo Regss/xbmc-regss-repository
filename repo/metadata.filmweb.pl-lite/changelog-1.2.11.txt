@@ -1,3 +1,6 @@
+[B]1.2.11[/B]
+- Powrót do zwykłej wyszukiwarki
+
 [B]1.2.10[/B]
 - Poprawka: pobieranie okładki
 
