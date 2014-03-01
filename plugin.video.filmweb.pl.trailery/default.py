@@ -79,7 +79,6 @@ class Trailers:
         playList.clear()
         for playListItem in self.MOVIES:
             playList.add(playListItem['url'], playListItem['item'])
-        xbmc.executebuiltin('xbmc.playercontrol(RepeatAll)')
         
         # autoodtwarzanie playlisty
         if self.settingsAutoPlay == 'true':
