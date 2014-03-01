@@ -60,6 +60,8 @@ class syncWatched:
         self.debug(str(jsonGetMovieIDResponse))
     
         xbmcWatchedID = []
+        if 'result' not in jsonGetMovieIDResponse:
+            return False
         if 'movies' in jsonGetMovieIDResponse['result']:
             for id in jsonGetMovieIDResponse['result']['movies']:
                 xbmcWatchedID.append(str(id['movieid']))

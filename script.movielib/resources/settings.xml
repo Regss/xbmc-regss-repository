@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
-    <setting label="32010" type="lsep" id="separator" />
-    <setting label="32000" type="text" id="url" default="http://" />
-    <setting label="32001" type="text" id="token" />
-    <setting label="32012" type="lsep" id="separator" />
-    <setting label="32004" type="bool" id="actors" default="true" />
-    <setting label="32006" type="bool" id="posters" default="true" />
-    <setting label="32007" type="bool" id="fanarts" default="true" />
-    <setting label="32005" type="bool" id="ISO" default="false" />
-    <setting label="32011" type="lsep" id="separator" />
-    <setting label="32002" type="bool" id="notify" default="true" />
-    <setting label="32003" type="bool" id="debug" default="false" />
+    <category label="32010">
+        <setting label="32000" type="text" id="url" default="http://" />
+        <setting label="32001" type="text" id="token" />
+    </category>
+    <category label="32012">
+        <setting label="32004" type="bool" id="actors" default="true" />
+        <setting label="32006" type="bool" id="posters" default="true" />
+        <setting label="32007" type="bool" id="fanarts" default="true" />
+        <setting label="32005" type="bool" id="ISO" default="false" />
+        <setting label="32008" type="bool" id="master" default="false" />
+    </category>
+    <category label="32011">
+        <setting label="32002" type="bool" id="notify" default="true" />
+        <setting label="32003" type="bool" id="debug" default="false" />
+    </category>
 </settings>

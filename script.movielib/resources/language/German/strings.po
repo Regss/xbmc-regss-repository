@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-02-19 16:35+0000\n"
+"PO-Revision-Date: 2014-02-28 19:32+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #: Settings
 msgctxt "#32010"
-msgid "Connection settings"
+msgid "Connection"
 msgstr ""
 
 #: Settings
@@ -29,7 +29,7 @@ msgstr "Token"
 
 #: Settings
 msgctxt "#32012"
-msgid "Synchronization settings"
+msgid "Synchronization"
 msgstr ""
 
 #: Settings
@@ -48,14 +48,20 @@ msgid "Sync fanarts"
 msgstr ""
 
 #: Settings
+msgctxt "#32008"
+msgid ""
+"Sync only in Master Mode (enable only when using Master Lock protection)"
+msgstr ""
+
+#: Settings
 msgctxt "#32005"
-msgid "Force sync ISO files without stream details"
+msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
 msgstr ""
 
 #: Settings
 msgctxt "#32011"
-msgid "Debug & Notification settings"
-msgstr "Einstellungen Fehlersuche & Benachrichtigung"
+msgid "Notification"
+msgstr ""
 
 #: Settings
 msgctxt "#32002"

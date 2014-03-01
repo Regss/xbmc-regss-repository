@@ -61,6 +61,8 @@ class syncLastPlayed:
         
         # set movie id to sync date
         xbmcLastPlayedID = []
+        if 'result' not in jsonGetMovieIDResponse:
+            return False
         if 'movies' in jsonGetMovieIDResponse['result']:
             for id in jsonGetMovieIDResponse['result']['movies']:
                 xbmcLastPlayedID.append(str(id['movieid']))

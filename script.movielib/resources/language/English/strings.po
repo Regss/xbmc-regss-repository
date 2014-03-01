@@ -7,7 +7,7 @@ msgstr ""
 
 #: Settings
 msgctxt "#32010"
-msgid "Connection settings"
+msgid "Connection"
 msgstr ""
 
 #: Settings
@@ -22,7 +22,7 @@ msgstr ""
 
 #: Settings
 msgctxt "#32012"
-msgid "Synchronization settings"
+msgid "Synchronization"
 msgstr ""
 
 #: Settings
@@ -41,13 +41,18 @@ msgid "Sync fanarts"
 msgstr ""
 
 #: Settings
+msgctxt "#32008"
+msgid "Sync only in Master Mode (enable only when using Master Lock protection)"
+msgstr ""
+
+#: Settings
 msgctxt "#32005"
-msgid "Force sync ISO files without stream details"
+msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
 msgstr ""
 
 #: Settings
 msgctxt "#32011"
-msgid "Debug & Notification settings"
+msgid "Notification"
 msgstr ""
 
 #: Settings

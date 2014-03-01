@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-02-19 16:35+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
+"PO-Revision-Date: 2014-03-01 15:04+0000\n"
+"Last-Translator: Kiril <neohidra@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/bg_BG/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,8 +14,8 @@ msgstr ""
 
 #: Settings
 msgctxt "#32010"
-msgid "Connection settings"
-msgstr ""
+msgid "Connection"
+msgstr "Връзка"
 
 #: Settings
 msgctxt "#32000"
@@ -29,33 +29,39 @@ msgstr "Токен"
 
 #: Settings
 msgctxt "#32012"
-msgid "Synchronization settings"
-msgstr ""
+msgid "Synchronization"
+msgstr "Синхронизиране"
 
 #: Settings
 msgctxt "#32004"
 msgid "Sync actors thumbnails"
-msgstr ""
+msgstr "Синхронизирай миниатюрите на актьорите"
 
 #: Settings
 msgctxt "#32006"
 msgid "Sync posters"
-msgstr ""
+msgstr "Синхронизирай плакатите"
 
 #: Settings
 msgctxt "#32007"
 msgid "Sync fanarts"
+msgstr "Синхронизирай fanart-а"
+
+#: Settings
+msgctxt "#32008"
+msgid ""
+"Sync only in Master Mode (enable only when using Master Lock protection)"
 msgstr ""
 
 #: Settings
 msgctxt "#32005"
-msgid "Force sync ISO files without stream details"
-msgstr ""
+msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
+msgstr "Налагане не синхрознизиране на ISO и IFO (Video_TS) файловете без данните за потока"
 
 #: Settings
 msgctxt "#32011"
-msgid "Debug & Notification settings"
-msgstr "Debug и настройки за известия"
+msgid "Notification"
+msgstr "Известия"
 
 #: Settings
 msgctxt "#32002"

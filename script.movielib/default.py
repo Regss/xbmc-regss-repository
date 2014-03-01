@@ -25,11 +25,25 @@ import syncLastPlayed
 class Movielib:
 
     def __init__(self):
-        self.settingsURL    = __addon__.getSetting('url')
-        self.settingsToken  = __addon__.getSetting('token')
+        self.settingsURL     = __addon__.getSetting('url')
+        self.settingsToken   = __addon__.getSetting('token')
+        self.settingsActors  = __addon__.getSetting('actors')
+        self.settingsPosters = __addon__.getSetting('posters')
+        self.settingsFanarts = __addon__.getSetting('fanarts')
+        self.settingsISO     = __addon__.getSetting('ISO')
+        self.settingsMaster  = __addon__.getSetting('master')
         
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
+        
+        # debug settings
+        self.debug('settingsURL: ' + self.settingsURL)
+        self.debug('settingsToken: ' + self.settingsToken)
+        self.debug('settingsActors: ' + self.settingsActors)
+        self.debug('settingsPosters: ' + self.settingsPosters)
+        self.debug('settingsFanarts: ' + self.settingsFanarts)
+        self.debug('settingsISO: ' + self.settingsISO)
+        self.debug('settingsMaster: ' + self.settingsMaster)
         
         # prepare URL
         if self.settingsURL[-1:] != '/':
@@ -42,7 +56,13 @@ class Movielib:
         # add token var
         self.tokenURL = '&token=' + self.settingsToken
         
-        self.checkToken()
+        # check master mode
+        if 'true' in self.settingsMaster:
+            isMaster = xbmc.getCondVisibility('System.IsMaster')
+            if isMaster == 1:
+                self.checkToken()
+        else:
+            self.checkToken()
     
     # check connection
     def checkToken(self):

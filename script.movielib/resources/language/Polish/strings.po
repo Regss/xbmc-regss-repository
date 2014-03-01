@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-02-19 16:37+0000\n"
+"PO-Revision-Date: 2014-02-28 19:50+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/movielib-for-xbmc/language/pl/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,8 +14,8 @@ msgstr ""
 
 #: Settings
 msgctxt "#32010"
-msgid "Connection settings"
-msgstr "Ustawienia połączenia"
+msgid "Connection"
+msgstr "Połączenie"
 
 #: Settings
 msgctxt "#32000"
@@ -29,8 +29,8 @@ msgstr "Token"
 
 #: Settings
 msgctxt "#32012"
-msgid "Synchronization settings"
-msgstr "Ustawienia synchronizacji"
+msgid "Synchronization"
+msgstr "Synchronizacja"
 
 #: Settings
 msgctxt "#32004"
@@ -48,14 +48,20 @@ msgid "Sync fanarts"
 msgstr "Synchronizuj fanarty"
 
 #: Settings
+msgctxt "#32008"
+msgid ""
+"Sync only in Master Mode (enable only when using Master Lock protection)"
+msgstr "Synchronizuj w trybie Master Mode (włącz jeśli używasz zabezpieczenia Master Lock)"
+
+#: Settings
 msgctxt "#32005"
-msgid "Force sync ISO files without stream details"
-msgstr "Wymuszaj synchronizację plików ISO bez danych o strumieniach"
+msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
+msgstr "Wymuś synchronizację plików ISO i IFO (VIDEO_TS) bez informacji i strumieniach"
 
 #: Settings
 msgctxt "#32011"
-msgid "Debug & Notification settings"
-msgstr "Ustawienia debugowania i informowania"
+msgid "Notification"
+msgstr "Powiadomienia"
 
 #: Settings
 msgctxt "#32002"

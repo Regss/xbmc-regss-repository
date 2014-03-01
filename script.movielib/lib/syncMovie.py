@@ -9,6 +9,7 @@ import urllib2
 import json
 import xbmcvfs
 from PIL import Image
+import cStringIO
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
@@ -67,6 +68,8 @@ class syncMovie:
         self.debug(str(jsonGetMovieIDResponse))
         
         xbmcID = []
+        if 'result' not in jsonGetMovieIDResponse:
+            return False
         if 'movies' in jsonGetMovieIDResponse['result']:
             for id in jsonGetMovieIDResponse['result']['movies']:
                 xbmcID.append(str(id['movieid']))
@@ -102,37 +105,51 @@ class syncMovie:
         addedCount = 0
         skippedCount = 0
         
+        # check status of allow_url_fopen on server
+        opener = urllib2.build_opener()
+        URL = self.settingsURL + self.optionURL + 'checkallowurlfopen' + self.tokenURL
+        response = opener.open(URL)
+        allowURLfopen = response.read()
+        self.debug('allow_url_fopen: ' + allowURLfopen)
+        
         for id in toAddID:
-            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "set", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
             jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
             
             self.debug(str(jsonGetMovieDetailsResponse))
             
-            if (movie['file'][-4:].lower() == '.iso') and ('true' in self.settingsISO):
-                isoPass = True
-            else:
-                isoPass = False
-                
+            # force sync if iso or ifo file
+            isoPass = False
+            if (movie['file'][-4:].lower() == '.iso') or (movie['file'][-4:].lower() == '.ifo'):
+                if 'true' in self.settingsISO:
+                    isoPass = True
+            
             if (len(movie['streamdetails']['video']) > 0) or (isoPass == True):
                 
-                #poster
+                # poster
                 if 'true' in self.settingsPosters:
                     poster_source = urllib2.unquote((movie['thumbnail']).encode('utf-8')).replace('\\', '/')
                     if (poster_source[:5] == 'image'):
-                        if (poster_source[8:12] == 'http'):
+                        # check status of allow_url_fopen on server
+                        if (poster_source[8:12] == 'http') and ('true' in allowURLfopen):
                             poster = poster_source[8:][:-1]
                         else:
                             poster_temp = __datapath__ + '/temp_p'
+                            # if file is stored in smb or nfs copy it to addon_data
                             if (poster_source[8:11].lower() == 'smb') or (poster_source[8:11].lower() == 'nfs'):
                                 copyRes = xbmcvfs.copy(poster_source[8:][:-1], poster_temp)
                                 if copyRes == True:
                                     poster_source = poster_temp
                                 else:
                                     poster_source = ''
+                            # if it is a URL
+                            elif poster_source[8:12] == 'http':
+                                poster_source = cStringIO.StringIO(urllib.urlopen(poster_source[8:][:-1]).read())
                             else:
                                 poster_source = poster_source[8:][:-1]
+                            # resize image
                             try:
                                 image = Image.open(poster_source)
                                 if (image.size[1] > 198):
@@ -156,18 +173,24 @@ class syncMovie:
                 if 'true' in self.settingsFanarts:
                     fanart_source = urllib2.unquote((movie['fanart']).encode('utf-8')).replace('\\', '/')
                     if (fanart_source[:5] == 'image'):
-                        if (fanart_source[8:12] == 'http'):
+                        # check status of allow_url_fopen on server
+                        if (fanart_source[8:12] == 'http') and ('true' in allowURLfopen):
                             fanart = fanart_source[8:][:-1]
                         else:
                             fanart_temp = __datapath__ + '/temp_f'
+                            # if file is stored in smb or nfs copy it to addon_data
                             if (fanart_source[8:11].lower() == 'smb') or (fanart_source[8:11].lower() == 'nfs'):
                                 copyRes = xbmcvfs.copy(fanart_source[8:][:-1], fanart_temp)
                                 if copyRes == True:
                                     fanart_source = fanart_temp
                                 else:
                                     fanart_source = ''
+                            # if it is a URL
+                            elif fanart_source[8:12] == 'http':
+                                fanart_source = cStringIO.StringIO(urllib.urlopen(fanart_source[8:][:-1]).read())
                             else:
                                 fanart_source = fanart_source[8:][:-1]
+                            # resize image
                             try:
                                 image = Image.open(fanart_source)            
                                 if (image.size[0] > 1280):
@@ -203,18 +226,24 @@ class syncMovie:
                         if 'thumbnail' in cast:
                             actor_source = urllib2.unquote((cast['thumbnail']).encode('utf-8')).replace('\\', '/')
                             if (actor_source[:5] == 'image'):
-                                if (actor_source[8:12] == 'http'):
+                                # check status of allow_url_fopen on server
+                                if (actor_source[8:12] == 'http') and ('true' in allowURLfopen):
                                     castThumb = actor_source[8:][:-1]
                                 else:
                                     actor_temp = __datapath__ + '/temp_a'
+                                    # if file is stored in smb or nfs copy it to addon_data
                                     if (actor_source[8:11].lower() == 'smb') or (actor_source[8:11].lower() == 'nfs'):
                                         copyRes = xbmcvfs.copy(actor_source[8:][:-1], actor_temp)
                                         if copyRes == True:
                                             actor_source = actor_temp
                                         else:
                                             actor_source = ''
+                                    # if it is a URL
+                                    elif actor_source[8:12] == 'http':
+                                        actor_source = cStringIO.StringIO(urllib.urlopen(actor_source[8:][:-1]).read())
                                     else:
                                         actor_source = actor_source[8:][:-1]
+                                    # resize image
                                     try:
                                         image = Image.open(actor_source)
                                         if (image.size[1] > 100):
@@ -266,6 +295,7 @@ class syncMovie:
                     'director': ' / '.join(movie['director']).encode('utf-8'),
                     'originaltitle': movie['originaltitle'].encode('utf-8'),
                     'country': ' / '.join(movie['country']).encode('utf-8'),
+                    'set': movie['set'].encode('utf-8'),
                     'v_codec': movie['streamdetails']['video'][0]['codec'] if len(movie['streamdetails']['video']) > 0 else '',
                     'v_aspect': movie['streamdetails']['video'][0]['aspect'] if len(movie['streamdetails']['video']) > 0 else '',
                     'v_width': movie['streamdetails']['video'][0]['width'] if len(movie['streamdetails']['video']) > 0 else '',
@@ -301,7 +331,7 @@ class syncMovie:
                 else:
                     addedCount = addedCount + 1
                 
-                self.debug(output)
+                self.debug(output.decode('utf-8'))
             else:
                 skippedCount = skippedCount + 1
                 
