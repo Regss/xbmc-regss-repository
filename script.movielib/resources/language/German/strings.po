@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-02-28 19:32+0000\n"
+"PO-Revision-Date: 2014-03-18 07:12+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,6 +48,11 @@ msgid "Sync fanarts"
 msgstr ""
 
 #: Settings
+msgctxt "#32009"
+msgid "Sync episodes"
+msgstr ""
+
+#: Settings
 msgctxt "#32008"
 msgid ""
 "Sync only in Master Mode (enable only when using Master Lock protection)"
@@ -79,6 +84,11 @@ msgid "Can't connect to"
 msgstr "Verbindung nicht möglich"
 
 #: Notification
+msgctxt "#32109"
+msgid "Wrong version of web script. Update is needed"
+msgstr ""
+
+#: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
 msgstr "Token falsch"
@@ -102,3 +112,18 @@ msgstr "Ergänzt"
 msgctxt "#32105"
 msgid "Removed"
 msgstr "Entfernt"
+
+#: Notification
+msgctxt "#32106"
+msgid "Movies"
+msgstr ""
+
+#: Notification
+msgctxt "#32107"
+msgid "TVshows"
+msgstr ""
+
+#: Notification
+msgctxt "#32108"
+msgid "Episodes"
+msgstr ""

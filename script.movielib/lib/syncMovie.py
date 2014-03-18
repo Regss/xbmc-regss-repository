@@ -10,6 +10,7 @@ import json
 import xbmcvfs
 from PIL import Image
 import cStringIO
+import base64
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
@@ -45,53 +46,56 @@ class syncMovie:
         # add token var
         self.tokenURL = '&token=' + self.settingsToken
         
+        # sync movie
         self.syncMovie()
+        
+        # sync movie watched status
+        self.syncMovieWatched()
+        
+        # sync movie last played
+        self.syncMovieLastPlayed()
         
     def syncMovie(self):
         # get movie id from movielib database
         opener = urllib2.build_opener()
-        URL = self.settingsURL + self.optionURL + 'showid' + self.tokenURL
+        URL = self.settingsURL + self.optionURL + 'showmovieid' + self.tokenURL
         try:
             response = opener.open(URL)
         except:
             self.notify(__lang__(32100) + ': ' + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showid' + self.tokenURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showmovieid' + self.tokenURL)
             return False
         movielibID = response.read().split()
-        self.debug('movielibID: ' + str(movielibID))
+        self.debug('movielibMovieID: ' + str(movielibID))
         
         # get id from xbmc
-        jsonGetMovieID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": []}, "id": 1}')
-        jsonGetMovieID = unicode(jsonGetMovieID, 'utf-8', errors='ignore')
-        jsonGetMovieIDResponse = json.loads(jsonGetMovieID)
+        jsonGetID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": []}, "id": 1}')
+        jsonGetID = unicode(jsonGetID, 'utf-8', errors='ignore')
+        jsonGetIDResponse = json.loads(jsonGetID)
         
-        self.debug(str(jsonGetMovieIDResponse))
+        self.debug(str(jsonGetIDResponse))
         
         xbmcID = []
-        if 'result' not in jsonGetMovieIDResponse:
+        if 'result' not in jsonGetIDResponse:
             return False
-        if 'movies' in jsonGetMovieIDResponse['result']:
-            for id in jsonGetMovieIDResponse['result']['movies']:
+        if 'movies' in jsonGetIDResponse['result']:
+            for id in jsonGetIDResponse['result']['movies']:
                 xbmcID.append(str(id['movieid']))
-        self.debug('xbmcID: ' + str(xbmcID))
+        self.debug('xbmcMovieID: ' + str(xbmcID))
         
         # set id to add
         toAddID = []
         for id in xbmcID:
-            if id in movielibID:
-                pass
-            else:
+            if id not in movielibID:
                 toAddID.append(id)
-        self.debug('toAddID: ' + str(toAddID))
+        self.debug('toAddMovieID: ' + str(toAddID))
         
         # set id do remove
         toRemoveID = []
         for id in movielibID:
-            if id in xbmcID:
-                pass
-            else:
+            if id not in xbmcID:
                 toRemoveID.append(id)
-        self.debug('toRemoveID: ' + str(toRemoveID))
+        self.debug('toRemoveMovieID: ' + str(toRemoveID))
                     
         # start sync
         if len(toAddID) > 0:
@@ -113,12 +117,13 @@ class syncMovie:
         self.debug('allow_url_fopen: ' + allowURLfopen)
         
         for id in toAddID:
-            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "set", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"], "movieid": ' + id + '}, "id": "1"}')
-            jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
-            jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
-            movie = jsonGetMovieDetailsResponse['result']['moviedetails']
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "set", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
+            jsonGetDetailsResponse = json.loads(jsonGetDetails)
             
-            self.debug(str(jsonGetMovieDetailsResponse))
+            self.debug(str(jsonGetDetailsResponse))
+            
+            movie = jsonGetDetailsResponse['result']['moviedetails']
             
             # force sync if iso or ifo file
             isoPass = False
@@ -264,7 +269,7 @@ class syncMovie:
                             # push actor thumb
                             if len(castThumb) > 0:
                                 valueCast = {
-                                    'actor': castThumb,
+                                    'actor': base64.b64encode(castThumb),
                                     'name': cast['name'].encode('utf-8')
                                 }                    
                                 data = urllib.urlencode(valueCast)
@@ -287,8 +292,8 @@ class syncMovie:
                     'rating': movie['rating'],
                     'year': movie['year'],
                     'cast': ' / '.join(actors).encode('utf-8'),
-                    'poster': poster,
-                    'fanart': fanart,
+                    'poster': base64.b64encode(poster),
+                    'fanart': base64.b64encode(fanart),
                     'trailer': trailer,
                     'runtime': movie['runtime'] / 60,
                     'genre': ' / '.join(movie['genre']).encode('utf-8'),
@@ -336,9 +341,9 @@ class syncMovie:
                 skippedCount = skippedCount + 1
                 
         if skippedCount > 0:
-            self.notify(__lang__(32103) + ' ' + str(skippedCount))
+            self.notify(__lang__(32103) + ' ' + str(skippedCount) + ' ' + __lang__(32106))
         if addedCount > 0:
-            self.notify(__lang__(32104) + ' ' + str(addedCount))
+            self.notify(__lang__(32104) + ' ' + str(addedCount) + ' ' + __lang__(32106))
 
     # remove movies from database
     def removeMovie(self, toRemoveID):
@@ -369,4 +374,208 @@ class syncMovie:
             self.debug(output)
 
         if removedCount > 0:
-            self.notify(__lang__(32105) + ' ' + str(removedCount))
+            self.notify(__lang__(32105) + ' ' + str(removedCount) + ' ' + __lang__(32106))
+            
+    def syncMovieWatched(self):
+        # get watched id from movielib database
+        opener = urllib2.build_opener()
+        URL = self.settingsURL + self.optionURL + 'showwatchedid' + self.tokenURL
+        try:
+            response = opener.open(URL)
+        except:
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showwatchedid' + self.tokenURL)
+            return False
+        movielibWatchedID = response.read().split()
+        
+        self.debug('movielibWatchedID: ' + str(movielibWatchedID))
+        
+        # get watched id from xbmc
+        jsonGetID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["playcount"], "filter": {"operator": "greaterthan", "field": "playcount", "value": "0"}}, "id": 1}')
+        jsonGetID = unicode(jsonGetID, 'utf-8', errors='ignore')
+        jsonGetIDResponse = json.loads(jsonGetID)
+        
+        self.debug(str(jsonGetIDResponse))
+    
+        xbmcWatchedID = []
+        if 'result' not in jsonGetIDResponse:
+            return False
+        if 'movies' in jsonGetIDResponse['result']:
+            for id in jsonGetIDResponse['result']['movies']:
+                xbmcWatchedID.append(str(id['movieid']))
+            
+        self.debug('xbmcWatchedID: ' + str(xbmcWatchedID))
+        
+        # set id to watched
+        toWatchedID = []
+        for id in xbmcWatchedID:
+            if id not in movielibWatchedID:
+                toWatchedID.append(id)
+                
+        self.debug('toWatchedID: ' + str(toWatchedID))
+        
+        # set id to unwatched
+        toUnwatchedID = []
+        for id in movielibWatchedID:
+            if id not in xbmcWatchedID:
+                toUnwatchedID.append(id)
+                
+        self.debug('toUnwatchedID: ' + str(toUnwatchedID))
+                    
+        # start sync
+        if len(toWatchedID) > 0:
+            self.watchedMovie(toWatchedID)
+            
+        if len(toUnwatchedID) > 0:
+            self.unwatchedMovie(toUnwatchedID)
+    
+    # sync watched movies
+    def watchedMovie(self, toWatchedID):
+        for id in toWatchedID:
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed", "dateadded"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
+            jsonGetDetailsResponse = json.loads(jsonGetDetails)
+            
+            self.debug(str(jsonGetDetailsResponse))
+            
+            movie = jsonGetDetailsResponse['result']['moviedetails']
+            
+            values = {
+                'id': id,
+                'playcount': movie['playcount'],
+                'lastplayed': movie['lastplayed'],
+                'dateadded': movie['dateadded']
+                }
+            
+            self.debug(str(values))
+            
+            data = urllib.urlencode(values)
+            opener = urllib2.build_opener()
+            URL = self.settingsURL + self.optionURL + 'watchedmovie' + self.tokenURL
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'watchedmovie' + self.tokenURL)
+                return False
+            output = response.read()
+            
+            self.debug(URL)
+            
+            # GET ERRORS
+            if len(output) > 0:
+                if 'ERROR:' in output:
+                    self.notify(__lang__(32102))
+            
+            self.debug(output)
+    
+    # sync unwatched movies
+    def unwatchedMovie(self, toUnwatchedID):
+        for id in toUnwatchedID:
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["dateadded"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
+            jsonGetDetailsResponse = json.loads(jsonGetDetails)
+            
+            self.debug(str(jsonGetDetailsResponse))
+            
+            movie = jsonGetDetailsResponse['result']['moviedetails']
+            
+            values = {
+                'id': id,
+                'dateadded': movie['dateadded']
+                }
+            
+            self.debug(str(values))
+            
+            data = urllib.urlencode(values)
+            opener = urllib2.build_opener()
+            URL = self.settingsURL + self.optionURL + 'unwatchedmovie' + self.tokenURL
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'unwatchedmovie' + self.tokenURL)
+                return False
+            output = response.read()
+            
+            self.debug(URL)
+            
+            # get errors
+            if len(output) > 0:
+                if 'ERROR:' in output:
+                    self.notify(__lang__(32102))
+            
+            self.debug(output)
+            
+    def syncMovieLastPlayed(self):
+        # get lastplayed date from movielib database
+        opener = urllib2.build_opener()
+        URL = self.settingsURL + self.optionURL + 'showlastplayed' + self.tokenURL
+        try:
+            response = opener.open(URL)
+        except:
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showlastplayed' + self.tokenURL)
+            return False
+        movielibLastPlayed = str(response.read())
+        
+        self.debug('movielibLastPlayed: ' + movielibLastPlayed)
+        
+        # get lastplayed movie id from xbmc
+        jsonGetMovieID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["lastplayed"], "filter": {"operator": "greaterthan", "field": "lastplayed", "value": "' + movielibLastPlayed + '"}}, "id": 1}')
+        jsonGetMovieID = unicode(jsonGetMovieID, 'utf-8', errors='ignore')
+        jsonGetMovieIDResponse = json.loads(jsonGetMovieID)
+        
+        self.debug(str(jsonGetMovieIDResponse))
+        
+        # set movie id to sync date
+        xbmcLastPlayedID = []
+        if 'result' not in jsonGetMovieIDResponse:
+            return False
+        if 'movies' in jsonGetMovieIDResponse['result']:
+            for id in jsonGetMovieIDResponse['result']['movies']:
+                xbmcLastPlayedID.append(str(id['movieid']))
+                
+        self.debug('xbmcLastPlayedID: ' + str(xbmcLastPlayedID))
+        
+        # sync lastplayed
+        if len(xbmcLastPlayedID) > 0:
+            self.lastPlayedMovie(xbmcLastPlayedID)
+        
+    def lastPlayedMovie(self, xbmcLastPlayedID):
+        for id in xbmcLastPlayedID:
+            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
+            jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
+            movie = jsonGetMovieDetailsResponse['result']['moviedetails']
+            
+            self.debug(str(jsonGetMovieDetailsResponse))
+            
+            values = {
+                'id': id,
+                'playcount': movie['playcount'],
+                'lastplayed': movie['lastplayed']
+                }
+            
+            self.debug(str(values))
+    
+            data = urllib.urlencode(values)
+            opener = urllib2.build_opener()
+            URL = self.settingsURL + self.optionURL + 'lastplayed' + self.tokenURL
+            try:
+                response = opener.open(URL, data)
+            except:
+                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'lastplayed' + self.tokenURL)
+                return False
+            output = response.read()
+            
+            self.debug(URL)
+            
+            # get errors
+            if len(output) > 0:
+                if 'ERROR:' in output:
+                    self.notify(__lang__(32102))
+            
+            self.debug(output)
+            

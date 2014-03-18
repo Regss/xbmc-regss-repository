@@ -19,19 +19,22 @@ sys.path.append(os.path.join(__addonpath__, "lib"))
 
 import debug
 import syncMovie
-import syncWatched
-import syncLastPlayed
+import syncTVshow
+import syncEpisode
 
 class Movielib:
 
     def __init__(self):
-        self.settingsURL     = __addon__.getSetting('url')
-        self.settingsToken   = __addon__.getSetting('token')
-        self.settingsActors  = __addon__.getSetting('actors')
-        self.settingsPosters = __addon__.getSetting('posters')
-        self.settingsFanarts = __addon__.getSetting('fanarts')
-        self.settingsISO     = __addon__.getSetting('ISO')
-        self.settingsMaster  = __addon__.getSetting('master')
+        self.settingsURL      = __addon__.getSetting('url')
+        self.settingsToken    = __addon__.getSetting('token')
+        self.settingsActors   = __addon__.getSetting('actors')
+        self.settingsPosters  = __addon__.getSetting('posters')
+        self.settingsFanarts  = __addon__.getSetting('fanarts')
+        self.settingsEpisodes = __addon__.getSetting('episodes')
+        self.settingsISO      = __addon__.getSetting('ISO')
+        self.settingsMaster   = __addon__.getSetting('master')
+        
+        self.versionWebScript = '2.4.0'
         
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
@@ -42,6 +45,7 @@ class Movielib:
         self.debug('settingsActors: ' + self.settingsActors)
         self.debug('settingsPosters: ' + self.settingsPosters)
         self.debug('settingsFanarts: ' + self.settingsFanarts)
+        self.debug('settingsEpisodes: ' + self.settingsEpisodes)
         self.debug('settingsISO: ' + self.settingsISO)
         self.debug('settingsMaster: ' + self.settingsMaster)
         
@@ -66,6 +70,32 @@ class Movielib:
     
     # check connection
     def checkToken(self):
+        
+        # check version
+        opener = urllib2.build_opener()
+        URL = self.settingsURL + self.optionURL + 'checkversion'
+        try:
+            response = opener.open(URL)
+        except Exception as Error:
+            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'checkversion')
+            self.debug(str(Error))
+            return False
+        
+        checkVersion = response.read()
+        checkVersion = checkVersion.replace(' ', '').replace('\n', '').strip()
+        self.debug(URL)
+        self.debug('Check version')
+        self.debug(checkVersion)
+        
+        if checkVersion < self.versionWebScript:
+            self.notify(__lang__(32109))
+            self.debug('Wrong Version of web script. Update is needed to version ' + self.versionWebScript + ' or higher')
+            return False
+        else:
+            self.debug('Version is valid')
+        
+        # check token
         opener = urllib2.build_opener()
         URL = self.settingsURL + self.optionURL + 'checktoken' + self.tokenURL
         try:
@@ -76,9 +106,8 @@ class Movielib:
             self.debug(str(Error))
             return False
         
-        # check token
         checkToken = response.read()
-        checkToken = checkToken.replace(' ', '').replace('\n', '')
+        checkToken = checkToken.replace(' ', '').replace('\n', '').strip()
         self.debug(URL)
         self.debug('Check Token')
         self.debug(checkToken)
@@ -94,13 +123,13 @@ class Movielib:
         self.debug('Run Sync Movies')
         syncMovie.syncMovie()
         
-        # start sync watched
-        self.debug('Run Sync Watched')
-        syncWatched.syncWatched()
+        # start sync TVshows
+        self.debug('Run Sync TVshows')
+        syncTVshow.syncTVshow()
         
-        # start sync played
-        self.debug('Run Sync LastPlayed')
-        syncLastPlayed.syncLastPlayed()
+        # start sync Episodes
+        self.debug('Run Sync Episodes')
+        syncEpisode.syncEpisode()
     
 # check if script is running
 if(xbmcgui.Window(10000).getProperty(__addon_id__ + '_running') != 'True'):
