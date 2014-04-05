@@ -64,7 +64,7 @@ class syncEpisode:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showepisodeid' + self.tokenURL)
             return False
         movielibID = response.read().split()
@@ -143,7 +143,7 @@ class syncEpisode:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addepisode' + self.tokenURL)
                 return False
             output = response.read()
@@ -153,14 +153,14 @@ class syncEpisode:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             else:
                 addedCount = addedCount + 1
             
-            self.debug(output.decode('utf-8'))
+            self.debug(output)
             
         if addedCount > 0:
-            self.notify(__lang__(32104) + ' ' + str(addedCount) + ' ' + __lang__(32108))
+            self.notify(__lang__(32104).encode('utf-8') + ' ' + str(addedCount) + ' ' + __lang__(32108).encode('utf-8'))
 
     # remove episode from database
     def removeEpisode(self, toRemoveID):
@@ -173,7 +173,7 @@ class syncEpisode:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'removeepisode' + self.tokenURL)
                 return False
             output = response.read()
@@ -184,14 +184,14 @@ class syncEpisode:
             #get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             else:
                 removedCount = removedCount + 1
             
             self.debug(output)
 
         if removedCount > 0:
-            self.notify(__lang__(32105) + ' ' + str(removedCount) + ' ' + __lang__(32108))
+            self.notify(__lang__(32105).encode('utf-8') + ' ' + str(removedCount) + ' ' + __lang__(32108).encode('utf-8'))
 
     def syncEpisodeWatched(self):
         # get watched id from movielib database
@@ -200,7 +200,7 @@ class syncEpisode:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showwatchedepisodeid' + self.tokenURL)
             return False
         movielibWatchedID = response.read().split()
@@ -269,7 +269,7 @@ class syncEpisode:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'watchedepisode' + self.tokenURL)
                 return False
             output = response.read()
@@ -279,7 +279,7 @@ class syncEpisode:
             # GET ERRORS
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
     
@@ -307,7 +307,7 @@ class syncEpisode:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'unwatchedepisode' + self.tokenURL)
                 return False
             output = response.read()
@@ -317,7 +317,7 @@ class syncEpisode:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
             
@@ -329,7 +329,7 @@ class syncEpisode:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showlastplayedepisode' + self.tokenURL)
             return False
         movielibLastPlayed = str(response.read())
@@ -381,7 +381,7 @@ class syncEpisode:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'lastplayedepisode' + self.tokenURL)
                 return False
             output = response.read()
@@ -391,6 +391,6 @@ class syncEpisode:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)

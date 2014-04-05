@@ -62,7 +62,7 @@ class syncMovie:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showmovieid' + self.tokenURL)
             return False
         movielibID = response.read().split()
@@ -278,7 +278,7 @@ class syncMovie:
                                 try:
                                     response = opener.open(URL, data)
                                 except:
-                                    self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                                    self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                                     self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addactor' + self.tokenURL)
                                     return False
                                 
@@ -322,7 +322,7 @@ class syncMovie:
                 try:
                     response = opener.open(URL, data)
                 except:
-                    self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                    self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                     self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addmovie' + self.tokenURL)
                     return False
                 output = response.read()
@@ -332,18 +332,18 @@ class syncMovie:
                 # get errors
                 if len(output) > 0:
                     if 'ERROR:' in output:
-                        self.notify(__lang__(32102))
+                        self.notify(__lang__(32102).encode('utf-8'))
                 else:
                     addedCount = addedCount + 1
                 
-                self.debug(output.decode('utf-8'))
+                self.debug(output)
             else:
                 skippedCount = skippedCount + 1
                 
         if skippedCount > 0:
-            self.notify(__lang__(32103) + ' ' + str(skippedCount) + ' ' + __lang__(32106))
+            self.notify(__lang__(32103).encode('utf-8') + ' ' + str(skippedCount) + ' ' + __lang__(32106).encode('utf-8'))
         if addedCount > 0:
-            self.notify(__lang__(32104) + ' ' + str(addedCount) + ' ' + __lang__(32106))
+            self.notify(__lang__(32104).encode('utf-8') + ' ' + str(addedCount) + ' ' + __lang__(32106).encode('utf-8'))
 
     # remove movies from database
     def removeMovie(self, toRemoveID):
@@ -356,7 +356,7 @@ class syncMovie:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'removemovie' + self.tokenURL)
                 return False
             output = response.read()
@@ -367,28 +367,28 @@ class syncMovie:
             #get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             else:
                 removedCount = removedCount + 1
             
             self.debug(output)
 
         if removedCount > 0:
-            self.notify(__lang__(32105) + ' ' + str(removedCount) + ' ' + __lang__(32106))
+            self.notify(__lang__(32105).encode('utf-8') + ' ' + str(removedCount) + ' ' + __lang__(32106).encode('utf-8'))
             
     def syncMovieWatched(self):
         # get watched id from movielib database
         opener = urllib2.build_opener()
-        URL = self.settingsURL + self.optionURL + 'showwatchedid' + self.tokenURL
+        URL = self.settingsURL + self.optionURL + 'showwatchedmovieid' + self.tokenURL
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showwatchedid' + self.tokenURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showwatchedmovieid' + self.tokenURL)
             return False
         movielibWatchedID = response.read().split()
         
-        self.debug('movielibWatchedID: ' + str(movielibWatchedID))
+        self.debug('movielibWatchedMovieID: ' + str(movielibWatchedID))
         
         # get watched id from xbmc
         jsonGetID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["playcount"], "filter": {"operator": "greaterthan", "field": "playcount", "value": "0"}}, "id": 1}')
@@ -404,7 +404,7 @@ class syncMovie:
             for id in jsonGetIDResponse['result']['movies']:
                 xbmcWatchedID.append(str(id['movieid']))
             
-        self.debug('xbmcWatchedID: ' + str(xbmcWatchedID))
+        self.debug('xbmcWatchedMovieID: ' + str(xbmcWatchedID))
         
         # set id to watched
         toWatchedID = []
@@ -412,7 +412,7 @@ class syncMovie:
             if id not in movielibWatchedID:
                 toWatchedID.append(id)
                 
-        self.debug('toWatchedID: ' + str(toWatchedID))
+        self.debug('toWatchedMovieID: ' + str(toWatchedID))
         
         # set id to unwatched
         toUnwatchedID = []
@@ -420,7 +420,7 @@ class syncMovie:
             if id not in xbmcWatchedID:
                 toUnwatchedID.append(id)
                 
-        self.debug('toUnwatchedID: ' + str(toUnwatchedID))
+        self.debug('toUnwatchedMovieID: ' + str(toUnwatchedID))
                     
         # start sync
         if len(toWatchedID) > 0:
@@ -455,7 +455,7 @@ class syncMovie:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'watchedmovie' + self.tokenURL)
                 return False
             output = response.read()
@@ -465,7 +465,7 @@ class syncMovie:
             # GET ERRORS
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
     
@@ -493,7 +493,7 @@ class syncMovie:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'unwatchedmovie' + self.tokenURL)
                 return False
             output = response.read()
@@ -503,23 +503,23 @@ class syncMovie:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
             
     def syncMovieLastPlayed(self):
         # get lastplayed date from movielib database
         opener = urllib2.build_opener()
-        URL = self.settingsURL + self.optionURL + 'showlastplayed' + self.tokenURL
+        URL = self.settingsURL + self.optionURL + 'showlastplayedmovie' + self.tokenURL
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showlastplayed' + self.tokenURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showlastplayedmovie' + self.tokenURL)
             return False
         movielibLastPlayed = str(response.read())
         
-        self.debug('movielibLastPlayed: ' + movielibLastPlayed)
+        self.debug('movielibLastPlayedMovieID: ' + movielibLastPlayed)
         
         # get lastplayed movie id from xbmc
         jsonGetMovieID = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["lastplayed"], "filter": {"operator": "greaterthan", "field": "lastplayed", "value": "' + movielibLastPlayed + '"}}, "id": 1}')
@@ -536,7 +536,7 @@ class syncMovie:
             for id in jsonGetMovieIDResponse['result']['movies']:
                 xbmcLastPlayedID.append(str(id['movieid']))
                 
-        self.debug('xbmcLastPlayedID: ' + str(xbmcLastPlayedID))
+        self.debug('xbmcLastPlayedMovieID: ' + str(xbmcLastPlayedID))
         
         # sync lastplayed
         if len(xbmcLastPlayedID) > 0:
@@ -561,12 +561,12 @@ class syncMovie:
     
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
-            URL = self.settingsURL + self.optionURL + 'lastplayed' + self.tokenURL
+            URL = self.settingsURL + self.optionURL + 'lastplayedmovie' + self.tokenURL
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
-                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'lastplayed' + self.tokenURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
+                self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'lastplayedmovie' + self.tokenURL)
                 return False
             output = response.read()
             
@@ -575,7 +575,7 @@ class syncMovie:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
             

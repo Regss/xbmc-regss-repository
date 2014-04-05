@@ -62,7 +62,7 @@ class syncTVshow:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showtvshowid' + self.tokenURL)
             return False
         movielibID = response.read().split()
@@ -261,7 +261,7 @@ class syncTVshow:
                             try:
                                 response = opener.open(URL, data)
                             except:
-                                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addactor' + self.tokenURL)
                                 return False
                             
@@ -293,7 +293,7 @@ class syncTVshow:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addtvshow' + self.tokenURL)
                 return False
             output = response.read()
@@ -303,14 +303,14 @@ class syncTVshow:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             else:
                 addedCount = addedCount + 1
             
-            self.debug(output.decode('utf-8'))
+            self.debug(output)
             
         if addedCount > 0:
-            self.notify(__lang__(32104) + ' ' + str(addedCount) + ' ' + __lang__(32107))
+            self.notify(__lang__(32104).encode('utf-8') + ' ' + str(addedCount) + ' ' + __lang__(32107).encode('utf-8'))
 
     # remove tvshow from database
     def removeTVshow(self, toRemoveID):
@@ -323,7 +323,7 @@ class syncTVshow:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'removetvshow' + self.tokenURL)
                 return False
             output = response.read()
@@ -334,14 +334,14 @@ class syncTVshow:
             #get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             else:
                 removedCount = removedCount + 1
             
             self.debug(output)
 
         if removedCount > 0:
-            self.notify(__lang__(32105) + ' ' + str(removedCount) + ' ' + __lang__(32107))
+            self.notify(__lang__(32105).encode('utf-8') + ' ' + str(removedCount) + ' ' + __lang__(32107).encode('utf-8'))
             
     def syncTVshowWatched(self):
         # get watched id from movielib database
@@ -350,7 +350,7 @@ class syncTVshow:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showwatchedtvshowid' + self.tokenURL)
             return False
         movielibWatchedID = response.read().split()
@@ -422,7 +422,7 @@ class syncTVshow:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'watchedtvshow' + self.tokenURL)
                 return False
             output = response.read()
@@ -432,7 +432,7 @@ class syncTVshow:
             # GET ERRORS
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
     
@@ -460,7 +460,7 @@ class syncTVshow:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'unwatchedtvshow' + self.tokenURL)
                 return False
             output = response.read()
@@ -470,7 +470,7 @@ class syncTVshow:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
             
@@ -482,7 +482,7 @@ class syncTVshow:
         try:
             response = opener.open(URL)
         except:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'showlastplayedtvshow' + self.tokenURL)
             return False
         movielibLastPlayed = str(response.read())
@@ -534,7 +534,7 @@ class syncTVshow:
             try:
                 response = opener.open(URL, data)
             except:
-                self.notify(__lang__(32100) + ': ' + self.settingsURL)
+                self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                 self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'lastplayedtvshow' + self.tokenURL)
                 return False
             output = response.read()
@@ -544,7 +544,7 @@ class syncTVshow:
             # get errors
             if len(output) > 0:
                 if 'ERROR:' in output:
-                    self.notify(__lang__(32102))
+                    self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
             

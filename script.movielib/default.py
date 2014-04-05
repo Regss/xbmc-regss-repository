@@ -77,7 +77,7 @@ class Movielib:
         try:
             response = opener.open(URL)
         except Exception as Error:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'checkversion')
             self.debug(str(Error))
             return False
@@ -89,7 +89,7 @@ class Movielib:
         self.debug(checkVersion)
         
         if checkVersion < self.versionWebScript:
-            self.notify(__lang__(32109))
+            self.notify(__lang__(32109).encode('utf-8'))
             self.debug('Wrong Version of web script. Update is needed to version ' + self.versionWebScript + ' or higher')
             return False
         else:
@@ -101,7 +101,7 @@ class Movielib:
         try:
             response = opener.open(URL)
         except Exception as Error:
-            self.notify(__lang__(32100) + ': ' + self.settingsURL)
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
             self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'checktoken' + self.tokenURL)
             self.debug(str(Error))
             return False
@@ -113,7 +113,7 @@ class Movielib:
         self.debug(checkToken)
         
         if checkToken != 'true':
-            self.notify(__lang__(32101))
+            self.notify(__lang__(32101).encode('utf-8'))
             self.debug('Wrong Token')
             return False
         else:

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-03-18 07:12+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
+"PO-Revision-Date: 2014-03-27 23:47+0000\n"
+"Last-Translator: Kiril <neohidra@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/bg_BG/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,7 +86,7 @@ msgstr "Няма връзка с"
 #: Notification
 msgctxt "#32109"
 msgid "Wrong version of web script. Update is needed"
-msgstr ""
+msgstr "Неподходяща версия на уеб скрипта. Необходимо е обновяване."
 
 #: Notification
 msgctxt "#32101"
@@ -116,14 +116,14 @@ msgstr "Премахнат"
 #: Notification
 msgctxt "#32106"
 msgid "Movies"
-msgstr ""
+msgstr "Филми"
 
 #: Notification
 msgctxt "#32107"
 msgid "TVshows"
-msgstr ""
+msgstr "ТВ Сериали"
 
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
-msgstr ""
+msgstr "Епизоди"

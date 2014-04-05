@@ -16,9 +16,9 @@ class Debuger:
     def debug(self, msg):
         settingsDebug  = __addon__.getSetting('debug')
         if 'true' in settingsDebug:
-            xbmc.log('>>>> Movielib <<<< ' + msg.encode('utf-8'))
+            xbmc.log('>>>> Movielib <<<< ' + msg)
             
     def notify(self, msg):
         settingsNotify = __addon__.getSetting('notify')
         if 'true' in settingsNotify:
-            xbmc.executebuiltin('Notification(Movielib,' + msg.encode('utf-8') + ')')
+            xbmc.executebuiltin('Notification(Movielib,' + msg + ')')
