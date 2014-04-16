@@ -1,3 +1,6 @@
+[B]1.2.3[/B]
+- Fix: Generate banner after sync end
+
 [B]1.2.2[/B]
 - Added: Generate banner after sync end
 
