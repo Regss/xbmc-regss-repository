@@ -154,12 +154,12 @@ class Movielib:
     
     def generateBanner(self):
         opener = urllib2.build_opener()
-        URL = self.settingsURL + self.optionURL + 'generatebanner'
+        URL = self.settingsURL + self.optionURL + 'generatebanner' + self.tokenURL
         try:
             response = opener.open(URL)
         except Exception as Error:
             self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
-            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'generatebanner')
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'generatebanner' + self.tokenURL)
             self.debug(str(Error))
         
 # check if script is running
