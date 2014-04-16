@@ -47,13 +47,13 @@ class syncMovie:
         self.tokenURL = '&token=' + self.settingsToken
         
         # sync movie
-        self.syncMovie()
+        if self.syncMovie():
         
-        # sync movie watched status
-        self.syncMovieWatched()
-        
-        # sync movie last played
-        self.syncMovieLastPlayed()
+            # sync movie watched status
+            self.syncMovieWatched()
+            
+            # sync movie last played
+            self.syncMovieLastPlayed()
         
     def syncMovie(self):
         # get movie id from movielib database
@@ -289,7 +289,7 @@ class syncMovie:
                     'id': id,
                     'title': movie['title'].encode('utf-8'),
                     'plot': movie['plot'].encode('utf-8'),
-                    'rating': movie['rating'],
+                    'rating': str(round(float(movie['rating']), 1)),
                     'year': movie['year'],
                     'cast': ' / '.join(actors).encode('utf-8'),
                     'poster': base64.b64encode(poster),

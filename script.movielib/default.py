@@ -6,6 +6,7 @@ import xbmcgui
 import sys
 import os
 import urllib2
+import json
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
@@ -95,6 +96,22 @@ class Movielib:
         else:
             self.debug('Version is valid')
         
+        # check server settings
+        opener = urllib2.build_opener()
+        URL = self.settingsURL + self.optionURL + 'checksettings'
+        try:
+            response = opener.open(URL)
+        except Exception as Error:
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'checksettings')
+            self.debug(str(Error))
+        
+        checkSettings = response.read()
+        if len(checkSettings) > 0:
+            settings = json.loads(checkSettings)
+            for setting in settings:
+                self.debug('Server: ' + setting + ': ' + settings[setting])
+        
         # check token
         opener = urllib2.build_opener()
         URL = self.settingsURL + self.optionURL + 'checktoken' + self.tokenURL
@@ -130,7 +147,21 @@ class Movielib:
         # start sync Episodes
         self.debug('Run Sync Episodes')
         syncEpisode.syncEpisode()
+        
+        # start generate banner
+        self.debug('Start generate banner')
+        self.generateBanner()
     
+    def generateBanner(self):
+        opener = urllib2.build_opener()
+        URL = self.settingsURL + self.optionURL + 'generatebanner'
+        try:
+            response = opener.open(URL)
+        except Exception as Error:
+            self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
+            self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'generatebanner')
+            self.debug(str(Error))
+        
 # check if script is running
 if(xbmcgui.Window(10000).getProperty(__addon_id__ + '_running') != 'True'):
     

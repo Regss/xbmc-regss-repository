@@ -47,13 +47,13 @@ class syncTVshow:
         self.tokenURL = '&token=' + self.settingsToken
         
         # sync tvshow
-        self.syncTVshow()
+        if self.syncTVshow():
         
-        # sync tvshow watched status
-        self.syncTVshowWatched()
-        
-        # sync tvshow last played
-        self.syncTVshowLastPlayed()
+            # sync tvshow watched status
+            self.syncTVshowWatched()
+            
+            # sync tvshow last played
+            self.syncTVshowLastPlayed()
         
     def syncTVshow(self):
         # get tvshow id from movielib database
@@ -272,7 +272,7 @@ class syncTVshow:
                 'id': id,
                 'title': tvshow['title'].encode('utf-8'),
                 'plot': tvshow['plot'].encode('utf-8'),
-                'rating': tvshow['rating'],
+                'rating': str(round(float(tvshow['rating']), 1)),
                 'cast': ' / '.join(actors).encode('utf-8'),
                 'poster': base64.b64encode(poster),
                 'fanart': base64.b64encode(fanart),

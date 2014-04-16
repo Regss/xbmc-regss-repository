@@ -47,15 +47,15 @@ class syncEpisode:
         self.tokenURL = '&token=' + self.settingsToken
         
         # sync episode
-        self.syncEpisode()
+        if self.syncEpisode():
         
-        # sync episode watched status
-        if 'true' in self.settingsEpisodes:
-            self.syncEpisodeWatched()
-        
-        # sync episode last played
-        if 'true' in self.settingsEpisodes:
-            self.syncEpisodeLastPlayed()
+            # sync episode watched status
+            if 'true' in self.settingsEpisodes:
+                self.syncEpisodeWatched()
+            
+            # sync episode last played
+            if 'true' in self.settingsEpisodes:
+                self.syncEpisodeLastPlayed()
         
     def syncEpisode(self):
         # get episode id from movielib database
