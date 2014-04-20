@@ -1,3 +1,6 @@
+[B]1.2.4[/B]
+- Fix: sync bug
+
 [B]1.2.3[/B]
 - Fix: Generate banner after sync end
 

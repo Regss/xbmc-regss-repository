@@ -47,7 +47,7 @@ class syncMovie:
         self.tokenURL = '&token=' + self.settingsToken
         
         # sync movie
-        if self.syncMovie():
+        if self.syncMovie() is not False:
         
             # sync movie watched status
             self.syncMovieWatched()

@@ -47,7 +47,7 @@ class syncEpisode:
         self.tokenURL = '&token=' + self.settingsToken
         
         # sync episode
-        if self.syncEpisode():
+        if self.syncEpisode() is not False:
         
             # sync episode watched status
             if 'true' in self.settingsEpisodes:

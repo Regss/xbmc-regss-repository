@@ -47,7 +47,7 @@ class syncTVshow:
         self.tokenURL = '&token=' + self.settingsToken
         
         # sync tvshow
-        if self.syncTVshow():
+        if self.syncTVshow() is not False:
         
             # sync tvshow watched status
             self.syncTVshowWatched()
