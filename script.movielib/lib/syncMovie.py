@@ -127,7 +127,7 @@ class syncMovie:
             
             # force sync if iso or ifo file
             isoPass = False
-            if (movie['file'][-4:].lower() == '.iso') or (movie['file'][-4:].lower() == '.ifo'):
+            if (movie['file'][-4:].lower() == '.iso') or (movie['file'][-4:].lower() == '.ifo') or (movie['file'][-5:].lower() == '.bdmv'):
                 if 'true' in self.settingsISO:
                     isoPass = True
             
@@ -308,9 +308,10 @@ class syncMovie:
                     'v_duration': movie['streamdetails']['video'][0]['duration'] / 60 if len(movie['streamdetails']['video']) > 0 else '',
                     'a_codec': movie['streamdetails']['audio'][0]['codec'] if len(movie['streamdetails']['audio']) > 0 else '',
                     'a_chan': movie['streamdetails']['audio'][0]['channels'] if len(movie['streamdetails']['audio']) > 0 else '',
-                    'playcount': movie['playcount'],
-                    'lastplayed': movie['lastplayed'],
-                    'dateadded': movie['dateadded']
+                    'file': movie['file'].replace('\\', '/').encode('utf-8'),
+                    'play_count': movie['playcount'],
+                    'last_played': movie['lastplayed'],
+                    'date_added': movie['dateadded']
                     }
                 
                 self.debug(str(values))

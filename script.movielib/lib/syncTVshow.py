@@ -279,9 +279,9 @@ class syncTVshow:
                 'genre': ' / '.join(tvshow['genre']).encode('utf-8'),
                 'originaltitle': tvshow['originaltitle'].encode('utf-8'),
                 'premiered': tvshow['premiered'],
-                'playcount': tvshow['playcount'],
-                'lastplayed': tvshow['lastplayed'],
-                'dateadded': tvshow['dateadded']
+                'play_count': tvshow['playcount'],
+                'last_played': tvshow['lastplayed'],
+                'date_added': tvshow['dateadded']
                 }
             
             self.debug(str(values))

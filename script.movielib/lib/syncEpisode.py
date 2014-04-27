@@ -113,7 +113,7 @@ class syncEpisode:
         skippedCount = 0
         
         for id in toAddID:
-            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodeDetails", "params": {"properties": ["title", "plot", "episode", "season", "tvshowid", "firstaired", "playcount", "lastplayed", "dateadded"], "episodeid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodeDetails", "params": {"properties": ["title", "plot", "episode", "season", "tvshowid", "file", "firstaired", "playcount", "lastplayed", "dateadded"], "episodeid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
             episode = jsonGetDetailsResponse['result']['episodedetails']
@@ -129,9 +129,10 @@ class syncEpisode:
                 'season': episode['season'],
                 'tvshow': episode['tvshowid'],
                 'firstaired': episode['firstaired'],
-                'playcount': episode['playcount'],
-                'lastplayed': episode['lastplayed'],
-                'dateadded': episode['dateadded']
+                'file': episode['file'].replace('\\', '/').encode('utf-8'),
+                'play_count': episode['playcount'],
+                'last_played': episode['lastplayed'],
+                'date_added': episode['dateadded']
                 }
             
             self.debug(str(values))
