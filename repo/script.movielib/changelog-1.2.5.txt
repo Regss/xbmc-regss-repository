@@ -1,3 +1,8 @@
+[B]1.2.5[/B]
+- Fix: sync Last Added, Last Played, Watched
+- Added: bdmv files to exceptions at sync
+- Added: Syncing path to file
+
 [B]1.2.4[/B]
 - Fix: sync bug
 
