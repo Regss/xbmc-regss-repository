@@ -99,10 +99,12 @@ class syncTVshow:
                     
         # start sync
         if len(toAddID) > 0:
-            self.addTVshow(toAddID)
+            if self.addTVshow(toAddID) is False:
+                return False
             
         if len(toRemoveID) > 0:
-            self.removeTVshow(toRemoveID)
+            if self.removeTVshow(toRemoveID) is False:
+                return False
 
     # add tvshow to database
     def addTVshow(self, toAddID):

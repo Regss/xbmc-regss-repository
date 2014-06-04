@@ -1,21 +1,21 @@
 # script.movielib language file
 # Translators:
-# Markus <Markus@koepke-online.com>, 2014
+# David Rodríguez Hernández <david.rgh@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-03-18 07:12+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
+"PO-Revision-Date: 2014-05-14 10:24+0000\n"
+"Last-Translator: David Rodríguez Hernández <david.rgh@gmail.com>\n"
+"Language-Team: Spanish (Spain) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/es_ES/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Settings
 msgctxt "#32010"
 msgid "Connection"
-msgstr ""
+msgstr "Conexión"
 
 #: Settings
 msgctxt "#32000"
@@ -30,100 +30,100 @@ msgstr "Token"
 #: Settings
 msgctxt "#32012"
 msgid "Synchronization"
-msgstr ""
+msgstr "Sincronización"
 
 #: Settings
 msgctxt "#32004"
 msgid "Sync actors thumbnails"
-msgstr ""
+msgstr "Sincronizar miniaturas de los actores"
 
 #: Settings
 msgctxt "#32006"
 msgid "Sync posters"
-msgstr ""
+msgstr "Sincronizar posters"
 
 #: Settings
 msgctxt "#32007"
 msgid "Sync fanarts"
-msgstr ""
+msgstr "Sincronizar fanarts"
 
 #: Settings
 msgctxt "#32009"
 msgid "Sync episodes"
-msgstr ""
+msgstr "Sincronizar capítulos"
 
 #: Settings
 msgctxt "#32008"
 msgid ""
 "Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr ""
+msgstr "Sincronizar sólo en Modo Maestro (habilitar sólo cuando se esté utilizando el el sistema de protección de Bloqueo Maestro)"
 
 #: Settings
 msgctxt "#32005"
 msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr ""
+msgstr "Forzar sincronización de los archvios ISO e IFO (VIDEO_TS) sin detalles de la transmisión"
 
 #: Settings
 msgctxt "#32011"
 msgid "Notification"
-msgstr ""
+msgstr "Notificación"
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr "Benachrichtigung"
+msgstr "Notificación"
 
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
-msgstr "Fehlersuche"
+msgstr "Depurar"
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
-msgstr "Verbindung nicht möglich"
+msgstr "No se puede conectar a"
 
 #: Notification
 msgctxt "#32109"
 msgid "Wrong version of web script. Update is needed"
-msgstr ""
+msgstr "Versión del script web incorrecta. Se necesita actualizar"
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr "Token falsch"
+msgstr "Token incorrecto"
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr "Fehler beim synchronisieren"
+msgstr "Error de sincronización"
 
 #: Notification
 msgctxt "#32103"
 msgid "Skipped"
-msgstr "Übersprungen"
+msgstr "Omitido"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Ergänzt"
+msgstr "Añadido"
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr "Entfernt"
+msgstr "Eliminado"
 
 #: Notification
 msgctxt "#32106"
 msgid "Movies"
-msgstr ""
+msgstr "Películas"
 
 #: Notification
 msgctxt "#32107"
 msgid "TVshows"
-msgstr ""
+msgstr "Series de TV"
 
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
-msgstr ""
+msgstr "Capítulos"

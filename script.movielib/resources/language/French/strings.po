@@ -1,6 +1,6 @@
 # script.movielib language file
 # Translators:
-# Jucgshu <balayop@yahoo.fr>, 2014
+# Jean Fontaine <balayop@yahoo.fr>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"

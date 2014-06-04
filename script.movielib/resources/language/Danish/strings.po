@@ -1,21 +1,21 @@
 # script.movielib language file
 # Translators:
-# Markus <Markus@koepke-online.com>, 2014
+# missekat <stalkerofctd@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-03-18 07:12+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
+"PO-Revision-Date: 2014-04-21 16:15+0000\n"
+"Last-Translator: missekat <stalkerofctd@gmail.com>\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/movielib-for-xbmc/language/da/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Settings
 msgctxt "#32010"
 msgid "Connection"
-msgstr ""
+msgstr "Forbindelse"
 
 #: Settings
 msgctxt "#32000"
@@ -30,100 +30,100 @@ msgstr "Token"
 #: Settings
 msgctxt "#32012"
 msgid "Synchronization"
-msgstr ""
+msgstr "Synkronisering"
 
 #: Settings
 msgctxt "#32004"
 msgid "Sync actors thumbnails"
-msgstr ""
+msgstr "Synkroniser skuespiller billeder"
 
 #: Settings
 msgctxt "#32006"
 msgid "Sync posters"
-msgstr ""
+msgstr "Synkroniser plakater"
 
 #: Settings
 msgctxt "#32007"
 msgid "Sync fanarts"
-msgstr ""
+msgstr "Synkroniser fankunst"
 
 #: Settings
 msgctxt "#32009"
 msgid "Sync episodes"
-msgstr ""
+msgstr "Synkroniser episoder"
 
 #: Settings
 msgctxt "#32008"
 msgid ""
 "Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr ""
+msgstr "Synkroniser kun i Master Mode (Bliver kun slået til når Master Lock Protection er slået til i XBMC indstillingerne)"
 
 #: Settings
 msgctxt "#32005"
 msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr ""
+msgstr "Tving synkronisering af ISO og IFO (VIDEO_TS) filer uden streaming detaljer."
 
 #: Settings
 msgctxt "#32011"
 msgid "Notification"
-msgstr ""
+msgstr "Notifikation"
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr "Benachrichtigung"
+msgstr "Notifikation"
 
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
-msgstr "Fehlersuche"
+msgstr "Debug"
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
-msgstr "Verbindung nicht möglich"
+msgstr "Kan ikke forbinde til"
 
 #: Notification
 msgctxt "#32109"
 msgid "Wrong version of web script. Update is needed"
-msgstr ""
+msgstr "Forkert version af online scriptet. Opdater venligst."
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr "Token falsch"
+msgstr "Forkert Token"
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr "Fehler beim synchronisieren"
+msgstr "Synkroniserings fejl"
 
 #: Notification
 msgctxt "#32103"
 msgid "Skipped"
-msgstr "Übersprungen"
+msgstr "Ikke tilføjet"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Ergänzt"
+msgstr "Tilføjet"
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr "Entfernt"
+msgstr "Fjernet"
 
 #: Notification
 msgctxt "#32106"
 msgid "Movies"
-msgstr ""
+msgstr "Film"
 
 #: Notification
 msgctxt "#32107"
 msgid "TVshows"
-msgstr ""
+msgstr "TVshows"
 
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
-msgstr ""
+msgstr "Episoder"

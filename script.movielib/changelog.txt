@@ -1,3 +1,7 @@
+[B]1.2.6[/B]
+- Fixed: stops syncing when error occur
+- Added: Spanish, Danish language
+
 [B]1.2.5[/B]
 - Fix: sync Last Added, Last Played, Watched
 - Added: bdmv files to exceptions at sync

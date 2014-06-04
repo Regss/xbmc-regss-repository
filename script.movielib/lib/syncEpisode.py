@@ -102,10 +102,12 @@ class syncEpisode:
                     
         # start sync
         if len(toAddID) > 0:
-            self.addEpisode(toAddID)
+            if self.addEpisode(toAddID) is False:
+                return False
             
         if len(toRemoveID) > 0:
-            self.removeEpisode(toRemoveID)
+            if self.removeEpisode(toRemoveID) is False:
+                return False
 
     # add episode to database
     def addEpisode(self, toAddID):

@@ -99,10 +99,12 @@ class syncMovie:
                     
         # start sync
         if len(toAddID) > 0:
-            self.addMovie(toAddID)
+            if self.addMovie(toAddID) is False:
+                return False
             
         if len(toRemoveID) > 0:
-            self.removeMovie(toRemoveID)
+            if self.removeMovie(toRemoveID) is False:
+                return False
 
     # add movies to database
     def addMovie(self, toAddID):
