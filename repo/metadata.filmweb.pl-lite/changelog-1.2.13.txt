@@ -1,5 +1,9 @@
+[B]1.2.13[/B]
+- Poprawka: obsada
+
 [B]1.2.12[/B]
 - Poprawka: pobieranie obsady
+
 [B]1.2.11[/B]
 - Powrót do zwykłej wyszukiwarki
 
