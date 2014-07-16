@@ -9,7 +9,7 @@ import os
 
 __addon__ = xbmcaddon.Addon()
 __addon_id__ = __addon__.getAddonInfo('id')
-__addonpath__ = xbmc.translatePath(__addon__.getAddonInfo('path')).decode('utf-8')
+__addonpath__ = xbmc.translatePath(__addon__.getAddonInfo('path'))
 __datapath__ = xbmc.translatePath(os.path.join('special://profile/addon_data/', __addon_id__)).replace('\\', '/') + '/'
 __path_img__ = __addonpath__ + '/images/'
 __lang__ = __addon__.getLocalizedString
@@ -165,6 +165,6 @@ class Switch:
 
 class Message:
     def msg(self, msg):
-        xbmc.executebuiltin('Notification(Switch Audio,'+msg+', 4000, ' + __addonpath__ + '/icon.png)')
+        xbmc.executebuiltin('Notification(Audio Profile,'+msg+', 4000, ' + __addonpath__ + '/icon.png)')
         
 Start()
