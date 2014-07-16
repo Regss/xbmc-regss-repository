@@ -1,0 +1,26 @@
+# script.audio.profiles language file
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+#: Settings
+msgctxt "#32001"
+msgid "Name of profile 1"
+msgstr ""
+
+#: Settings
+msgctxt "#32003"
+msgid "Name of profile 2"
+msgstr ""
+
+#: Script
+msgctxt "#32010"
+msgid "Choose profile to save settings"
+msgstr ""
+
+#: Script
+msgctxt "#32011"
+msgid "Configure profiles"
+msgstr ""
