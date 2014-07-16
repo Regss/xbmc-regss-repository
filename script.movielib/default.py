@@ -19,6 +19,7 @@ __lang__                = __addon__.getLocalizedString
 sys.path.append(os.path.join(__addonpath__, "lib"))
 
 import debug
+import bar
 import syncMovie
 import syncTVshow
 import syncEpisode
@@ -39,6 +40,8 @@ class Movielib:
         
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
+        
+        self.progBar = bar.Bar()
         
         # debug settings
         self.debug('settingsURL: ' + self.settingsURL)
@@ -135,7 +138,7 @@ class Movielib:
             return False
         else:
             self.debug('Valid Token')
-            
+                
         # start sync movies
         self.debug('Run Sync Movies')
         syncMovie.syncMovie()

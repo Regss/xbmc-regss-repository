@@ -2,6 +2,7 @@
 
 import xbmc
 import xbmcaddon
+import xbmcgui
 import sys
 import os
 import urllib
@@ -14,6 +15,7 @@ import base64
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
+__addonname__           = __addon__.getAddonInfo('name')
 __addonpath__           = xbmc.translatePath(__addon__.getAddonInfo('path')).decode('utf-8')
 __datapath__            = xbmc.translatePath(os.path.join('special://profile/addon_data/', __addon_id__)).replace('\\', '/')
 __lang__                = __addon__.getLocalizedString
@@ -21,6 +23,7 @@ __lang__                = __addon__.getLocalizedString
 sys.path.append(os.path.join(__addonpath__, "lib" ))
 
 import debug
+import bar
 
 class syncMovie:
 
@@ -34,6 +37,8 @@ class syncMovie:
         
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
+        
+        self.progBar = bar.Bar()
         
         # prepare URL
         if self.settingsURL[-1:] != '/':
@@ -99,17 +104,23 @@ class syncMovie:
                     
         # start sync
         if len(toAddID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Adding Movies...')
             if self.addMovie(toAddID) is False:
                 return False
+            self.progBar.close()
             
         if len(toRemoveID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Removeing Movies...')
             if self.removeMovie(toRemoveID) is False:
                 return False
+            self.progBar.close()
 
     # add movies to database
     def addMovie(self, toAddID):
+    
         addedCount = 0
         skippedCount = 0
+        countToAdd = len(toAddID)
         
         # check status of allow_url_fopen on server
         opener = urllib2.build_opener()
@@ -119,6 +130,7 @@ class syncMovie:
         self.debug('allow_url_fopen: ' + allowURLfopen)
         
         for id in toAddID:
+
             jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "set", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
@@ -135,6 +147,10 @@ class syncMovie:
             
             if (len(movie['streamdetails']['video']) > 0) or (isoPass == True):
                 
+                # progress bar
+                p = int((100 / countToAdd) * addedCount)
+                self.progBar.update(p, str(addedCount+1) + '/' + str(countToAdd) + ' - ' + movie['title'] + ' (' + str(movie['year']) + ')')
+            
                 # poster
                 if 'true' in self.settingsPosters:
                     poster_source = urllib2.unquote((movie['thumbnail']).encode('utf-8')).replace('\\', '/')
@@ -350,8 +366,17 @@ class syncMovie:
 
     # remove movies from database
     def removeMovie(self, toRemoveID):
+        
         removedCount = 0
+        countToRemove = len(toRemoveID)
+        
         for id in toRemoveID:
+        
+            # progress bar update
+            p = int((100 / countToRemove) * removedCount)
+            self.progBar.update(p,'Removeing Movies...' ,__addonname__ + ' Remove ' + str(removedCount+1) + ' / ' + str(countToRemove))
+            
+            # remove
             values = { 'id': id }
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
@@ -427,14 +452,28 @@ class syncMovie:
                     
         # start sync
         if len(toWatchedID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Syncing Watched...')
             self.watchedMovie(toWatchedID)
+            self.progBar.close()
             
         if len(toUnwatchedID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Syncing Unwatched...')
             self.unwatchedMovie(toUnwatchedID)
-    
+            self.progBar.close()
+            
     # sync watched movies
     def watchedMovie(self, toWatchedID):
+        
+        countToWatched = len(toWatchedID)
+        i = 0
+        
         for id in toWatchedID:
+        
+            # progress bar update
+            p = int((100 / countToWatched) * i)
+            self.progBar.update(p,'Watched Movies...' ,__addonname__ + ' Remove ' + str(i+1) + ' / ' + str(countToWatched))
+            i = i + 1
+            
             jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed", "dateadded"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
@@ -474,7 +513,17 @@ class syncMovie:
     
     # sync unwatched movies
     def unwatchedMovie(self, toUnwatchedID):
+    
+        countToUnwatched = len(toUnwatched)
+        i = 0
+        
         for id in toUnwatchedID:
+        
+            # progress bar update
+            p = int((100 / countToUnwatched) * i)
+            self.progBar.update(p,'Unwatched Movies...' ,__addonname__ + ' Remove ' + str(i+1) + ' / ' + str(countToUnwatched))
+            i = i + 1
+            
             jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["dateadded"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
