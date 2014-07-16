@@ -35,12 +35,12 @@
 
 <addon id="plugin.audio.polskie.stacje"
        name="Polskie Stacje"
-       version="1.0.1"
+       version="1.0.2"
        provider-name="Regss">
   <requires>
-    <import addon="xbmc.python" version="2.0" />
+    <import addon="xbmc.python" version="2.14.0" />
   </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
+  <extension point="xbmc.python.pluginsource" library="default.py" />
         <provides>audio</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
@@ -54,13 +54,13 @@
 
 <addon id="plugin.video.filmweb.pl.trailery"
     name="Filmweb.pl - Trailery"
-    version="1.0.1"
+    version="1.0.2"
     provider-name="Regss">
     <requires>
-        <import addon="xbmc.python" version="2.0" />
+        <import addon="xbmc.python" version="2.14.0" />
         <import addon="plugin.video.youtube" version="2.9.1" optional="true" />
     </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
+    <extension point="xbmc.python.pluginsource" library="default.py" />
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
@@ -85,6 +85,21 @@
         <description lang="pl">Pobieraj i instaluj dodatki z repozytorium Regss'a</description>
         <disclaimer> - </disclaimer>
         <disclaimer lang="pl"> - </disclaimer>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="script.audio.profiles"
+    name="Audio Profiles"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Save audio profile and easily switch between them</summary>
+        <description lang="en">To map a key for switch audio profile edit keymap xml file and add:[CR]RunScript(script.audio.profiles,0) - for switch profile in loop[CR]RunScript(script.audio.profiles,x) - where x is number of profile</description>
         <platform>all</platform>
     </extension>
 </addon>
