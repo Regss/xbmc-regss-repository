@@ -50,6 +50,7 @@ class GUI(xbmcgui.WindowDialog):
         # set vars
         self.sName1         = __addon__.getSetting('name1')
         self.sName2         = __addon__.getSetting('name2')
+        
         self.button = [0]
         bgResW = 520
         bgResH = 170
@@ -94,12 +95,18 @@ class GUI(xbmcgui.WindowDialog):
         jsonGetSysSettings = xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"Settings.GetSettings", "params":{"level": "expert", "filter":{"section":"system","category":"audiooutput"}},"id":1}')
         jsonGetSysSettings = unicode(jsonGetSysSettings, 'utf-8')
         jsonGetSysSettings = json.loads(jsonGetSysSettings)
-
+        
+        jsonGetSysSettings2 = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.GetProperties", "params": {"properties": ["volume"]}, "id": 1}')
+        jsonGetSysSettings2 = unicode(jsonGetSysSettings2, 'utf-8')
+        jsonGetSysSettings2 = json.loads(jsonGetSysSettings2)
+        
         jsonToWrite = ''
         if 'result' in jsonGetSysSettings:
             for set in jsonGetSysSettings['result']['settings']:
+                if str(set['value']) == 'True' or str(set['value']) == 'False':
+                    set['value'] = str(set['value']).lower()
                 jsonToWrite = jsonToWrite + '"' + str(set['id']) + '": "' + str(set['value']) + '", '
-        jsonToWrite = '{' + jsonToWrite[:-2] + '}'
+        jsonToWrite = '{' + jsonToWrite + '"volume": "' + str(jsonGetSysSettings2['result']['volume']) + '"}'
 
         if not xbmcvfs.exists(__datapath__):
             xbmcvfs.mkdir(__datapath__)
@@ -142,13 +149,18 @@ class Switch:
         self.profile(profile)
         
     def profile(self, profile):
-        self.sName = [0, __addon__.getSetting('name1'), __addon__.getSetting('name2')]
+        self.sName          = [0, __addon__.getSetting('name1'), __addon__.getSetting('name2')]
+        self.sVolume        = __addon__.getSetting('volume')
         
         # read settings from profile
         f = xbmcvfs.File(__datapath__ + 'profile'+profile+'.json', 'r')
         result = f.read()
         jsonResult = json.loads(result)
         f.close()
+        
+        if 'true' in self.sVolume:
+            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": {"volume": ' + jsonResult['volume'] + '}, "id": 1}')
+        del jsonResult['volume']
         
         for req in jsonResult:
             if req == 'audiooutput.audiodevice' or req == 'audiooutput.passthroughdevice':

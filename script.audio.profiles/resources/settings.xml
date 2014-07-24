@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
-    <setting label="32001" type="text" id="name1" default="Digital" />
-    <setting label="32003" type="text" id="name2" default="Analog" />
+    <category label="32000">
+        <setting label="32001" type="text" id="name1" default="Digital" />
+        <setting label="32003" type="text" id="name2" default="Analog" />
+    </category>
+    <category label="32002">
+        <setting label="32004" type="bool" id="volume" default="false" />
+    </category>
 </settings>

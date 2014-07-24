@@ -6,14 +6,29 @@ msgstr ""
 "Language: pl\n"
 
 #: Settings
+msgctxt "#32000"
+msgid "Profiles"
+msgstr "Profile"
+
+#: Settings
 msgctxt "#32001"
 msgid "Name of profile 1"
 msgstr "Nazwa profilu 1"
 
 #: Settings
+msgctxt "#32002"
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: Settings
 msgctxt "#32003"
 msgid "Name of profile 2"
 msgstr "Nazwa profilu 2"
+
+#: Settings
+msgctxt "#32004"
+msgid "Include the volume level"
+msgstr "Uwzględnij poziom głośności"
 
 #: Script
 msgctxt "#32010"
