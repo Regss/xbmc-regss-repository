@@ -48,12 +48,18 @@ class GUI(xbmcgui.WindowDialog):
 
     def __init__(self):
         # set vars
+        self.sProfile1      = __addon__.getSetting('profile1')
         self.sName1         = __addon__.getSetting('name1')
+        self.sProfile2      = __addon__.getSetting('profile2')
         self.sName2         = __addon__.getSetting('name2')
+        self.sProfile3      = __addon__.getSetting('profile3')
+        self.sName3         = __addon__.getSetting('name3')
+        self.sProfile4      = __addon__.getSetting('profile4')
+        self.sName4         = __addon__.getSetting('name4')
         
         self.button = [0]
         bgResW = 520
-        bgResH = 170
+        bgResH = 230
         bgPosX = (1280 - bgResW) / 2
         bgPosY = (720 - bgResH) / 2
         self.start = 1
@@ -61,14 +67,23 @@ class GUI(xbmcgui.WindowDialog):
         # add controls
         self.bg = xbmcgui.ControlImage(bgPosX, bgPosY, bgResW, bgResH, __path_img__ + 'bg.png')
         self.addControl(self.bg)
+        
         self.strActionInfo = xbmcgui.ControlLabel(bgPosX, bgPosY+20, 520, 200, '', 'font14', '0xFFFFFFFF', alignment=2)
         self.addControl(self.strActionInfo)
         self.strActionInfo.setLabel(__lang__(32010))
+        
         self.button.append(xbmcgui.ControlButton(bgPosX+30, bgPosY+80, 220, 50, self.sName1, alignment=6, font='font13'))
         self.addControl(self.button[1])
         self.setFocus(self.button[1])
+        
         self.button.append(xbmcgui.ControlButton(bgPosX+270, bgPosY+80, 220, 50, self.sName2, alignment=6, font='font13'))
         self.addControl(self.button[2])
+        
+        self.button.append(xbmcgui.ControlButton(bgPosX+30, bgPosY+140, 220, 50, self.sName3, alignment=6, font='font13'))
+        self.addControl(self.button[3])
+        
+        self.button.append(xbmcgui.ControlButton(bgPosX+270, bgPosY+140, 220, 50, self.sName4, alignment=6, font='font13'))
+        self.addControl(self.button[4])
         
     def onAction(self, action):
         if action == ACTION_PREVIOUS_MENU or action == ACTION_STEP_BACK or action == ACTION_BACKSPACE or action == ACTION_NAV_BACK or action == KEY_BUTTON_BACK or action == ACTION_MOUSE_RIGHT_CLICK:

@@ -30,6 +30,16 @@ msgctxt "#32004"
 msgid "Include the volume level"
 msgstr ""
 
+#: Settings
+msgctxt "#32005"
+msgid "Name of profile 3"
+msgstr ""
+
+#: Settings
+msgctxt "#32006"
+msgid "Name of profile 4"
+msgstr ""
+
 #: Script
 msgctxt "#32010"
 msgid "Choose profile to save settings"
