@@ -1,3 +1,6 @@
+[B]1.0.2[/B]
+- add: now is 4 profile to save settings
+
 [B]1.0.1[/B]
 - fix: case sensitive bolean values
 - add: volume level
