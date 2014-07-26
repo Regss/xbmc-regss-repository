@@ -40,12 +40,37 @@ msgctxt "#32006"
 msgid "Name of profile 4"
 msgstr ""
 
-#: Script
+#: Settings
+msgctxt "#32007"
+msgid "Profile 1"
+msgstr ""
+
+#: Settings
+msgctxt "#32008"
+msgid "Profile 2"
+msgstr ""
+
+#: Settings
+msgctxt "#32009"
+msgid "Profile 3"
+msgstr ""
+
+#: Settings
 msgctxt "#32010"
+msgid "Profile 4"
+msgstr ""
+
+#: Script
+msgctxt "#32100"
 msgid "Choose profile to save settings"
 msgstr ""
 
 #: Script
-msgctxt "#32011"
-msgid "Configure profiles"
+msgctxt "#32101"
+msgid "Configure profile"
+msgstr ""
+
+#: Script
+msgctxt "#32102"
+msgid "Saved as profile"
 msgstr ""
