@@ -14,6 +14,7 @@ import base64
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
+__addonname__           = __addon__.getAddonInfo('name')
 __addonpath__           = xbmc.translatePath(__addon__.getAddonInfo('path')).decode('utf-8')
 __datapath__            = xbmc.translatePath(os.path.join('special://profile/addon_data/', __addon_id__)).replace('\\', '/')
 __lang__                = __addon__.getLocalizedString
@@ -21,6 +22,7 @@ __lang__                = __addon__.getLocalizedString
 sys.path.append(os.path.join(__addonpath__, "lib" ))
 
 import debug
+import bar
 
 class syncTVshow:
 
@@ -34,6 +36,8 @@ class syncTVshow:
         
         self.notify = debug.Debuger().notify
         self.debug = debug.Debuger().debug
+        
+        self.progBar = bar.Bar()
         
         # prepare URL
         if self.settingsURL[-1:] != '/':
@@ -99,17 +103,23 @@ class syncTVshow:
                     
         # start sync
         if len(toAddID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Adding TVShows...')
             if self.addTVshow(toAddID) is False:
                 return False
+            self.progBar.close()
             
         if len(toRemoveID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Adding TVShows...')
             if self.removeTVshow(toRemoveID) is False:
                 return False
-
+            self.progBar.close()
+            
     # add tvshow to database
     def addTVshow(self, toAddID):
+        
         addedCount = 0
         skippedCount = 0
+        countToAdd = len(toAddID)
         
         # check status of allow_url_fopen on server
         opener = urllib2.build_opener()
@@ -126,6 +136,10 @@ class syncTVshow:
             self.debug(str(jsonGetDetailsResponse))
             
             tvshow = jsonGetDetailsResponse['result']['tvshowdetails']
+            
+            # progress bar
+            p = int((100 / countToAdd) * addedCount)
+            self.progBar.update(p, str(addedCount+1) + '/' + str(countToAdd) + ' - ' + tvshow['title'])
                 
             # poster
             if 'true' in self.settingsPosters:
@@ -316,8 +330,17 @@ class syncTVshow:
 
     # remove tvshow from database
     def removeTVshow(self, toRemoveID):
+        
         removedCount = 0
+        countToRemove = len(toRemoveID)
+        
         for id in toRemoveID:
+            
+            # progress bar update
+            p = int((100 / countToRemove) * removedCount)
+            self.progBar.update(p,'Removeing TVShows...' ,__addonname__ + ' Remove ' + str(removedCount+1) + ' / ' + str(countToRemove))
+            
+            # remove
             values = { 'id': id }
             data = urllib.urlencode(values)
             opener = urllib2.build_opener()
@@ -393,21 +416,34 @@ class syncTVshow:
                     
         # start sync
         if len(toWatchedID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Syncing TVShow Watched...')
             self.watchedTVshow(toWatchedID)
+            self.progBar.close()
             
         if len(toUnwatchedID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Syncing TVShow Unwatched...')
             self.unwatchedTVshow(toUnwatchedID)
-    
+            self.progBar.close()
+            
     # sync watched tvshows
     def watchedTVshow(self, toWatchedID):
+    
+        countToWatched = len(toWatchedID)
+        i = 0
+        
         for id in toWatchedID:
-            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetTVShowDetails", "params": {"properties": ["playcount", "lastplayed", "dateadded"], "tvshowid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetTVShowDetails", "params": {"properties": ["title", "playcount", "lastplayed", "dateadded"], "tvshowid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
             
             self.debug(str(jsonGetDetailsResponse))
             
             tvshow = jsonGetDetailsResponse['result']['tvshowdetails']
+            
+            # progress bar update
+            p = int((100 / countToWatched) * i)
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToWatched) + ' - ' + tvshow['title'], __addonname__ + ', Sync TVShow Watched...')
+            i = i + 1
             
             values = {
                 'id': id,
@@ -440,14 +476,23 @@ class syncTVshow:
     
     # sync unwatched tvshows
     def unwatchedTVshow(self, toUnwatchedID):
+    
+        countToUnwatched = len(toUnwatchedID)
+        i = 0
+        
         for id in toUnwatchedID:
-            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetTVShowDetails", "params": {"properties": ["dateadded"], "tvshowid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetTVShowDetails", "params": {"properties": ["title", "dateadded"], "tvshowid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
             
             self.debug(str(jsonGetDetailsResponse))
             
             tvshow = jsonGetDetailsResponse['result']['tvshowdetails']
+            
+            # progress bar update
+            p = int((100 / countToUnwatched) * i)
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToUnwatched) + ' - ' + tvshow['title'], __addonname__ + ', Sync TVShow Unwatched...')
+            i = i + 1
             
             values = {
                 'id': id,
@@ -510,17 +555,28 @@ class syncTVshow:
         
         # sync lastplayed
         if len(xbmcLastPlayedID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Syncing TVShow Last Played...')
             self.lastPlayedTVshow(xbmcLastPlayedID)
-        
+            self.progBar.close()
+            
     def lastPlayedTVshow(self, xbmcLastPlayedID):
+        
+        countLastPlayed = len(xbmcLastPlayedID)
+        i = 0
+        
         for id in xbmcLastPlayedID:
-            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetTVShowDetails", "params": {"properties": ["playcount", "lastplayed"], "tvshowid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetTVShowDetails", "params": {"properties": ["title", "playcount", "lastplayed"], "tvshowid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
-                        
-            self.debug(str(jsonGetDetailsResponse))
-                        
+                             
             tvshow = jsonGetDetailsResponse['result']['tvshowdetails']
+            
+            self.debug(str(jsonGetDetailsResponse))
+            
+            # progress bar update
+            p = int((100 / countLastPlayed) * i)
+            self.progBar.update(p, str(i+1) + ' / ' + str(countLastPlayed) + ' - ' + tvshow['title'], __addonname__ + ', Sync TVShow Last Played...')
+            i = i + 1
             
             values = {
                 'id': id,

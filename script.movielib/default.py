@@ -111,9 +111,13 @@ class Movielib:
         
         checkSettings = response.read()
         if len(checkSettings) > 0:
-            settings = json.loads(checkSettings)
-            for setting in settings:
-                self.debug('Server: ' + setting + ': ' + settings[setting])
+            try:
+                settings = json.loads(checkSettings)
+            except:
+                settings = '';
+                if len(settings) > 0:
+                    for setting in settings:
+                        self.debug('Server: ' + setting + ': ' + settings[setting])
         
         # check token
         opener = urllib2.build_opener()

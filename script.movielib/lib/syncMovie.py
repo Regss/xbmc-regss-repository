@@ -104,13 +104,13 @@ class syncMovie:
                     
         # start sync
         if len(toAddID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Adding Movies...')
+            self.progBar.create(__lang__(32202), __addonname__ + ', ' + __lang__(32200))
             if self.addMovie(toAddID) is False:
                 return False
             self.progBar.close()
             
         if len(toRemoveID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Removeing Movies...')
+            self.progBar.create(__lang__(32202), __addonname__ + ', ' + __lang__(32201))
             if self.removeMovie(toRemoveID) is False:
                 return False
             self.progBar.close()
@@ -148,8 +148,8 @@ class syncMovie:
             if (len(movie['streamdetails']['video']) > 0) or (isoPass == True):
                 
                 # progress bar
-                p = int((100 / countToAdd) * addedCount)
-                self.progBar.update(p, str(addedCount+1) + '/' + str(countToAdd) + ' - ' + movie['title'] + ' (' + str(movie['year']) + ')')
+                p = int((float(100) / float(countToAdd)) * float(addedCount + skippedCount))
+                self.progBar.update(p, str(addedCount + skippedCount + 1) + '/' + str(countToAdd) + ' - ' + movie['title'] + ' (' + str(movie['year']) + ')')
             
                 # poster
                 if 'true' in self.settingsPosters:
@@ -339,7 +339,7 @@ class syncMovie:
                 URL = self.settingsURL + self.optionURL + 'addmovie' + self.tokenURL
                 
                 try:
-                    response = opener.open(URL, data)
+                    response = opener.open(URL, data, 60)
                 except:
                     self.notify(__lang__(32100).encode('utf-8') + ': ' + self.settingsURL)
                     self.debug('Can\'t connect to: ' + self.settingsURL + self.optionURL + 'addmovie' + self.tokenURL)
@@ -353,11 +353,11 @@ class syncMovie:
                     if 'ERROR:' in output:
                         self.notify(__lang__(32102).encode('utf-8'))
                 else:
-                    addedCount = addedCount + 1
+                    addedCount += 1
                 
                 self.debug(output)
             else:
-                skippedCount = skippedCount + 1
+                skippedCount += 1
                 
         if skippedCount > 0:
             self.notify(__lang__(32103).encode('utf-8') + ' ' + str(skippedCount) + ' ' + __lang__(32106).encode('utf-8'))
@@ -373,8 +373,8 @@ class syncMovie:
         for id in toRemoveID:
         
             # progress bar update
-            p = int((100 / countToRemove) * removedCount)
-            self.progBar.update(p,'Removeing Movies...' ,__addonname__ + ' Remove ' + str(removedCount+1) + ' / ' + str(countToRemove))
+            p = int((float(100) / float(countToRemove)) * float(removedCount))
+            self.progBar.update(p, str(removedCount+1) + ' / ' + str(countToRemove))
             
             # remove
             values = { 'id': id }
@@ -452,12 +452,12 @@ class syncMovie:
                     
         # start sync
         if len(toWatchedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing Watched...')
+            self.progBar.create(__lang__(32202), __addonname__ + ', ' + __lang__(32203))
             self.watchedMovie(toWatchedID)
             self.progBar.close()
             
         if len(toUnwatchedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing Unwatched...')
+            self.progBar.create(__lang__(32202), __addonname__ + ', ' + __lang__(32204))
             self.unwatchedMovie(toUnwatchedID)
             self.progBar.close()
             
@@ -469,18 +469,18 @@ class syncMovie:
         
         for id in toWatchedID:
         
-            # progress bar update
-            p = int((100 / countToWatched) * i)
-            self.progBar.update(p,'Watched Movies...' ,__addonname__ + ' Remove ' + str(i+1) + ' / ' + str(countToWatched))
-            i = i + 1
-            
-            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed", "dateadded"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["title", "year", "playcount", "lastplayed", "dateadded"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
             
             self.debug(str(jsonGetDetailsResponse))
             
             movie = jsonGetDetailsResponse['result']['moviedetails']
+            
+            # progress bar update
+            p = int((float(100) / float(countToWatched)) * float(i))
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToWatched) + ' - ' + movie['title'] + ' (' + str(movie['year']) + ')')
+            i = i + 1
             
             values = {
                 'id': id,
@@ -514,23 +514,23 @@ class syncMovie:
     # sync unwatched movies
     def unwatchedMovie(self, toUnwatchedID):
     
-        countToUnwatched = len(toUnwatched)
+        countToUnwatched = len(toUnwatchedID)
         i = 0
         
         for id in toUnwatchedID:
-        
-            # progress bar update
-            p = int((100 / countToUnwatched) * i)
-            self.progBar.update(p,'Unwatched Movies...' ,__addonname__ + ' Remove ' + str(i+1) + ' / ' + str(countToUnwatched))
-            i = i + 1
             
-            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["dateadded"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["title", "year", "dateadded"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
             
             self.debug(str(jsonGetDetailsResponse))
             
             movie = jsonGetDetailsResponse['result']['moviedetails']
+            
+            # progress bar update
+            p = int((float(100) / float(countToUnwatched)) * float(i))
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToUnwatched) + ' - ' + movie['title'] + ' (' + str(movie['year']) + ')')
+            i = i + 1
             
             values = {
                 'id': id,
@@ -592,16 +592,28 @@ class syncMovie:
         
         # sync lastplayed
         if len(xbmcLastPlayedID) > 0:
+            self.progBar.create('Start...', __addonname__ + ', Syncing Movie Last Played...')
             self.lastPlayedMovie(xbmcLastPlayedID)
-        
+            self.progBar.close()
+            
     def lastPlayedMovie(self, xbmcLastPlayedID):
+        
+        countLastPlayed = len(xbmcLastPlayedID)
+        i = 0
+        
         for id in xbmcLastPlayedID:
-            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["playcount", "lastplayed"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetMovieDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["title", "year", "playcount", "lastplayed"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetMovieDetails = unicode(jsonGetMovieDetails, 'utf-8', errors='ignore')
             jsonGetMovieDetailsResponse = json.loads(jsonGetMovieDetails)
+            
             movie = jsonGetMovieDetailsResponse['result']['moviedetails']
             
             self.debug(str(jsonGetMovieDetailsResponse))
+            
+            # progress bar update
+            p = int((100 / countLastPlayed) * i)
+            self.progBar.update(p, str(i+1) + ' / ' + str(countLastPlayed) + ' - ' + movie['title'] + ' (' + str(movie['year']) + ')', __addonname__ + ', Sync Movie Last Played...')
+            i = i + 1
             
             values = {
                 'id': id,

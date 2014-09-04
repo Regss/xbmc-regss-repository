@@ -119,3 +119,28 @@ msgstr ""
 msgctxt "#32108"
 msgid "Episodes"
 msgstr ""
+
+#: Progress Bar
+msgctxt "#32200"
+msgid "Adding Movies"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32201"
+msgid "Removing Movies"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32202"
+msgid "Starting"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32203"
+msgid "Syncing Watched Movies"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32204"
+msgid "Syncing Unwatched Movies"
+msgstr ""
