@@ -1,0 +1,56 @@
+# script.audio.profiles language file
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+#: Settings
+msgctxt "#32001"
+msgid "Restore method"
+msgstr ""
+
+#: Settings
+msgctxt "#32021"
+msgid "Path"
+msgstr ""
+
+#: Settings
+msgctxt "#32022"
+msgid "Filename"
+msgstr ""
+
+#: GUI
+msgctxt "#32100"
+msgid "Menu"
+msgstr ""
+
+#: GUI
+msgctxt "#32101"
+msgid "Backup"
+msgstr ""
+
+#: GUI
+msgctxt "#32102"
+msgid "Restore"
+msgstr ""
+
+#: GUI
+msgctxt "#32103"
+msgid "Backup created"
+msgstr ""
+
+#: GUI
+msgctxt "#32104"
+msgid "No backup. Try to create it"
+msgstr ""
+
+#: Progressbar
+msgctxt "#32200"
+msgid "Restoring"
+msgstr ""
+
+#: Progressbar
+msgctxt "#32201"
+msgid "Starting"
+msgstr ""

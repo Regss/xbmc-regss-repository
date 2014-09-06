@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+        <setting label="32001" type="enum" id="method" lvalues="32021|32022" />
+</settings>
