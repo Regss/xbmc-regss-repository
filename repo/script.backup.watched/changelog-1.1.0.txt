@@ -1,0 +1,6 @@
+[B]1.1.0[/B]
+- Support movies and TVshows
+- storing 5 last backups
+
+[B]1.0.0[/B]
+- init
