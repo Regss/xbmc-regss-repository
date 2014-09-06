@@ -103,13 +103,13 @@ class syncTVshow:
                     
         # start sync
         if len(toAddID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Adding TVShows...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32204) + ' ' + __lang__(32202))
             if self.addTVshow(toAddID) is False:
                 return False
             self.progBar.close()
             
         if len(toRemoveID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Adding TVShows...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32205) + ' ' + __lang__(32202))
             if self.removeTVshow(toRemoveID) is False:
                 return False
             self.progBar.close()
@@ -138,7 +138,7 @@ class syncTVshow:
             tvshow = jsonGetDetailsResponse['result']['tvshowdetails']
             
             # progress bar
-            p = int((100 / countToAdd) * addedCount)
+            p = int((float(100) / float(countToAdd)) * float(addedCount))
             self.progBar.update(p, str(addedCount+1) + '/' + str(countToAdd) + ' - ' + tvshow['title'])
                 
             # poster
@@ -321,7 +321,7 @@ class syncTVshow:
                 if 'ERROR:' in output:
                     self.notify(__lang__(32102).encode('utf-8'))
             else:
-                addedCount = addedCount + 1
+                addedCount += 1
             
             self.debug(output)
             
@@ -337,8 +337,8 @@ class syncTVshow:
         for id in toRemoveID:
             
             # progress bar update
-            p = int((100 / countToRemove) * removedCount)
-            self.progBar.update(p,'Removeing TVShows...' ,__addonname__ + ' Remove ' + str(removedCount+1) + ' / ' + str(countToRemove))
+            p = int((float(100) / float(countToRemove)) * float(removedCount))
+            self.progBar.update(p, str(removedCount+1) + ' / ' + str(countToRemove))
             
             # remove
             values = { 'id': id }
@@ -416,12 +416,12 @@ class syncTVshow:
                     
         # start sync
         if len(toWatchedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing TVShow Watched...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32206) + ' ' + __lang__(32202))
             self.watchedTVshow(toWatchedID)
             self.progBar.close()
             
         if len(toUnwatchedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing TVShow Unwatched...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32207) + ' ' + __lang__(32202))
             self.unwatchedTVshow(toUnwatchedID)
             self.progBar.close()
             
@@ -441,9 +441,9 @@ class syncTVshow:
             tvshow = jsonGetDetailsResponse['result']['tvshowdetails']
             
             # progress bar update
-            p = int((100 / countToWatched) * i)
-            self.progBar.update(p, str(i+1) + ' / ' + str(countToWatched) + ' - ' + tvshow['title'], __addonname__ + ', Sync TVShow Watched...')
-            i = i + 1
+            p = int((float(100) / float(countToWatched)) * float(i))
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToWatched) + ' - ' + tvshow['title'])
+            i += 1
             
             values = {
                 'id': id,
@@ -490,9 +490,9 @@ class syncTVshow:
             tvshow = jsonGetDetailsResponse['result']['tvshowdetails']
             
             # progress bar update
-            p = int((100 / countToUnwatched) * i)
-            self.progBar.update(p, str(i+1) + ' / ' + str(countToUnwatched) + ' - ' + tvshow['title'], __addonname__ + ', Sync TVShow Unwatched...')
-            i = i + 1
+            p = int((float(100) / float(countToUnwatched)) * float(i))
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToUnwatched) + ' - ' + tvshow['title'])
+            i += 1
             
             values = {
                 'id': id,
@@ -555,7 +555,7 @@ class syncTVshow:
         
         # sync lastplayed
         if len(xbmcLastPlayedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing TVShow Last Played...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32208) + ' ' + __lang__(32202))
             self.lastPlayedTVshow(xbmcLastPlayedID)
             self.progBar.close()
             
@@ -574,9 +574,9 @@ class syncTVshow:
             self.debug(str(jsonGetDetailsResponse))
             
             # progress bar update
-            p = int((100 / countLastPlayed) * i)
-            self.progBar.update(p, str(i+1) + ' / ' + str(countLastPlayed) + ' - ' + tvshow['title'], __addonname__ + ', Sync TVShow Last Played...')
-            i = i + 1
+            p = int((float(100) / float(countLastPlayed)) * (i))
+            self.progBar.update(p, str(i+1) + ' / ' + str(countLastPlayed) + ' - ' + tvshow['title'])
+            i += 1
             
             values = {
                 'id': id,

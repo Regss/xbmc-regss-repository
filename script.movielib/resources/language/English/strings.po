@@ -122,25 +122,45 @@ msgstr ""
 
 #: Progress Bar
 msgctxt "#32200"
-msgid "Adding Movies"
-msgstr ""
-
-#: Progress Bar
-msgctxt "#32201"
-msgid "Removing Movies"
-msgstr ""
-
-#: Progress Bar
-msgctxt "#32202"
 msgid "Starting"
 msgstr ""
 
 #: Progress Bar
+msgctxt "#32201"
+msgid "Movies"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32202"
+msgid "TVShows"
+msgstr ""
+
+#: Progress Bar
 msgctxt "#32203"
-msgid "Syncing Watched Movies"
+msgid "Episodes"
 msgstr ""
 
 #: Progress Bar
 msgctxt "#32204"
-msgid "Syncing Unwatched Movies"
+msgid "Adding"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32205"
+msgid "Removing"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32206"
+msgid "Syncing Watched"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32207"
+msgid "Syncing Unwatched"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32208"
+msgid "Syncing Last Played"
 msgstr ""

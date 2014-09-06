@@ -21,4 +21,5 @@ class Debuger:
     def notify(self, msg):
         settingsNotify = __addon__.getSetting('notify')
         if 'true' in settingsNotify:
-            xbmc.executebuiltin('Notification(Movielib,' + msg + ')')
+            xbmc.executebuiltin('Notification(Movielib, ' + msg + ', 4000, ' + __addonpath__.encode('utf-8') + '/icon.png)')
+            

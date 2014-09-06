@@ -15,16 +15,16 @@ sys.path.append(os.path.join(__addonpath__, "lib"))
 
 class Bar:
     def __init__(self):
-        self.ble = xbmcgui.DialogProgressBG()
+        self.b = xbmcgui.DialogProgressBG()
     
     def create(self, message, heading):
-        self.ble.create(heading, message)
+        self.b.create(heading, message)
     
     def update(self, percent, message, heading=0):
         if heading == 0:
-            self.ble.update(percent, message=message)
+            self.b.update(percent, message=message)
         else:
-            self.ble.update(percent, heading, message)
+            self.b.update(percent, heading, message)
         
     def close(self):
-        self.ble.close()
+        self.b.close()

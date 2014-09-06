@@ -106,13 +106,13 @@ class syncEpisode:
                     
         # start sync
         if len(toAddID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Adding Episodes...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32204) + ' ' + __lang__(32203))
             if self.addEpisode(toAddID) is False:
                 return False
             self.progBar.close()
             
         if len(toRemoveID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Removeing Episodes...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32205) + ' ' + __lang__(32203))
             if self.removeEpisode(toRemoveID) is False:
                 return False
             self.progBar.close()
@@ -133,7 +133,7 @@ class syncEpisode:
             self.debug(str(jsonGetDetailsResponse))
             
             # progress bar
-            p = int((100 / countToAdd) * addedCount)
+            p = int((float(100) / float(countToAdd)) * float(addedCount))
             self.progBar.update(p, str(addedCount+1) + '/' + str(countToAdd) + ' - ' + episode['title'])
                 
             # push episode to script
@@ -172,7 +172,7 @@ class syncEpisode:
                 if 'ERROR:' in output:
                     self.notify(__lang__(32102).encode('utf-8'))
             else:
-                addedCount = addedCount + 1
+                addedCount += 1
             
             self.debug(output)
             
@@ -188,8 +188,8 @@ class syncEpisode:
         for id in toRemoveID:
         
             # progress bar update
-            p = int((100 / countToRemove) * removedCount)
-            self.progBar.update(p,'Removeing Episodes...' ,__addonname__ + ' Remove ' + str(removedCount+1) + ' / ' + str(countToRemove))
+            p = int((float(100) / float(countToRemove)) * float(removedCount))
+            self.progBar.update(p, str(removedCount+1) + ' / ' + str(countToRemove))
             
             # remove
             values = { 'id': id }
@@ -212,7 +212,7 @@ class syncEpisode:
                 if 'ERROR:' in output:
                     self.notify(__lang__(32102).encode('utf-8'))
             else:
-                removedCount = removedCount + 1
+                removedCount += 1
             
             self.debug(output)
 
@@ -264,12 +264,12 @@ class syncEpisode:
                     
         # start sync
         if len(toWatchedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing Episodes Watched...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32206) + ' ' + __lang__(32203))
             self.watchedEpisode(toWatchedID)
             self.progBar.close()
             
         if len(toUnwatchedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing Episodes Unwatched...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32207) + ' ' + __lang__(32203))
             self.unwatchedEpisode(toUnwatchedID)
             self.progBar.close()
             
@@ -290,8 +290,8 @@ class syncEpisode:
             
             # progress bar update
             p = int((float(100) / float(countToWatched)) * float(i))
-            self.progBar.update(p, str(i+1) + ' / ' + str(countToWatched) + ' - ' + episode['title'], __addonname__ + ', Sync Episodes Watched...')
-            i = i + 1
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToWatched) + ' - ' + episode['title'])
+            i += 1
             
             values = {
                 'id': id,
@@ -338,9 +338,9 @@ class syncEpisode:
             episode = jsonGetDetailsResponse['result']['episodedetails']
             
             # progress bar update
-            p = int((100 / countToUnwatched) * i)
-            self.progBar.update(p, str(i+1) + ' / ' + str(countToUnwatched) + ' - ' + episode['title'], __addonname__ + ', Sync Episodes Unwatched...')
-            i = i + 1
+            p = int((float(100) / float(countToUnwatched)) * float(i))
+            self.progBar.update(p, str(i+1) + ' / ' + str(countToUnwatched) + ' - ' + episode['title'])
+            i += 1
             
             values = {
                 'id': id,
@@ -403,7 +403,7 @@ class syncEpisode:
         
         # sync lastplayed
         if len(xbmcLastPlayedID) > 0:
-            self.progBar.create('Start...', __addonname__ + ', Syncing Episodes Last Played...')
+            self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32208) + ' ' + __lang__(32203))
             self.lastPlayedEpisode(xbmcLastPlayedID)
             self.progBar.close()
             
@@ -422,9 +422,9 @@ class syncEpisode:
             episode = jsonGetDetailsResponse['result']['episodedetails']
             
             # progress bar update
-            p = int((100 / countLastPlayed) * i)
-            self.progBar.update(p, str(i+1) + ' / ' + str(countLastPlayed) + ' - ' + episode['title'], __addonname__ + ', Sync Episodes Last Played...')
-            i = i + 1
+            p = int((float(100) / float(countLastPlayed)) * float(i))
+            self.progBar.update(p, str(i+1) + ' / ' + str(countLastPlayed) + ' - ' + episode['title'])
+            i += 1
             
             values = {
                 'id': id,
