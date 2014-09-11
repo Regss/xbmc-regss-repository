@@ -12,7 +12,7 @@
     $$12 - Plot
     $$11 - URL do filmu
 !-->
-<scraper framework="1.1" date="2014-06-04">
+<scraper framework="1.1" date="2014-09-11">
 
     <!-- Sprawdza plik NFO !-->
     <NfoUrl dest="3">
@@ -166,11 +166,11 @@
 
             <!-- ACTORS !-->
             <RegExp conditional="!GetFullActors" input="$$7" output="\1" dest="5+">
-                <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;role&gt;\3&lt;/role&gt;&lt;thumb&gt;\1&lt;/thumb&gt;&lt;/actor&gt;" dest="7">
+                <RegExp input="$$6" output="&lt;actor&gt;&lt;thumb&gt;\3.1.\4&lt;/thumb&gt;&lt;name&gt;\6&lt;/name&gt;&lt;role&gt;\7&lt;/role&gt;&lt;/actor&gt;" dest="7">
                     <RegExp input="$$1" output="\1" dest="6">
                         <expression noclean="1" clear="yes">class=&quot;pageBox filmCastBox&quot;&gt;(.*?)zobacz pełną</expression>
                     </RegExp>
-                    <expression repeat="yes" fixchars="2,3">li&gt;.*?src=&quot;(.*?)&quot;.*?v:starring&quot;&gt;(.*?)&lt;/a.*?roleName&gt;(.*?)&lt;/span.*?&lt;/li</expression>
+                    <expression repeat="yes" trim="6,7">personPhoto[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+src=&quot;((([^\.]+\.[^\.]+\.[^\.]+)\.2\.(jpg))|([^\.]+\.[^\.]+\.[^\.]+pNoImg50\.jpg))&quot;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;([^&lt;]+)&lt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
                 </RegExp>
                 <!-- Jeśli film to animacja to uruchamia funkcje AKTORZY !-->
                 <RegExp input="$$1" output="&lt;url function=&quot;AKTORZY&quot;&gt;$$11/cast&lt;/url&gt;" dest="7">
@@ -377,10 +377,10 @@
     <AKTORZY clearbuffers="no" dest="3">
         <RegExp input="$$7" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
             <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1" clear="yes">&gt; aktor(.*?)&lt;/ul</expression>
+                <expression noclean="1" clear="yes">filmCast&quot;&gt;(.*?)&lt;/ul</expression>
             </RegExp>
-            <RegExp input="$$6" output="&lt;actor&gt;&lt;thumb&gt;\31\4&lt;/thumb&gt;&lt;name&gt;\6&lt;/name&gt;&lt;role&gt;\7 \8&lt;/role&gt;&lt;/actor&gt;" dest="7">
-                <expression repeat="yes" trim="6,7,8" clear="yes">personPhoto[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+src=&quot;((([^\.]+\.[^\.]+\.[^\.]+\.)2(\.jpg))|([^\.]+\.[^\.]+\.[^\.]+pNoImg50\.jpg))&quot;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;([^&lt;]+)&lt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;([^&lt;]+)&lt;[^&gt;]+&gt;[^&gt;]+&gt;([^&lt;]+)&lt;</expression>
+            <RegExp input="$$6" output="&lt;actor&gt;&lt;thumb&gt;\3.1.\4&lt;/thumb&gt;&lt;name&gt;\6&lt;/name&gt;&lt;role&gt;\7 \8&lt;/role&gt;&lt;/actor&gt;" dest="7">
+                <expression repeat="yes" trim="6,7,8" clear="yes">personPhoto[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+src=&quot;((([^\.]+\.[^\.]+\.[^\.]+)\.2\.(jpg))|([^\.]+\.[^\.]+\.[^\.]+pNoImg50\.jpg))&quot;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;([^&lt;]+)&lt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;[^&gt;]+&gt;([^&lt;]+)&lt;[^&gt;]+&gt;[^&gt;]+&gt;(([^&lt;]+)|(.))&lt;</expression>
             </RegExp>
             <expression noclean="1" />
         </RegExp>
