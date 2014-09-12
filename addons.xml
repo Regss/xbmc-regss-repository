@@ -2,7 +2,7 @@
 <addons>
 <addon id="metadata.filmweb.pl-lite"
        name="Filmweb Lite"
-       version="1.2.14"
+       version="1.2.15"
        provider-name="Regss">
     <requires>
     <import addon="xbmc.metadata" version="2.1.0" />
