@@ -318,7 +318,7 @@ class syncMovie:
                     'director': ' / '.join(movie['director']).encode('utf-8'),
                     'originaltitle': movie['originaltitle'].encode('utf-8'),
                     'country': ' / '.join(movie['country']).encode('utf-8'),
-                    'set': movie['set'].encode('utf-8'),
+                    'sets': movie['set'].encode('utf-8'),
                     'v_codec': movie['streamdetails']['video'][0]['codec'] if len(movie['streamdetails']['video']) > 0 else '',
                     'v_aspect': movie['streamdetails']['video'][0]['aspect'] if len(movie['streamdetails']['video']) > 0 else '',
                     'v_width': movie['streamdetails']['video'][0]['width'] if len(movie['streamdetails']['video']) > 0 else '',

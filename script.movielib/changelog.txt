@@ -1,5 +1,6 @@
 [B]1.2.7[/B]
 - Added: Progress bar
+- Fix: Syncing sets
 
 [B]1.2.6[/B]
 - Fixed: stops syncing when error occur

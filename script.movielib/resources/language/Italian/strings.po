@@ -1,58 +1,54 @@
 # script.movielib language file
 # Translators:
-# Ettore Atalan <atalanttore@googlemail.com>, 2014
-# Markus <Markus@koepke-online.com>, 2014
-# Markus <Markus@koepke-online.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-14 18:28+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
+"PO-Revision-Date: 2014-01-06 13:05+0000\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/movielib-for-xbmc/language/it/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Settings
 msgctxt "#32010"
 msgid "Connection"
-msgstr "Verbindung"
+msgstr ""
 
 #: Settings
 msgctxt "#32000"
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: Settings
 msgctxt "#32001"
 msgid "Token"
-msgstr "Token"
+msgstr ""
 
 #: Settings
 msgctxt "#32012"
 msgid "Synchronization"
-msgstr "Synchronisation"
+msgstr ""
 
 #: Settings
 msgctxt "#32004"
 msgid "Sync actors thumbnails"
-msgstr "Schauspieler-Bilder synchronisieren"
+msgstr ""
 
 #: Settings
 msgctxt "#32006"
 msgid "Sync posters"
-msgstr "Poster synchronisieren"
+msgstr ""
 
 #: Settings
 msgctxt "#32007"
 msgid "Sync fanarts"
-msgstr "Fanarts synchonisieren"
+msgstr ""
 
 #: Settings
 msgctxt "#32009"
 msgid "Sync episodes"
-msgstr "Folgen synchronisieren"
+msgstr ""
 
 #: Settings
 msgctxt "#32008"
@@ -68,114 +64,114 @@ msgstr ""
 #: Settings
 msgctxt "#32011"
 msgid "Notification"
-msgstr "Benachrichtigung"
+msgstr ""
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr "Benachrichtigung"
+msgstr ""
 
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
-msgstr "Fehlersuche"
+msgstr ""
 
 #: Settings
 msgctxt "#32010"
 msgid "Progress bar"
-msgstr "Fortschrittsbalken"
+msgstr ""
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
-msgstr "Verbindung nicht möglich"
+msgstr ""
 
 #: Notification
 msgctxt "#32109"
 msgid "Wrong version of web script. Update is needed"
-msgstr "Falsche Web-Script Version. Aktualisierung notwendig."
+msgstr ""
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr "Falscher Token"
+msgstr ""
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr "Synchronisierungsfehler"
+msgstr ""
 
 #: Notification
 msgctxt "#32103"
 msgid "Skipped"
-msgstr "Übersprungen"
+msgstr ""
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Ergänzt"
+msgstr ""
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr "Entfernt"
+msgstr ""
 
 #: Notification
 msgctxt "#32106"
 msgid "Movies"
-msgstr "Filme"
+msgstr ""
 
 #: Notification
 msgctxt "#32107"
 msgid "TVshows"
-msgstr "Fernsehserien"
+msgstr ""
 
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
-msgstr "Folgen"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32200"
 msgid "Starting"
-msgstr "Beginn"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32201"
 msgid "Movies"
-msgstr "Filme"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32202"
 msgid "TVShows"
-msgstr "Fernsehserien"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32203"
 msgid "Episodes"
-msgstr "Folgen"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32204"
 msgid "Adding"
-msgstr "Hinzufügen"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32205"
 msgid "Removing"
-msgstr "Entfernen"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32206"
 msgid "Syncing Watched"
-msgstr "Gesehene werden synchronisiert"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32207"
 msgid "Syncing Unwatched"
-msgstr "Ungesehene werden synchronisiert"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32208"
 msgid "Syncing Last Played"
-msgstr "Zuletzt Wiedergegebene werden synchronisiert"
+msgstr ""

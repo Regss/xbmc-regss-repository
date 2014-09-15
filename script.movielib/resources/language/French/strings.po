@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-03-18 07:12+0000\n"
+"PO-Revision-Date: 2014-09-14 18:22+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/fr_FR/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,6 +78,11 @@ msgctxt "#32003"
 msgid "Debug"
 msgstr "Debug"
 
+#: Settings
+msgctxt "#32010"
+msgid "Progress bar"
+msgstr ""
+
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
@@ -126,4 +131,49 @@ msgstr ""
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32200"
+msgid "Starting"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32201"
+msgid "Movies"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32202"
+msgid "TVShows"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32203"
+msgid "Episodes"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32204"
+msgid "Adding"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32205"
+msgid "Removing"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32206"
+msgid "Syncing Watched"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32207"
+msgid "Syncing Unwatched"
+msgstr ""
+
+#: Progress Bar
+msgctxt "#32208"
+msgid "Syncing Last Played"
 msgstr ""
