@@ -1,3 +1,6 @@
+[B]1.2.8[/B]
+- Fix: Progress bar for older XBMC version
+
 [B]1.2.7[/B]
 - Added: Progress bar
 - Fix: Syncing sets
