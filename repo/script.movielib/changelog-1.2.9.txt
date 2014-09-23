@@ -1,3 +1,8 @@
+[B]1.2.9[/B]
+- Fixed: Closing progress bar after connection error
+- Fixed: Import PIL module
+- Added: sync studio 
+
 [B]1.2.8[/B]
 - Fix: Progress bar for older XBMC version
 
