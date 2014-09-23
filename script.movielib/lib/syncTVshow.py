@@ -105,12 +105,14 @@ class syncTVshow:
         if len(toAddID) > 0:
             self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32204) + ' ' + __lang__(32202))
             if self.addTVshow(toAddID) is False:
+                self.progBar.close()
                 return False
             self.progBar.close()
             
         if len(toRemoveID) > 0:
             self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32205) + ' ' + __lang__(32202))
             if self.removeTVshow(toRemoveID) is False:
+                self.progBar.close()
                 return False
             self.progBar.close()
             

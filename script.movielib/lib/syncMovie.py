@@ -106,12 +106,14 @@ class syncMovie:
         if len(toAddID) > 0:
             self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32204) + ' ' + __lang__(32201))
             if self.addMovie(toAddID) is False:
+                self.progBar.close()
                 return False
             self.progBar.close()
             
         if len(toRemoveID) > 0:
             self.progBar.create(__lang__(32200), __addonname__ + ', ' + __lang__(32205) + ' ' + __lang__(32201))
             if self.removeMovie(toRemoveID) is False:
+                self.progBar.close()
                 return False
             self.progBar.close()
 
@@ -131,7 +133,7 @@ class syncMovie:
         
         for id in toAddID:
 
-            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "set", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"], "movieid": ' + id + '}, "id": "1"}')
+            jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "set", "studio", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"], "movieid": ' + id + '}, "id": "1"}')
             jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
             jsonGetDetailsResponse = json.loads(jsonGetDetails)
             
@@ -319,6 +321,7 @@ class syncMovie:
                     'originaltitle': movie['originaltitle'].encode('utf-8'),
                     'country': ' / '.join(movie['country']).encode('utf-8'),
                     'sets': movie['set'].encode('utf-8'),
+                    'studio': ' / '.join(movie['studio']).encode('utf-8'),
                     'v_codec': movie['streamdetails']['video'][0]['codec'] if len(movie['streamdetails']['video']) > 0 else '',
                     'v_aspect': movie['streamdetails']['video'][0]['aspect'] if len(movie['streamdetails']['video']) > 0 else '',
                     'v_width': movie['streamdetails']['video'][0]['width'] if len(movie['streamdetails']['video']) > 0 else '',
