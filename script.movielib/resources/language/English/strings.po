@@ -71,8 +71,18 @@ msgid "Debug"
 msgstr ""
 
 #: Settings
-msgctxt "#32010"
+msgctxt "#32013"
 msgid "Progress bar"
+msgstr ""
+
+#: Settings
+msgctxt "#32014"
+msgid "Posters quality"
+msgstr ""
+
+#: Settings
+msgctxt "#32015"
+msgid "Fanarts quality"
 msgstr ""
 
 #: Notification

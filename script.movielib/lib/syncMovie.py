@@ -32,7 +32,9 @@ class syncMovie:
         self.settingsToken   = __addon__.getSetting('token')
         self.settingsActors  = __addon__.getSetting('actors')
         self.settingsPosters = __addon__.getSetting('posters')
+        self.settingsP_qual  = __addon__.getSetting('p_quality')
         self.settingsFanarts = __addon__.getSetting('fanarts')
+        self.settingsF_qual  = __addon__.getSetting('f_quality')
         self.settingsISO     = __addon__.getSetting('ISO')
         
         self.notify = debug.Debuger().notify
@@ -177,13 +179,13 @@ class syncMovie:
                             # resize image
                             try:
                                 image = Image.open(poster_source)
-                                if (image.size[1] > 198):
+                                if (image.size[1] > 265):
                                     image.load()
-                                    image.thumbnail((140, 198), Image.ANTIALIAS)
-                                    image.save(poster_temp, "JPEG")
+                                    image.thumbnail((180, 265), Image.ANTIALIAS)
+                                    image.save(poster_temp, 'JPEG', quality=int(self.settingsP_qual))
                                     poster_bin = xbmcvfs.File(poster_temp)
                                 else:
-                                    poster_bin = xbmcvfs.File(poster_temp)
+                                    poster_bin = xbmcvfs.File(poster_source)
                                 poster = poster_bin.read()
                                 poster_bin.close()
                             except Exception as Error:
@@ -221,10 +223,10 @@ class syncMovie:
                                 if (image.size[0] > 1280):
                                     image.load()
                                     image.thumbnail((1280, 720), Image.ANTIALIAS)
-                                    image.save(fanart_temp, "JPEG")
+                                    image.save(fanart_temp, 'JPEG', quality=int(self.settingsF_qual))
                                     fanart_bin = xbmcvfs.File(fanart_temp)
                                 else:
-                                    fanart_bin = xbmcvfs.File(fanart_temp)
+                                    fanart_bin = xbmcvfs.File(fanart_source)
                                 fanart = fanart_bin.read()
                                 fanart_bin.close()
                             except Exception as Error:
@@ -274,10 +276,10 @@ class syncMovie:
                                         if (image.size[1] > 100):
                                             image.load()
                                             image.thumbnail((75, 100), Image.ANTIALIAS)
-                                            image.save(actor_temp, "JPEG")
+                                            image.save(actor_temp, 'JPEG')
                                             actor_bin = xbmcvfs.File(actor_temp)
                                         else:
-                                            actor_bin = xbmcvfs.File(actor_temp)
+                                            actor_bin = xbmcvfs.File(actor_source)
                                         castThumb = actor_bin.read()
                                         actor_bin.close()
                                     except Exception as Error:

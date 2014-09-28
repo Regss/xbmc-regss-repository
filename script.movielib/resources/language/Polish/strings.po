@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-14 18:22+0000\n"
+"PO-Revision-Date: 2014-09-28 12:05+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/movielib-for-xbmc/language/pl/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,9 +79,19 @@ msgid "Debug"
 msgstr "Debugowanie"
 
 #: Settings
-msgctxt "#32010"
+msgctxt "#32013"
 msgid "Progress bar"
 msgstr "Pasek postępu"
+
+#: Settings
+msgctxt "#32014"
+msgid "Posters quality"
+msgstr "Jakość okładek"
+
+#: Settings
+msgctxt "#32015"
+msgid "Fanarts quality"
+msgstr "Jakość fanartów"
 
 #: Notification
 msgctxt "#32100"

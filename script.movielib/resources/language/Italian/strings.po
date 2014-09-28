@@ -1,9 +1,11 @@
 # script.movielib language file
 # Translators:
+# ElfoLiNk <matteo_gazzetta@hotmail.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-01-06 13:05+0000\n"
+"PO-Revision-Date: 2014-09-28 12:04+0000\n"
+"Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/movielib-for-xbmc/language/it/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,165 +15,175 @@ msgstr ""
 #: Settings
 msgctxt "#32010"
 msgid "Connection"
-msgstr ""
+msgstr "Connessione"
 
 #: Settings
 msgctxt "#32000"
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: Settings
 msgctxt "#32001"
 msgid "Token"
-msgstr ""
+msgstr "Token"
 
 #: Settings
 msgctxt "#32012"
 msgid "Synchronization"
-msgstr ""
+msgstr "Sincronizzazione"
 
 #: Settings
 msgctxt "#32004"
 msgid "Sync actors thumbnails"
-msgstr ""
+msgstr "Sync thumbnails attori"
 
 #: Settings
 msgctxt "#32006"
 msgid "Sync posters"
-msgstr ""
+msgstr "Sync posters"
 
 #: Settings
 msgctxt "#32007"
 msgid "Sync fanarts"
-msgstr ""
+msgstr "Sync fanarts"
 
 #: Settings
 msgctxt "#32009"
 msgid "Sync episodes"
-msgstr ""
+msgstr "Sync episodi"
 
 #: Settings
 msgctxt "#32008"
 msgid ""
 "Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr ""
+msgstr "Sincronizza soltanto in Master Mode (abilitata solo quando usi la protezione Master Lock)"
 
 #: Settings
 msgctxt "#32005"
 msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr ""
+msgstr "Forza sync file ISO e IFO (VIDEO_TS)  senza dettagli stream"
 
 #: Settings
 msgctxt "#32011"
 msgid "Notification"
-msgstr ""
+msgstr "Notifica"
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr ""
+msgstr "Notifica"
 
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
+msgstr "Debug"
+
+#: Settings
+msgctxt "#32013"
+msgid "Progress bar"
 msgstr ""
 
 #: Settings
-msgctxt "#32010"
-msgid "Progress bar"
+msgctxt "#32014"
+msgid "Posters quality"
+msgstr ""
+
+#: Settings
+msgctxt "#32015"
+msgid "Fanarts quality"
 msgstr ""
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to"
-msgstr ""
+msgstr "Non riesco a connettermi"
 
 #: Notification
 msgctxt "#32109"
 msgid "Wrong version of web script. Update is needed"
-msgstr ""
+msgstr "Versione errata dello script web. Aggiornamento necessario"
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr ""
+msgstr "Token sbagliato"
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr ""
+msgstr "Errore sincronizzazione"
 
 #: Notification
 msgctxt "#32103"
 msgid "Skipped"
-msgstr ""
+msgstr "Saltato"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr ""
+msgstr "Aggiunto"
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr ""
+msgstr "Rimosso"
 
 #: Notification
 msgctxt "#32106"
 msgid "Movies"
-msgstr ""
+msgstr "Movies"
 
 #: Notification
 msgctxt "#32107"
 msgid "TVshows"
-msgstr ""
+msgstr "Serie TV"
 
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
-msgstr ""
+msgstr "Episodi"
 
 #: Progress Bar
 msgctxt "#32200"
 msgid "Starting"
-msgstr ""
+msgstr "Avvio"
 
 #: Progress Bar
 msgctxt "#32201"
 msgid "Movies"
-msgstr ""
+msgstr "Movies"
 
 #: Progress Bar
 msgctxt "#32202"
 msgid "TVShows"
-msgstr ""
+msgstr "Serie TV"
 
 #: Progress Bar
 msgctxt "#32203"
 msgid "Episodes"
-msgstr ""
+msgstr "Episodi"
 
 #: Progress Bar
 msgctxt "#32204"
 msgid "Adding"
-msgstr ""
+msgstr "Aggiungendo"
 
 #: Progress Bar
 msgctxt "#32205"
 msgid "Removing"
-msgstr ""
+msgstr "Togliendo"
 
 #: Progress Bar
 msgctxt "#32206"
 msgid "Syncing Watched"
-msgstr ""
+msgstr "Sincronizzando visti"
 
 #: Progress Bar
 msgctxt "#32207"
 msgid "Syncing Unwatched"
-msgstr ""
+msgstr "Sincronizzando non visti"
 
 #: Progress Bar
 msgctxt "#32208"
 msgid "Syncing Last Played"
-msgstr ""
+msgstr "Sincronizzando ultimi riprodotti"

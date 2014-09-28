@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-14 18:28+0000\n"
+"PO-Revision-Date: 2014-09-28 12:34+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,9 +81,19 @@ msgid "Debug"
 msgstr "Fehlersuche"
 
 #: Settings
-msgctxt "#32010"
+msgctxt "#32013"
 msgid "Progress bar"
 msgstr "Fortschrittsbalken"
+
+#: Settings
+msgctxt "#32014"
+msgid "Posters quality"
+msgstr "Posterqualität"
+
+#: Settings
+msgctxt "#32015"
+msgid "Fanarts quality"
+msgstr "Fankunstqualität"
 
 #: Notification
 msgctxt "#32100"

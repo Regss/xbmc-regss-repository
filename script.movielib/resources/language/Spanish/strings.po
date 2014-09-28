@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-14 18:22+0000\n"
+"PO-Revision-Date: 2014-09-28 12:04+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/es_ES/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,8 +79,18 @@ msgid "Debug"
 msgstr "Depurar"
 
 #: Settings
-msgctxt "#32010"
+msgctxt "#32013"
 msgid "Progress bar"
+msgstr ""
+
+#: Settings
+msgctxt "#32014"
+msgid "Posters quality"
+msgstr ""
+
+#: Settings
+msgctxt "#32015"
+msgid "Fanarts quality"
 msgstr ""
 
 #: Notification
@@ -177,4 +187,3 @@ msgstr ""
 msgctxt "#32208"
 msgid "Syncing Last Played"
 msgstr ""
-s
