@@ -12,6 +12,7 @@ import xbmcvfs
 from PIL import Image
 import cStringIO
 import base64
+import hashlib
 
 __addon__               = xbmcaddon.Addon()
 __addon_id__            = __addon__.getAddonInfo('id')
@@ -61,6 +62,8 @@ class syncMovie:
             
             # sync movie last played
             self.syncMovieLastPlayed()
+        
+        self.updateMovie()
         
     def syncMovie(self):
         # get movie id from movielib database
@@ -647,4 +650,39 @@ class syncMovie:
                     self.notify(__lang__(32102).encode('utf-8'))
             
             self.debug(output)
-            
+    
+    def updateMovie(self):
+    
+        jsonGetDetails = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"properties": ["cast", "title", "plot", "rating", "year", "thumbnail", "fanart", "runtime", "genre", "director", "originaltitle", "country", "set", "studio", "trailer", "playcount", "lastplayed", "dateadded", "streamdetails", "file"]}, "id": "1"}')
+        jsonGetDetails = unicode(jsonGetDetails, 'utf-8', errors='ignore')
+        jsonGetDetailsResponse = json.loads(jsonGetDetails)
+        print jsonGetDetailsResponse
+         
+        
+        opener = urllib2.build_opener()
+        URL = self.settingsURL + self.optionURL + 'showhash' + self.tokenURL
+        response = opener.open(URL)
+        
+        hash = json.loads(response.read())
+        print str(hash)
+        
+        for h in jsonGetDetailsResponse['result']['movies']:
+            print str(h)
+            print hashlib.md5(str(h)).hexdigest()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
