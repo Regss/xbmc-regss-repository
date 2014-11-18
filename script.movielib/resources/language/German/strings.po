@@ -6,13 +6,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-28 12:34+0000\n"
+"PO-Revision-Date: 2014-11-18 15:51+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/movielib-for-xbmc/language/de/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addon.xml
+msgctxt "Addon Summary"
+msgid "Synchronizes video library with the Movielib website"
+msgstr "Synchronisiert die Videobibliothek mit der Movielib-Webseite"
+
+#: addon.xml
+msgctxt "Addon Description"
+msgid ""
+"Synchronizes video library with the Movielib website. Script can be "
+"downloaded from https://github.com/Regss/movielib"
+msgstr "Synchronisiert die Videobibliothek mit der Movielib-Webseite. Das Skript kann von https://github.com/Regss/movielib heruntergeladen werden."
 
 #: Settings
 msgctxt "#32010"
@@ -35,37 +47,6 @@ msgid "Synchronization"
 msgstr "Synchronisation"
 
 #: Settings
-msgctxt "#32004"
-msgid "Sync actors thumbnails"
-msgstr "Schauspieler-Bilder synchronisieren"
-
-#: Settings
-msgctxt "#32006"
-msgid "Sync posters"
-msgstr "Poster synchronisieren"
-
-#: Settings
-msgctxt "#32007"
-msgid "Sync fanarts"
-msgstr "Fanarts synchonisieren"
-
-#: Settings
-msgctxt "#32009"
-msgid "Sync episodes"
-msgstr "Folgen synchronisieren"
-
-#: Settings
-msgctxt "#32008"
-msgid ""
-"Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr ""
-
-#: Settings
-msgctxt "#32005"
-msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr ""
-
-#: Settings
 msgctxt "#32011"
 msgid "Notification"
 msgstr "Benachrichtigung"
@@ -85,25 +66,20 @@ msgctxt "#32013"
 msgid "Progress bar"
 msgstr "Fortschrittsbalken"
 
-#: Settings
-msgctxt "#32014"
-msgid "Posters quality"
-msgstr "Posterqualität"
-
-#: Settings
-msgctxt "#32015"
-msgid "Fanarts quality"
-msgstr "Fankunstqualität"
+#: Notification
+msgctxt "#32115"
+msgid "Debugging enabled"
+msgstr "Defektlokalisierung aktiviert"
 
 #: Notification
 msgctxt "#32100"
-msgid "Can't connect to"
-msgstr "Verbindung nicht möglich"
+msgid "Can't connect to site"
+msgstr "Kann nicht mit Webseite verbinden"
 
 #: Notification
 msgctxt "#32109"
 msgid "Wrong version of web script. Update is needed"
-msgstr "Falsche Web-Script Version. Aktualisierung notwendig."
+msgstr "Falsche Version des Webskripts. Aktualisierung ist notwendig."
 
 #: Notification
 msgctxt "#32101"
@@ -117,13 +93,13 @@ msgstr "Synchronisierungsfehler"
 
 #: Notification
 msgctxt "#32103"
-msgid "Skipped"
-msgstr "Übersprungen"
+msgid "Updated"
+msgstr "Aktualisiert"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Ergänzt"
+msgstr "Hinzugefügt"
 
 #: Notification
 msgctxt "#32105"
@@ -138,12 +114,42 @@ msgstr "Filme"
 #: Notification
 msgctxt "#32107"
 msgid "TVshows"
-msgstr "Fernsehserien"
+msgstr "Fernsehshows"
 
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
 msgstr "Folgen"
+
+#: Notification
+msgctxt "#32110"
+msgid "Actors"
+msgstr "Schauspieler"
+
+#: Notification
+msgctxt "#32111"
+msgid "Genres"
+msgstr "Genres"
+
+#: Notification
+msgctxt "#32112"
+msgid "Countries"
+msgstr "Länder"
+
+#: Notification
+msgctxt "#32113"
+msgid "Studios"
+msgstr "Studios"
+
+#: Notification
+msgctxt "#32114"
+msgid "Directors"
+msgstr "Regisseure"
+
+#: Notification
+msgctxt "#32116"
+msgid "Data too large to send to server"
+msgstr "Daten sind zu groß, um sie an den Server zu senden"
 
 #: Progress Bar
 msgctxt "#32200"
@@ -158,7 +164,7 @@ msgstr "Filme"
 #: Progress Bar
 msgctxt "#32202"
 msgid "TVShows"
-msgstr "Fernsehserien"
+msgstr "Fernsehshows"
 
 #: Progress Bar
 msgctxt "#32203"
@@ -176,16 +182,6 @@ msgid "Removing"
 msgstr "Entfernen"
 
 #: Progress Bar
-msgctxt "#32206"
-msgid "Syncing Watched"
-msgstr "Gesehene werden synchronisiert"
-
-#: Progress Bar
-msgctxt "#32207"
-msgid "Syncing Unwatched"
-msgstr "Ungesehene werden synchronisiert"
-
-#: Progress Bar
-msgctxt "#32208"
-msgid "Syncing Last Played"
-msgstr "Zuletzt Wiedergegebene werden synchronisiert"
+msgctxt "#32209"
+msgid "Updating"
+msgstr "Aktualisieren"
