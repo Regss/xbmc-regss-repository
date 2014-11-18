@@ -4,13 +4,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-28 12:05+0000\n"
+"PO-Revision-Date: 2014-11-18 14:30+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/movielib-for-xbmc/language/pl/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: addon.xml
+msgctxt "Addon Summary"
+msgid "Synchronizes video library with the Movielib website"
+msgstr "Synchronizuje bazę video ze stroną Movielib"
+
+#: addon.xml
+msgctxt "Addon Description"
+msgid ""
+"Synchronizes video library with the Movielib website. Script can be "
+"downloaded from https://github.com/Regss/movielib"
+msgstr "Synchronizuje bazę video ze stroną Movielib. Skrypt można pobrać z https://github.com/Regss/movielib"
 
 #: Settings
 msgctxt "#32010"
@@ -33,37 +45,6 @@ msgid "Synchronization"
 msgstr "Synchronizacja"
 
 #: Settings
-msgctxt "#32004"
-msgid "Sync actors thumbnails"
-msgstr "Synchronizuj miniatury aktorów"
-
-#: Settings
-msgctxt "#32006"
-msgid "Sync posters"
-msgstr "Synchronizuj okładki"
-
-#: Settings
-msgctxt "#32007"
-msgid "Sync fanarts"
-msgstr "Synchronizuj fanarty"
-
-#: Settings
-msgctxt "#32009"
-msgid "Sync episodes"
-msgstr "Synchronizuj odcinki"
-
-#: Settings
-msgctxt "#32008"
-msgid ""
-"Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr "Synchronizuj w trybie Master Mode (włącz jeśli używasz zabezpieczenia Master Lock)"
-
-#: Settings
-msgctxt "#32005"
-msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr "Wymuś synchronizację plików ISO i IFO (VIDEO_TS) bez informacji i strumieniach"
-
-#: Settings
 msgctxt "#32011"
 msgid "Notification"
 msgstr "Powiadomienia"
@@ -83,20 +64,15 @@ msgctxt "#32013"
 msgid "Progress bar"
 msgstr "Pasek postępu"
 
-#: Settings
-msgctxt "#32014"
-msgid "Posters quality"
-msgstr "Jakość okładek"
-
-#: Settings
-msgctxt "#32015"
-msgid "Fanarts quality"
-msgstr "Jakość fanartów"
+#: Notification
+msgctxt "#32115"
+msgid "Debugging enabled"
+msgstr "Debugowanie włączone"
 
 #: Notification
 msgctxt "#32100"
-msgid "Can't connect to"
-msgstr "Nie można połączyć z"
+msgid "Can't connect to site"
+msgstr "Nie można połączyć"
 
 #: Notification
 msgctxt "#32109"
@@ -115,8 +91,8 @@ msgstr "Błąd Synchronizacji"
 
 #: Notification
 msgctxt "#32103"
-msgid "Skipped"
-msgstr "Pominięto"
+msgid "Updated"
+msgstr "Uaktualnione"
 
 #: Notification
 msgctxt "#32104"
@@ -142,6 +118,36 @@ msgstr "Seriale"
 msgctxt "#32108"
 msgid "Episodes"
 msgstr "Odcinki"
+
+#: Notification
+msgctxt "#32110"
+msgid "Actors"
+msgstr "Aktorzy"
+
+#: Notification
+msgctxt "#32111"
+msgid "Genres"
+msgstr "Gatunki"
+
+#: Notification
+msgctxt "#32112"
+msgid "Countries"
+msgstr "Kraje"
+
+#: Notification
+msgctxt "#32113"
+msgid "Studios"
+msgstr "Studia"
+
+#: Notification
+msgctxt "#32114"
+msgid "Directors"
+msgstr "Reżyserzy"
+
+#: Notification
+msgctxt "#32116"
+msgid "Data too large to send to server"
+msgstr "Dane za duże aby wysłać na serwer"
 
 #: Progress Bar
 msgctxt "#32200"
@@ -174,16 +180,6 @@ msgid "Removing"
 msgstr "Usuwam"
 
 #: Progress Bar
-msgctxt "#32206"
-msgid "Syncing Watched"
-msgstr "Synchronizuje oglądane"
-
-#: Progress Bar
-msgctxt "#32207"
-msgid "Syncing Unwatched"
-msgstr "Synchronizuje nieoglądane"
-
-#: Progress Bar
-msgctxt "#32208"
-msgid "Syncing Last Played"
-msgstr "Synchronizuje ostatnio oglądane"
+msgctxt "#32209"
+msgid "Updating"
+msgstr "Uaktualniam"

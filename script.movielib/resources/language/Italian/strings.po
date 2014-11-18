@@ -4,13 +4,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-28 12:04+0000\n"
+"PO-Revision-Date: 2014-11-18 14:20+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/movielib-for-xbmc/language/it/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addon.xml
+msgctxt "Addon Summary"
+msgid "Synchronizes video library with the Movielib website"
+msgstr ""
+
+#: addon.xml
+msgctxt "Addon Description"
+msgid ""
+"Synchronizes video library with the Movielib website. Script can be "
+"downloaded from https://github.com/Regss/movielib"
+msgstr ""
 
 #: Settings
 msgctxt "#32010"
@@ -33,37 +45,6 @@ msgid "Synchronization"
 msgstr "Sincronizzazione"
 
 #: Settings
-msgctxt "#32004"
-msgid "Sync actors thumbnails"
-msgstr "Sync thumbnails attori"
-
-#: Settings
-msgctxt "#32006"
-msgid "Sync posters"
-msgstr "Sync posters"
-
-#: Settings
-msgctxt "#32007"
-msgid "Sync fanarts"
-msgstr "Sync fanarts"
-
-#: Settings
-msgctxt "#32009"
-msgid "Sync episodes"
-msgstr "Sync episodi"
-
-#: Settings
-msgctxt "#32008"
-msgid ""
-"Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr "Sincronizza soltanto in Master Mode (abilitata solo quando usi la protezione Master Lock)"
-
-#: Settings
-msgctxt "#32005"
-msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr "Forza sync file ISO e IFO (VIDEO_TS)  senza dettagli stream"
-
-#: Settings
 msgctxt "#32011"
 msgid "Notification"
 msgstr "Notifica"
@@ -81,22 +62,17 @@ msgstr "Debug"
 #: Settings
 msgctxt "#32013"
 msgid "Progress bar"
-msgstr ""
+msgstr "Barra Progresso"
 
-#: Settings
-msgctxt "#32014"
-msgid "Posters quality"
-msgstr ""
-
-#: Settings
-msgctxt "#32015"
-msgid "Fanarts quality"
+#: Notification
+msgctxt "#32115"
+msgid "Debugging enabled"
 msgstr ""
 
 #: Notification
 msgctxt "#32100"
-msgid "Can't connect to"
-msgstr "Non riesco a connettermi"
+msgid "Can't connect to site"
+msgstr ""
 
 #: Notification
 msgctxt "#32109"
@@ -115,8 +91,8 @@ msgstr "Errore sincronizzazione"
 
 #: Notification
 msgctxt "#32103"
-msgid "Skipped"
-msgstr "Saltato"
+msgid "Updated"
+msgstr ""
 
 #: Notification
 msgctxt "#32104"
@@ -142,6 +118,36 @@ msgstr "Serie TV"
 msgctxt "#32108"
 msgid "Episodes"
 msgstr "Episodi"
+
+#: Notification
+msgctxt "#32110"
+msgid "Actors"
+msgstr ""
+
+#: Notification
+msgctxt "#32111"
+msgid "Genres"
+msgstr ""
+
+#: Notification
+msgctxt "#32112"
+msgid "Countries"
+msgstr ""
+
+#: Notification
+msgctxt "#32113"
+msgid "Studios"
+msgstr ""
+
+#: Notification
+msgctxt "#32114"
+msgid "Directors"
+msgstr ""
+
+#: Notification
+msgctxt "#32116"
+msgid "Data too large to send to server"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32200"
@@ -174,16 +180,6 @@ msgid "Removing"
 msgstr "Togliendo"
 
 #: Progress Bar
-msgctxt "#32206"
-msgid "Syncing Watched"
-msgstr "Sincronizzando visti"
-
-#: Progress Bar
-msgctxt "#32207"
-msgid "Syncing Unwatched"
-msgstr "Sincronizzando non visti"
-
-#: Progress Bar
-msgctxt "#32208"
-msgid "Syncing Last Played"
-msgstr "Sincronizzando ultimi riprodotti"
+msgctxt "#32209"
+msgid "Updating"
+msgstr ""

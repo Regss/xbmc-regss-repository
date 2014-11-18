@@ -4,13 +4,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-28 12:04+0000\n"
+"PO-Revision-Date: 2014-11-18 14:20+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/bg_BG/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: bg_BG\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addon.xml
+msgctxt "Addon Summary"
+msgid "Synchronizes video library with the Movielib website"
+msgstr ""
+
+#: addon.xml
+msgctxt "Addon Description"
+msgid ""
+"Synchronizes video library with the Movielib website. Script can be "
+"downloaded from https://github.com/Regss/movielib"
+msgstr ""
 
 #: Settings
 msgctxt "#32010"
@@ -33,37 +45,6 @@ msgid "Synchronization"
 msgstr "Синхронизиране"
 
 #: Settings
-msgctxt "#32004"
-msgid "Sync actors thumbnails"
-msgstr "Синхронизирай миниатюрите на актьорите"
-
-#: Settings
-msgctxt "#32006"
-msgid "Sync posters"
-msgstr "Синхронизирай плакатите"
-
-#: Settings
-msgctxt "#32007"
-msgid "Sync fanarts"
-msgstr "Синхронизирай fanart-а"
-
-#: Settings
-msgctxt "#32009"
-msgid "Sync episodes"
-msgstr "Синхронизирай епизодите"
-
-#: Settings
-msgctxt "#32008"
-msgid ""
-"Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr ""
-
-#: Settings
-msgctxt "#32005"
-msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr "Налагане не синхрознизиране на ISO и IFO (Video_TS) файловете без данните за потока"
-
-#: Settings
 msgctxt "#32011"
 msgid "Notification"
 msgstr "Известия"
@@ -76,27 +57,22 @@ msgstr "Известия"
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
-msgstr "Debug"
+msgstr "Дебъгване"
 
 #: Settings
 msgctxt "#32013"
 msgid "Progress bar"
-msgstr ""
+msgstr "Лента за напредъка"
 
-#: Settings
-msgctxt "#32014"
-msgid "Posters quality"
-msgstr ""
-
-#: Settings
-msgctxt "#32015"
-msgid "Fanarts quality"
+#: Notification
+msgctxt "#32115"
+msgid "Debugging enabled"
 msgstr ""
 
 #: Notification
 msgctxt "#32100"
-msgid "Can't connect to"
-msgstr "Няма връзка с"
+msgid "Can't connect to site"
+msgstr "Свързването със сайта не е възможно"
 
 #: Notification
 msgctxt "#32109"
@@ -115,8 +91,8 @@ msgstr "Грешка при синхронизирането"
 
 #: Notification
 msgctxt "#32103"
-msgid "Skipped"
-msgstr "Пропуснат"
+msgid "Updated"
+msgstr ""
 
 #: Notification
 msgctxt "#32104"
@@ -142,6 +118,36 @@ msgstr "ТВ Сериали"
 msgctxt "#32108"
 msgid "Episodes"
 msgstr "Епизоди"
+
+#: Notification
+msgctxt "#32110"
+msgid "Actors"
+msgstr "Актьори"
+
+#: Notification
+msgctxt "#32111"
+msgid "Genres"
+msgstr "Жанрове"
+
+#: Notification
+msgctxt "#32112"
+msgid "Countries"
+msgstr "Държави"
+
+#: Notification
+msgctxt "#32113"
+msgid "Studios"
+msgstr "Студиа"
+
+#: Notification
+msgctxt "#32114"
+msgid "Directors"
+msgstr "Режисьори"
+
+#: Notification
+msgctxt "#32116"
+msgid "Data too large to send to server"
+msgstr ""
 
 #: Progress Bar
 msgctxt "#32200"
@@ -174,16 +180,6 @@ msgid "Removing"
 msgstr "Премахване"
 
 #: Progress Bar
-msgctxt "#32206"
-msgid "Syncing Watched"
-msgstr "Синхрнонизиране на изгледаните"
-
-#: Progress Bar
-msgctxt "#32207"
-msgid "Syncing Unwatched"
-msgstr "Синхрнонизиране на неизгледаните"
-
-#: Progress Bar
-msgctxt "#32208"
-msgid "Syncing Last Played"
-msgstr "Синхрнонизиране на послено възпроизведените"
+msgctxt "#32209"
+msgid "Updating"
+msgstr ""

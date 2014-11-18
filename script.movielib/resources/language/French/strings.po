@@ -4,13 +4,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-09-28 12:04+0000\n"
+"PO-Revision-Date: 2014-11-18 14:20+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/fr_FR/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: addon.xml
+msgctxt "Addon Summary"
+msgid "Synchronizes video library with the Movielib website"
+msgstr ""
+
+#: addon.xml
+msgctxt "Addon Description"
+msgid ""
+"Synchronizes video library with the Movielib website. Script can be "
+"downloaded from https://github.com/Regss/movielib"
+msgstr ""
 
 #: Settings
 msgctxt "#32010"
@@ -33,40 +45,9 @@ msgid "Synchronization"
 msgstr ""
 
 #: Settings
-msgctxt "#32004"
-msgid "Sync actors thumbnails"
-msgstr ""
-
-#: Settings
-msgctxt "#32006"
-msgid "Sync posters"
-msgstr ""
-
-#: Settings
-msgctxt "#32007"
-msgid "Sync fanarts"
-msgstr ""
-
-#: Settings
-msgctxt "#32009"
-msgid "Sync episodes"
-msgstr ""
-
-#: Settings
-msgctxt "#32008"
-msgid ""
-"Sync only in Master Mode (enable only when using Master Lock protection)"
-msgstr ""
-
-#: Settings
-msgctxt "#32005"
-msgid "Force sync ISO and IFO (VIDEO_TS) files without stream details"
-msgstr ""
-
-#: Settings
 msgctxt "#32011"
 msgid "Notification"
-msgstr ""
+msgstr "Notification"
 
 #: Settings
 msgctxt "#32002"
@@ -83,20 +64,15 @@ msgctxt "#32013"
 msgid "Progress bar"
 msgstr ""
 
-#: Settings
-msgctxt "#32014"
-msgid "Posters quality"
-msgstr ""
-
-#: Settings
-msgctxt "#32015"
-msgid "Fanarts quality"
+#: Notification
+msgctxt "#32115"
+msgid "Debugging enabled"
 msgstr ""
 
 #: Notification
 msgctxt "#32100"
-msgid "Can't connect to"
-msgstr "Impossible de se connecter à"
+msgid "Can't connect to site"
+msgstr ""
 
 #: Notification
 msgctxt "#32109"
@@ -115,8 +91,8 @@ msgstr "Erreur de synchronisation"
 
 #: Notification
 msgctxt "#32103"
-msgid "Skipped"
-msgstr "Ignoré"
+msgid "Updated"
+msgstr ""
 
 #: Notification
 msgctxt "#32104"
@@ -131,7 +107,7 @@ msgstr "Retiré"
 #: Notification
 msgctxt "#32106"
 msgid "Movies"
-msgstr ""
+msgstr "Films"
 
 #: Notification
 msgctxt "#32107"
@@ -143,6 +119,36 @@ msgctxt "#32108"
 msgid "Episodes"
 msgstr ""
 
+#: Notification
+msgctxt "#32110"
+msgid "Actors"
+msgstr ""
+
+#: Notification
+msgctxt "#32111"
+msgid "Genres"
+msgstr ""
+
+#: Notification
+msgctxt "#32112"
+msgid "Countries"
+msgstr ""
+
+#: Notification
+msgctxt "#32113"
+msgid "Studios"
+msgstr ""
+
+#: Notification
+msgctxt "#32114"
+msgid "Directors"
+msgstr ""
+
+#: Notification
+msgctxt "#32116"
+msgid "Data too large to send to server"
+msgstr ""
+
 #: Progress Bar
 msgctxt "#32200"
 msgid "Starting"
@@ -151,7 +157,7 @@ msgstr ""
 #: Progress Bar
 msgctxt "#32201"
 msgid "Movies"
-msgstr ""
+msgstr "Films"
 
 #: Progress Bar
 msgctxt "#32202"
@@ -174,16 +180,6 @@ msgid "Removing"
 msgstr ""
 
 #: Progress Bar
-msgctxt "#32206"
-msgid "Syncing Watched"
-msgstr ""
-
-#: Progress Bar
-msgctxt "#32207"
-msgid "Syncing Unwatched"
-msgstr ""
-
-#: Progress Bar
-msgctxt "#32208"
-msgid "Syncing Last Played"
+msgctxt "#32209"
+msgid "Updating"
 msgstr ""
