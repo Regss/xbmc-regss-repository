@@ -134,7 +134,7 @@ def sync(self):
                     value = {}
                     valueThumb = {}
                     
-            debug.notify(__lang__(32104).encode('utf-8') + ' ' + str(addedCount) + ' ' + self.panelsLang[panel])
+            debug.notify(__lang__(32104).encode('utf-8') + ' ' + str(addedCount) + ' ' + self.panelsLang[panel].encode('utf-8'))
             
             self.progBar.close()
             
