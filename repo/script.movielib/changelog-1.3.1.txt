@@ -1,3 +1,6 @@
+[B]1.3.1[/B]
+- Fixed: decode language string bug
+
 [B]1.3.0[/B]
 - Added: sync extra thumbs
 - Added: sync multiple audio streams
