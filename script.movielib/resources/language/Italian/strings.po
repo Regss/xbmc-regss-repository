@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-11-18 14:20+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
+"PO-Revision-Date: 2014-11-28 19:11+0000\n"
+"Last-Translator: ElfoLiNk <matteo_gazzetta@hotmail.it>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/movielib-for-xbmc/language/it/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,14 +15,14 @@ msgstr ""
 #: addon.xml
 msgctxt "Addon Summary"
 msgid "Synchronizes video library with the Movielib website"
-msgstr ""
+msgstr "Sincronizza la libreria video con il sitoweb di Movielib"
 
 #: addon.xml
 msgctxt "Addon Description"
 msgid ""
 "Synchronizes video library with the Movielib website. Script can be "
 "downloaded from https://github.com/Regss/movielib"
-msgstr ""
+msgstr "Sincronizza la libreria video con il sitoweb di Movielib. Lo script può essere scaricato da https://github.com/Regss/movielib"
 
 #: Settings
 msgctxt "#32010"
@@ -67,12 +67,12 @@ msgstr "Barra Progresso"
 #: Notification
 msgctxt "#32115"
 msgid "Debugging enabled"
-msgstr ""
+msgstr "Debugging attivato"
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to site"
-msgstr ""
+msgstr "Connessione al sito non riuscita"
 
 #: Notification
 msgctxt "#32109"
@@ -92,7 +92,7 @@ msgstr "Errore sincronizzazione"
 #: Notification
 msgctxt "#32103"
 msgid "Updated"
-msgstr ""
+msgstr "Aggiornato"
 
 #: Notification
 msgctxt "#32104"
@@ -122,32 +122,32 @@ msgstr "Episodi"
 #: Notification
 msgctxt "#32110"
 msgid "Actors"
-msgstr ""
+msgstr "Attori"
 
 #: Notification
 msgctxt "#32111"
 msgid "Genres"
-msgstr ""
+msgstr "Generi"
 
 #: Notification
 msgctxt "#32112"
 msgid "Countries"
-msgstr ""
+msgstr "Paesi"
 
 #: Notification
 msgctxt "#32113"
 msgid "Studios"
-msgstr ""
+msgstr "Studios"
 
 #: Notification
 msgctxt "#32114"
 msgid "Directors"
-msgstr ""
+msgstr "Registi"
 
 #: Notification
 msgctxt "#32116"
 msgid "Data too large to send to server"
-msgstr ""
+msgstr "Dati troppo grandi per mandarli al server"
 
 #: Progress Bar
 msgctxt "#32200"
@@ -182,4 +182,4 @@ msgstr "Togliendo"
 #: Progress Bar
 msgctxt "#32209"
 msgid "Updating"
-msgstr ""
+msgstr "Aggiornado"

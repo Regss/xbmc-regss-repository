@@ -1,38 +1,38 @@
 # script.movielib language file
 # Translators:
-# M. de Boer <de.boer.melle@gmail.com>, 2014
+# Hrvoje Tvorek <hrvoje555@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-11-29 15:51+0000\n"
-"Last-Translator: M. de Boer <de.boer.melle@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/movielib-for-xbmc/language/nl/)\n"
+"PO-Revision-Date: 2014-12-06 17:31+0000\n"
+"Last-Translator: Hrvoje Tvorek <hrvoje555@gmail.com>\n"
+"Language-Team: Croatian (Croatia) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/hr_HR/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: hr_HR\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: addon.xml
 msgctxt "Addon Summary"
 msgid "Synchronizes video library with the Movielib website"
-msgstr "synchroniseert videobibliotheek met de Movielib website"
+msgstr "Sinkronizira video biblioteku sa Movielib stranicom"
 
 #: addon.xml
 msgctxt "Addon Description"
 msgid ""
 "Synchronizes video library with the Movielib website. Script can be "
 "downloaded from https://github.com/Regss/movielib"
-msgstr "Synchroniseert de videobibliotheek met de Movielib website. Het script kan worden gedownload van https://github.com/Regss/movielib"
+msgstr "Sinkronizira video biblioteku sa Movielib stranicom. Skripta se moze preuzeti sa https://github.com/Regss/movielib"
 
 #: Settings
 msgctxt "#32010"
 msgid "Connection"
-msgstr "Connectie"
+msgstr "Konekcija"
 
 #: Settings
 msgctxt "#32000"
 msgid "URL"
-msgstr "URL"
+msgstr "Putanja"
 
 #: Settings
 msgctxt "#32001"
@@ -42,144 +42,144 @@ msgstr "Token"
 #: Settings
 msgctxt "#32012"
 msgid "Synchronization"
-msgstr "Sychronisatie"
+msgstr "Sinkronizacija"
 
 #: Settings
 msgctxt "#32011"
 msgid "Notification"
-msgstr "Notificatie"
+msgstr "Obavijest"
 
 #: Settings
 msgctxt "#32002"
 msgid "Notification"
-msgstr "Notificatie"
+msgstr "Obavijest"
 
 #: Settings
 msgctxt "#32003"
 msgid "Debug"
-msgstr "Debug"
+msgstr "Otklanjanje greški"
 
 #: Settings
 msgctxt "#32013"
 msgid "Progress bar"
-msgstr "Progressie balk"
+msgstr "Traka napretka"
 
 #: Notification
 msgctxt "#32115"
 msgid "Debugging enabled"
-msgstr "Debugging ingeschakeld"
+msgstr "Otklanjanje grešaka je uključeno"
 
 #: Notification
 msgctxt "#32100"
 msgid "Can't connect to site"
-msgstr "Kan niet verbinden met site"
+msgstr "Povezivanje na stranicu nije moguće"
 
 #: Notification
 msgctxt "#32109"
 msgid "Wrong version of web script. Update is needed"
-msgstr "Foute versie van web script. update is vereist"
+msgstr "Kriva verzija web skripte, Potrebno je ažuriranje"
 
 #: Notification
 msgctxt "#32101"
 msgid "Wrong Token"
-msgstr "Foute Token"
+msgstr "Pogrešan token"
 
 #: Notification
 msgctxt "#32102"
 msgid "Sync Error"
-msgstr "Synchronisatie fout"
+msgstr "Greška u sinkronizaciji"
 
 #: Notification
 msgctxt "#32103"
 msgid "Updated"
-msgstr "Geüpatet "
+msgstr "Ažuriranje"
 
 #: Notification
 msgctxt "#32104"
 msgid "Added"
-msgstr "Toegevoegd"
+msgstr "Dodadno"
 
 #: Notification
 msgctxt "#32105"
 msgid "Removed"
-msgstr "Verwijderd"
+msgstr "Uklonjeno"
 
 #: Notification
 msgctxt "#32106"
 msgid "Movies"
-msgstr "Films"
+msgstr "Filmovi"
 
 #: Notification
 msgctxt "#32107"
 msgid "TVshows"
-msgstr "TV-series"
+msgstr "TV Serije"
 
 #: Notification
 msgctxt "#32108"
 msgid "Episodes"
-msgstr "Afleveringen"
+msgstr "Epizode"
 
 #: Notification
 msgctxt "#32110"
 msgid "Actors"
-msgstr "Acteurs"
+msgstr "Glumci"
 
 #: Notification
 msgctxt "#32111"
 msgid "Genres"
-msgstr "Genre`s"
+msgstr "Žanrovi"
 
 #: Notification
 msgctxt "#32112"
 msgid "Countries"
-msgstr "Landen"
+msgstr "Zmlje"
 
 #: Notification
 msgctxt "#32113"
 msgid "Studios"
-msgstr "studio`s"
+msgstr "Studio"
 
 #: Notification
 msgctxt "#32114"
 msgid "Directors"
-msgstr "Regisseurs"
+msgstr "Redatelji"
 
 #: Notification
 msgctxt "#32116"
 msgid "Data too large to send to server"
-msgstr "Date te groot om de verzenden naar de server"
+msgstr "Podaci preveliki za slanje na poslužitelj"
 
 #: Progress Bar
 msgctxt "#32200"
 msgid "Starting"
-msgstr "Starten"
+msgstr "Pokrečem"
 
 #: Progress Bar
 msgctxt "#32201"
 msgid "Movies"
-msgstr "Film"
+msgstr "Filmovi"
 
 #: Progress Bar
 msgctxt "#32202"
 msgid "TVShows"
-msgstr "TV-series"
+msgstr "TV Serije"
 
 #: Progress Bar
 msgctxt "#32203"
 msgid "Episodes"
-msgstr "Afleveringen"
+msgstr "Epizode"
 
 #: Progress Bar
 msgctxt "#32204"
 msgid "Adding"
-msgstr "Toevoegen"
+msgstr "Dodajem"
 
 #: Progress Bar
 msgctxt "#32205"
 msgid "Removing"
-msgstr "Verwijderen"
+msgstr "Uklanjam"
 
 #: Progress Bar
 msgctxt "#32209"
 msgid "Updating"
-msgstr "Updaten"
+msgstr "Ažuriram"

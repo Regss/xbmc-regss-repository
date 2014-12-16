@@ -56,6 +56,7 @@ def send(self, option, values=''):
             output = json.loads(output)
         except Exception as Error:
             debug.debug('[GET JSON ERROR]: ' + str(Error))
+            return False
     else:
         #get errors
         if len(output) > 0 and 'ERROR:' in output:

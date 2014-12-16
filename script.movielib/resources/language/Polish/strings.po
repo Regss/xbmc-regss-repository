@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-11-18 14:30+0000\n"
+"PO-Revision-Date: 2014-12-16 08:14+0000\n"
 "Last-Translator: Regss <regss84@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/movielib-for-xbmc/language/pl/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,7 +122,7 @@ msgstr "Odcinki"
 #: Notification
 msgctxt "#32110"
 msgid "Actors"
-msgstr "Aktorzy"
+msgstr "Aktorów"
 
 #: Notification
 msgctxt "#32111"
@@ -142,7 +142,7 @@ msgstr "Studia"
 #: Notification
 msgctxt "#32114"
 msgid "Directors"
-msgstr "Reżyserzy"
+msgstr "Reżyserów"
 
 #: Notification
 msgctxt "#32116"

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movielib for XBMC\n"
-"PO-Revision-Date: 2014-11-18 14:20+0000\n"
-"Last-Translator: Regss <regss84@gmail.com>\n"
+"PO-Revision-Date: 2014-11-18 20:02+0000\n"
+"Last-Translator: Kiril <neohidra@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/movielib-for-xbmc/language/bg_BG/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,14 +15,14 @@ msgstr ""
 #: addon.xml
 msgctxt "Addon Summary"
 msgid "Synchronizes video library with the Movielib website"
-msgstr ""
+msgstr "Синхронизира видео библиотеката с уеб страницата на Movielib"
 
 #: addon.xml
 msgctxt "Addon Description"
 msgid ""
 "Synchronizes video library with the Movielib website. Script can be "
 "downloaded from https://github.com/Regss/movielib"
-msgstr ""
+msgstr "Синхронизира видео библиотеката с уеб страницата на Movielib.  Скрипта може да бъде свален от https://github.com/Regss/movielib"
 
 #: Settings
 msgctxt "#32010"
@@ -92,7 +92,7 @@ msgstr "Грешка при синхронизирането"
 #: Notification
 msgctxt "#32103"
 msgid "Updated"
-msgstr ""
+msgstr "Обновено"
 
 #: Notification
 msgctxt "#32104"
@@ -147,7 +147,7 @@ msgstr "Режисьори"
 #: Notification
 msgctxt "#32116"
 msgid "Data too large to send to server"
-msgstr ""
+msgstr "Твърде много данни за изпращане към сървъра"
 
 #: Progress Bar
 msgctxt "#32200"
@@ -182,4 +182,4 @@ msgstr "Премахване"
 #: Progress Bar
 msgctxt "#32209"
 msgid "Updating"
-msgstr ""
+msgstr "Обновяване"

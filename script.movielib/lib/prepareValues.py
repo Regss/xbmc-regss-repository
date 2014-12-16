@@ -17,20 +17,20 @@ def prep(self, m, v):
             val = [];
             if 'cast' in m:
                 for cast in m['cast']:
-                    if len(cast['name']) > 0:
+                    if len(cast['name']) > 0 and cast['name'].strip() in self.panelsSITE['actor']:
                         val.append(self.panelsSITE['actor'][cast['name'].strip()])
             panelsValue[panel] = val
         else:
             val = []
             if panel in m:
                 for l in m[panel]:
-                    if len(l) > 0:
+                    if len(l) > 0 and l.strip() in self.panelsSITE[panel]:
                         val.append(self.panelsSITE[panel][l.strip()])
             panelsValue[panel] = val
     
     # poster
     if self.setSITE['xbmc_posters'] == '1' and 'thumbnail' in m:
-        poster = art.create(urllib2.unquote((m['thumbnail']).encode('utf-8')).replace('\\', '/'), 'p', 180, 265, 70)
+        poster = art.create(urllib2.unquote((m['thumbnail']).encode('utf-8')).replace('\\', '/'), 'p', 200, 294, 70)
     else:
         poster = ''
     

@@ -56,6 +56,7 @@ def check(self):
     # get settings
     self.setSITE = sendRequest.send(self, 'checksettings')
     if self.setSITE is False:
+        debug.notify(__lang__(32100).encode('utf-8'))
         return False
     if len(self.setSITE) > 0:
         for n, s in self.setSITE.items():
@@ -119,7 +120,7 @@ def check(self):
             'id': 'episodeid',
             'table': 'episodes',
             'lang': 32203,
-            'values' : ['id', 'table', 'title', 'plot', 'episode', 'season', 'tvshow', 'firstaired', 'last_played', 'play_count', 'date_added', 'hash']
+            'values' : ['id', 'table', 'title', 'plot', 'episode', 'season', 'tvshow', 'firstaired', 'last_played', 'play_count', 'date_added', 'file', 'hash']
         }
     ]
     
