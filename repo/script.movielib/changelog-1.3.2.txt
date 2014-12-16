@@ -1,3 +1,8 @@
+[B]1.3.2[/B]
+- Fixed: Display info when settings not set
+- Fixed: Sync episode files
+- Fixed: error when adding panels value
+
 [B]1.3.1[/B]
 - Fixed: decode language string bug
 
