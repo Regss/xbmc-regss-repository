@@ -28,8 +28,15 @@ def prep(self, m, v):
                         val.append(self.panelsSITE[panel][l.strip()])
             panelsValue[panel] = val
     
+    
+    # thumbnail for episodes
+    if v['table'] == 'episodes' and 'thumbnail' in m:
+        thumbnail = art.create(urllib2.unquote((m['thumbnail']).encode('utf-8')).replace('\\', '/'), 'p', 200, 113, 70)
+    else:
+        thumbnail = ''
+    
     # poster
-    if self.setSITE['xbmc_posters'] == '1' and 'thumbnail' in m:
+    if self.setSITE['xbmc_posters'] == '1' and v['table'] != 'episodes' and 'thumbnail' in m:
         poster = art.create(urllib2.unquote((m['thumbnail']).encode('utf-8')).replace('\\', '/'), 'p', 200, 294, 70)
     else:
         poster = ''
@@ -87,6 +94,7 @@ def prep(self, m, v):
         'date_added': m['dateadded'],
         'poster': base64.b64encode(poster),
         'fanart': base64.b64encode(fanart),
+        'thumbnail': base64.b64encode(thumbnail),
         'thumb[]': ex_thumb,
         'trailer': trailer,
         'hash': hashlib.md5(str(m)).hexdigest()

@@ -29,7 +29,7 @@ def start(self):
     self.setXBMC['Notify']   = __addon__.getSetting('notify')
     self.setXBMC['Debug']    = __addon__.getSetting('debug')
     
-    self.versionWebScript = '2.7.0'
+    self.versionWebScript = '2.7.2'
     
     self.progBar = bar.Bar()
     
@@ -116,11 +116,11 @@ def check(self):
             'values' : ['id', 'table', 'title', 'originaltitle', 'rating', 'plot', 'genre[]', 'actor[]', 'poster', 'fanart', 'premiered', 'last_played', 'play_count', 'date_added', 'hash']
         },
         {
-            'json': '{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodes", "params": {"properties": ["title", "plot", "episode", "season", "tvshowid", "file", "firstaired", "playcount", "lastplayed", "dateadded"]}, "id": 1}',
+            'json': '{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodes", "params": {"properties": ["title", "plot", "episode", "season", "tvshowid", "thumbnail", "file", "firstaired", "playcount", "lastplayed", "dateadded", "streamdetails"]}, "id": 1}',
             'id': 'episodeid',
             'table': 'episodes',
             'lang': 32203,
-            'values' : ['id', 'table', 'title', 'plot', 'episode', 'season', 'tvshow', 'firstaired', 'last_played', 'play_count', 'date_added', 'file', 'hash']
+            'values' : ['id', 'table', 'title', 'plot', 'episode', 'season', 'tvshow', 'thumbnail', 'firstaired', 'last_played', 'play_count', 'date_added', 'file', 'stream[]', 'hash']
         }
     ]
     
