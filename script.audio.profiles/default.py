@@ -121,6 +121,11 @@ class GUI(xbmcgui.WindowDialog):
         jsonGetSysSettings2 = unicode(jsonGetSysSettings2, 'utf-8')
         jsonGetSysSettings2 = json.loads(jsonGetSysSettings2)
         
+        # get volume level
+        jsonGetSysSettings3 = xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"Settings.GetSettings", "params":{"level": "expert", "filter":{"section":"videos","category":"videoplayer"}}, "id":1}')
+        jsonGetSysSettings3 = unicode(jsonGetSysSettings3, 'utf-8')
+        jsonGetSysSettings3 = json.loads(jsonGetSysSettings3)
+        
         # prepare json string
         jsonToWrite = ''
         if 'result' in jsonGetSysSettings:
@@ -128,6 +133,12 @@ class GUI(xbmcgui.WindowDialog):
                 if str(set['value']) == 'True' or str(set['value']) == 'False': # lowercase bolean values
                     set['value'] = str(set['value']).lower()
                 jsonToWrite = jsonToWrite + '"' + str(set['id']) + '": "' + str(set['value']) + '", '
+                
+        if 'result' in jsonGetSysSettings:
+            for set in jsonGetSysSettings3['result']['settings']:
+                if set['id'] == 'videoplayer.adjustrefreshrate':
+                    jsonToWrite = jsonToWrite + '"' + str(set['id']) + '": "' + str(set['value']) + '", '
+        
         jsonToWrite = '{' + jsonToWrite + '"volume": "' + str(jsonGetSysSettings2['result']['volume']) + '"}'
         
         # create dir in addon data if not exist
