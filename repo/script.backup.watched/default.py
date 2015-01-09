@@ -97,11 +97,11 @@ class GUI(xbmcgui.WindowDialog):
 class Backup:
     # backup all watched status and save to file
     def __init__(self):
-        jsonGetWatchedM = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"filter": {"field": "playcount", "operator": "greaterthan", "value": "0"}, "properties": ["playcount", "lastplayed", "file"]}, "id": 1}')
+        jsonGetWatchedM = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies", "params": {"filter": {"field": "playcount", "operator": "greaterthan", "value": "0"}, "properties": ["playcount", "lastplayed", "dateadded", "file"]}, "id": 1}')
         jsonGetWatchedM = unicode(jsonGetWatchedM, 'utf-8')
         jsonGetWatchedM = json.loads(jsonGetWatchedM)
         
-        jsonGetWatchedE = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodes", "params": {"filter": {"field": "playcount", "operator": "greaterthan", "value": "0"}, "properties": ["playcount", "lastplayed", "file"]}, "id": 1}')
+        jsonGetWatchedE = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodes", "params": {"filter": {"field": "playcount", "operator": "greaterthan", "value": "0"}, "properties": ["playcount", "lastplayed", "dateadded", "file"]}, "id": 1}')
         jsonGetWatchedE = unicode(jsonGetWatchedE, 'utf-8')
         jsonGetWatchedE = json.loads(jsonGetWatchedE)
         
@@ -244,13 +244,13 @@ class Restore(xbmcgui.WindowDialog):
                     if '0' in self.setMethod:
                         if r['file'] == m['file']:
                             prog.update(p, m['title'])
-                            jsonSetWatched = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "' + method + '", "params": {"playcount": ' + str(r['playcount']) + ', "lastplayed": "' + r['lastplayed'] + '", "' + video + '": ' + str(m[video]) + '}, "id": 1}')
+                            jsonSetWatched = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "' + method + '", "params": {"playcount": ' + str(r['playcount']) + ', "dateadded": "' + r['dateadded'] + '", "lastplayed": "' + r['lastplayed'] + '", "' + video + '": ' + str(m[video]) + '}, "id": 1}')
                     
                     # by filename
                     if '1' in self.setMethod:
                         if ntpath.basename(r['file']) == ntpath.basename(m['file']):
                             prog.update(p, m['title'])
-                            jsonSetWatched = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "' + method + '", "params": {"playcount": ' + str(r['playcount']) + ', "lastplayed": "' + r['lastplayed'] + '", "' + video + '": ' + str(m[video]) + '}, "id": 1}')
+                            jsonSetWatched = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "' + method + '", "params": {"playcount": ' + str(r['playcount']) + ', "dateadded": "' + r['dateadded'] + '", "lastplayed": "' + r['lastplayed'] + '", "' + video + '": ' + str(m[video]) + '}, "id": 1}')
         prog.close()
                     
 class Bar:

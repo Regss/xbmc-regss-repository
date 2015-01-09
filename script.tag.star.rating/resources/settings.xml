@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<settings>
-    <setting label="32000" type="text" id="tagPrefix" default="Rated:" />
-</settings>

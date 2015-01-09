@@ -1,5 +1,0 @@
-[B]1.0.1[/B]
-Fix: onPlayBackEnded / onPlayBackStopped actions
-
-[B]1.0.0[/B]
-Init
