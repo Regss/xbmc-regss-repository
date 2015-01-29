@@ -156,7 +156,7 @@ class Generator:
         try:
             
             # write data to the file
-            open( the_path, "w" ).write( data )
+            open( the_path, "wb" ).write( data )
 
         except Exception, e:
             # oops
