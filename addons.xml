@@ -2,7 +2,7 @@
 <addons>
 <addon id="metadata.filmweb.pl"
         name="Filmweb"
-        version="2.2.3"
+        version="2.2.4"
         provider-name="Regss|smuto">
     <requires>
         <import addon="xbmc.metadata" version="2.1.0"/>
@@ -54,7 +54,7 @@
 
 <addon id="plugin.video.filmweb.pl.trailery"
     name="Filmweb.pl - Trailery"
-    version="1.0.3"
+    version="1.1.0"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />
