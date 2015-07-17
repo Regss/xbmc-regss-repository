@@ -122,6 +122,24 @@
     </extension>
 </addon>
 
+<addon id="script.filmweb.oceny"
+    name="Filmweb Oceny"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="service.filmweb.oceny" version="1.0.0" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Rate movies on filmweb.pl website</summary>
+        <summary lang="pl">Ocenianie filmów na stronie filmweb.pl</summary>
+        <description lang="en">After watching movie you can rate it on filmweb.pl website</description>
+        <description lang="pl">Po ogladnięciu filmu możesz ocenić go na stronie filmweb.pl</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="script.movielib"
     name="Movielib"
     version="1.3.4"
@@ -192,6 +210,23 @@
         <summary lang="pl">Usługa dla skryptu Audio Profiles</summary>
         <description lang="en">Service for Audio Profiles script</description>
         <description lang="pl">Usługa dla skryptu Audio Profiles</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="service.filmweb.oceny"
+    name="Filmweb Oceny - Usługa"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+    </requires>
+    <extension point="xbmc.service" library="default.py" start="[login]" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Service for Filmweb Oceny script</summary>
+        <summary lang="pl">Usługa dla skryptu Filmweb Oceny</summary>
+        <description lang="en">Service for Filmweb Oceny script</description>
+        <description lang="pl">Usługa dla skryptu Filmweb Oceny</description>
         <platform>all</platform>
     </extension>
 </addon>
