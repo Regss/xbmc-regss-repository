@@ -163,7 +163,7 @@
 
 <addon id="script.show.image"
     name="Show Image"
-    version="1.0.1"
+    version="1.1.0"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
