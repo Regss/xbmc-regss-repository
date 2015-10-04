@@ -1,3 +1,8 @@
+[B]1.4.0[/B]
+- rewrited sync function
+- Added: separate function to sync images
+- Added: auto sync webserver settings for control remote
+
 [B]1.3.4[/B]
 - Added: Sync imdb id
 
