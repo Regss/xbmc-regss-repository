@@ -1,3 +1,6 @@
+[B]1.4.1[/B]
+- Fixed: image link/path utf-8 encoded
+
 [B]1.4.0[/B]
 - rewrited sync function
 - Added: separate function to sync images
