@@ -60,7 +60,7 @@
     version="1.2.0"
     provider-name="Regss">
     <requires>
-        <import addon="xbmc.python" version="2.0" />
+        <import addon="xbmc.python" version="2.1.0" />
         <import addon="plugin.video.youtube" version="2.9.1" optional="true" />
         <import addon="service.video.filmweb.pl.trailery" version="1.0.0" />
     </requires>
