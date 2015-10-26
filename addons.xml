@@ -57,11 +57,12 @@
 
 <addon id="plugin.video.filmweb.pl.trailery"
     name="Filmweb.pl - Trailery"
-    version="1.1.0"
+    version="1.2.0"
     provider-name="Regss">
     <requires>
-        <import addon="xbmc.python" version="2.14.0" />
+        <import addon="xbmc.python" version="2.0" />
         <import addon="plugin.video.youtube" version="2.9.1" optional="true" />
+        <import addon="service.video.filmweb.pl.trailery" version="1.0.0" />
     </requires>
     <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
@@ -72,6 +73,9 @@
         <description lang="en">Display and create playlist for trailers from Filmweb.pl</description>
         <description lang="pl">Wyświetla i tworzy playlisty dla trailerów Filmweb.pl</description>
         <platform>all</platform>
+        <forum>http://kodi.org.pl/forum/10-XBMC---Wtyczki-pluginy/3740-filmweb-trailery</forum>
+        <source>https://github.com/Regss/plugin.video.filmweb.pl.trailery</source>
+        <email>regss84@gmail.com</email>
     </extension>
 </addon>
 
@@ -263,6 +267,26 @@
         <platform>all</platform>
         <forum>http://forum.kodi.tv/showthread.php?tid=167893</forum>
         <source>https://github.com/Regss/service.movielib</source>
+        <email>regss84@gmail.com</email>
+    </extension>
+</addon>
+
+<addon id="service.video.filmweb.pl.trailery"
+    name="Service Filmweb.pl - Trailery"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+    </requires>
+    <extension point="xbmc.service" library="default.py" start="login" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Service for plugin Filmweb.pl - Trailery</summary>
+        <summary lang="pl">Usługa dla pluginu Filmweb.pl - Trailery</summary>
+        <description lang="en">Service for plugin Filmweb.pl - Trailery</description>
+        <description lang="pl">Usługa dla pluginu Filmweb.pl - Trailery</description>
+        <platform>all</platform>
+        <forum>http://kodi.org.pl/forum/10-XBMC---Wtyczki-pluginy/3740-filmweb-trailery</forum>
+        <source>https://github.com/Regss/plugin.video.filmweb.pl.trailery</source>
         <email>regss84@gmail.com</email>
     </extension>
 </addon>
