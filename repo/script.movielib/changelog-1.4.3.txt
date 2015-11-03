@@ -1,3 +1,7 @@
+[B]1.4.3[/B]
+- Fixed: compatibility for MacOS
+- Added: checking access to sources
+
 [B]1.4.2[/B]
 - Added: option for using Http Basic Auth
 - Fixed: minor bugs
