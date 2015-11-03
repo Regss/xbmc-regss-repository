@@ -1,3 +1,7 @@
+[B]1.4.4[/B]
+- Fixed: images update
+- Added: sync images without saving to temp
+
 [B]1.4.3[/B]
 - Fixed: compatibility for MacOS
 - Added: checking access to sources
