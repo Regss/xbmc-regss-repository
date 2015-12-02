@@ -2,8 +2,8 @@
 <addons>
 <addon id="metadata.filmweb.pl"
         name="Filmweb"
-        version="2.2.5"
-        provider-name="Regss|smuto">
+        version="2.2.6"
+        provider-name="Regss,smuto">
     <requires>
         <import addon="xbmc.metadata" version="2.1.0"/>
         <import addon="metadata.common.themoviedb.org" version="2.8.0"/>
@@ -18,6 +18,7 @@
         <description lang="en">Download Movie information from www.filmweb.pl</description>
         <description lang="pl">Pobiera informacje o filmie ze strony www.filmweb.pl</description>
         <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
         <forum>http://kodi.org.pl/forum/10-XBMC---Wtyczki-pluginy/3565-filmweb-pl-scraper</forum>
         <email>regss84@gmail.com</email>
         <source>https://github.com/Regss/metadata.filmweb.pl</source>
@@ -98,11 +99,11 @@
 
 <addon id="script.audio.profiles"
     name="Audio Profiles"
-    version="1.0.4"
+    version="1.0.5"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />
-        <import addon="service.audio.profiles" />
+        <import addon="service.audio.profiles" version="1.0.0" />
     </requires>
     <extension point="xbmc.python.script" library="default.py" />
     <extension point="xbmc.addon.metadata">
@@ -111,6 +112,10 @@
         <description lang="en">To map a key for switch audio profile edit keymap xml file and add:[CR]RunScript(script.audio.profiles,0) - for switch profile in loop[CR]RunScript(script.audio.profiles,x) - where x is number of profile</description>
         <description lang="pl">Aby przypisać przycisk to zmiany profili edytuj plik keymap xml i dodaj:[CR]RunScript(script.audio.profiles,0) - aby przełączać między profilami w pętli[CR]RunScript(script.audio.profiles,x) - gdzie x to numer profilu</description>
         <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum>http://forum.kodi.tv/showthread.php?tid=200081</forum>
+        <source>https://github.com/Regss/script.audio.profiles</source>
+        <email>regss84@gmail.com</email>
     </extension>
 </addon>
 
