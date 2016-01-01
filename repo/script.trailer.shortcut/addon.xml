@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.trailer.shortcut"
+    name="Trailer Shortcut"
+    version="1.0.1"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Allows play trailer using keymap</summary>
+        <summary lang="pl">Pozwala odtworzyć trailer za pomocą keymap'a</summary>
+        <description lang="en">Allows play trailer using keymap. Just use RunScript("script.trailer.shortcut")</description>
+        <description lang="pl">Pozwala odtworzyć trailer za pomocą keymap'a. Użyj RunScript("script.trailer.shortcut")</description>
+        <platform>all</platform>
+        <email>regss84@gmail.com</email>
+    </extension>
+</addon>
