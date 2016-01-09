@@ -137,7 +137,7 @@
 
 <addon id="script.filmweb.oceny"
     name="Filmweb Oceny"
-    version="1.0.1"
+    version="1.0.2"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
@@ -155,7 +155,7 @@
 
 <addon id="script.movielib"
     name="Movielib"
-    version="1.4.6"
+    version="1.4.7"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />
@@ -260,7 +260,7 @@
 
 <addon id="service.filmweb.oceny"
     name="Filmweb Oceny - Usługa"
-    version="1.0.1"
+    version="1.1.0"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
