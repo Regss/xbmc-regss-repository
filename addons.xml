@@ -224,6 +224,28 @@
     </extension>
 </addon>
 
+<addon id="script.user.rating"
+    name="User Rating"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0" />
+        <import addon="service.user.rating" version="1.0.0" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Easy rate media</summary>
+        <summary lang="pl">Łatwo oceniaj swoje zasoby</summary>
+        <description lang="en">Help rating your media</description>
+        <description lang="pl">Pomaga oceniać posiadane zasoby</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum></forum>
+        <source>https://github.com/Regss/script.user.rating</source>
+        <email>regss84@gmail.com</email>
+    </extension>
+</addon>
+
 <addon id="service.audio.profiles"
     name="Audio Profiles Service"
     version="1.0.0"
@@ -291,6 +313,27 @@
         <platform>all</platform>
         <forum>http://forum.kodi.tv/showthread.php?tid=167893</forum>
         <source>https://github.com/Regss/service.movielib</source>
+        <email>regss84@gmail.com</email>
+    </extension>
+</addon>
+
+<addon id="service.user.rating"
+    name="User Rating - Service"
+    version="1.0.0"
+    provider-name="Regss">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0" />
+    </requires>
+    <extension point="xbmc.service" library="default.py" start="[login]" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Service for User Rating Addon</summary>
+        <summary lang="pl">Usługa dla dodatku User Rating</summary>
+        <description lang="en"></description>
+        <description lang="pl"></description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum></forum>
+        <source>https://github.com/Regss/service.user.rating</source>
         <email>regss84@gmail.com</email>
     </extension>
 </addon>
