@@ -319,7 +319,7 @@
 
 <addon id="service.user.rating"
     name="User Rating - Service"
-    version="1.0.0"
+    version="1.0.1"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.24.0" />
@@ -335,6 +335,7 @@
         <forum></forum>
         <source>https://github.com/Regss/service.user.rating</source>
         <email>regss84@gmail.com</email>
+        <broken>deprecated</broken>
     </extension>
 </addon>
 
