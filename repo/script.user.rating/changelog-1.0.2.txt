@@ -1,3 +1,6 @@
+[B]1.0.2[/B]
+- Rewrited: rate dialog to WindowsDialogXML
+
 [B]1.0.1[/B]
 - Added: submitting to metadata websites (TMDB, TVDB, FILMWEB)
 - Added: Second account  for submitting

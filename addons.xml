@@ -226,7 +226,7 @@
 
 <addon id="script.user.rating"
     name="User Rating"
-    version="1.0.1"
+    version="1.0.2"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.24.0" />
@@ -314,28 +314,6 @@
         <forum>http://forum.kodi.tv/showthread.php?tid=167893</forum>
         <source>https://github.com/Regss/service.movielib</source>
         <email>regss84@gmail.com</email>
-    </extension>
-</addon>
-
-<addon id="service.user.rating"
-    name="User Rating - Service"
-    version="1.0.1"
-    provider-name="Regss">
-    <requires>
-        <import addon="xbmc.python" version="2.24.0" />
-    </requires>
-    <extension point="xbmc.service" library="default.py" start="[login]" />
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Service for User Rating Addon</summary>
-        <summary lang="pl">Usługa dla dodatku User Rating</summary>
-        <description lang="en"></description>
-        <description lang="pl"></description>
-        <platform>all</platform>
-        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-        <forum></forum>
-        <source>https://github.com/Regss/service.user.rating</source>
-        <email>regss84@gmail.com</email>
-        <broken>deprecated</broken>
     </extension>
 </addon>
 
