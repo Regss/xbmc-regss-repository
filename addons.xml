@@ -159,14 +159,14 @@
 
 <addon id="script.movielib"
     name="Movielib"
-    version="1.4.8"
+    version="1.4.9"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />
-        <import addon="service.movielib" version="1.0.2" />
         <import addon="script.module.pil" version="1.1.7" />
     </requires>
     <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.service" library="service.py" start="login" />
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Synchronizes video library with the Movielib site</summary>
         <summary lang="pl">Synchronizuje bazę video ze stroną Movielib</summary>
@@ -290,7 +290,7 @@
 
 <addon id="service.movielib"
     name="Movielib Service"
-    version="1.0.4"
+    version="1.0.5"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
@@ -305,6 +305,7 @@
         <forum>http://forum.kodi.tv/showthread.php?tid=167893</forum>
         <source>https://github.com/Regss/service.movielib</source>
         <email>regss84@gmail.com</email>
+        <broken>deprecated</broken>
     </extension>
 </addon>
 </addons>

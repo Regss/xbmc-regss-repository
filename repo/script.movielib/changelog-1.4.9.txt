@@ -1,3 +1,6 @@
+[B]1.4.9[/B]
+- move service to main addon
+
 [B]1.4.8[/B]
 - Added: when start playing update banner to "now playing"
 - Added: trying to copy image if PIL module not exist
