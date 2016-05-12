@@ -1,3 +1,6 @@
+[B]1.0.3[/B]
+- Added: sync all ratings from KODI to Sites and conversely
+
 [B]1.0.2[/B]
 - Rewrited: rate dialog to WindowsDialogXML
 
