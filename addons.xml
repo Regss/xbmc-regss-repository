@@ -212,7 +212,7 @@
 
 <addon id="script.trailer.shortcut"
     name="Trailer Shortcut"
-    version="1.0.1"
+    version="1.0.2"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
