@@ -1,3 +1,6 @@
+[B]2.2.8[/B]
+- Poprawka: pobieranie polskiej okładki
+- Poprawka: pobieranie obsady
 [B]2.2.7[/B]
 - Poprawka: wyszukiwanie filmów
 [B]2.2.6[/B]
