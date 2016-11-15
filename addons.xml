@@ -181,7 +181,7 @@
 
 <addon id="script.movielib"
     name="Movielib"
-    version="1.4.9"
+    version="1.4.10"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />

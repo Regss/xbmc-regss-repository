@@ -1,3 +1,6 @@
+[B]1.4.10[/B]
+- add support for https
+
 [B]1.4.9[/B]
 - move service to main addon
 
