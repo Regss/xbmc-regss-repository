@@ -1,3 +1,7 @@
+[B]1.2.2[/B]
+- fix: JSON parse lookandfeel.soundskin value
+- fix: automatic content change for GUI
+
 [B]1.2.1[/B]
 - fix: automatic content detection
 
