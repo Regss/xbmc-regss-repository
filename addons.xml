@@ -99,7 +99,7 @@
 
 <addon id="script.audio.profiles"
     name="Audio Profiles"
-    version="1.2.3"
+    version="1.2.4"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />
