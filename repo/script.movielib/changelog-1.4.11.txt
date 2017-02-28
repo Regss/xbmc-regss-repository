@@ -1,3 +1,8 @@
+[B]1.4.11[/B]
+- sync trigger "on player stop" now sync only movie that stopped
+- Fixed: allow to sync when server var POST_MAX_SIZE is set to 0
+- Fixed: debuging in kodi.log
+
 [B]1.4.10[/B]
 - add support for https
 

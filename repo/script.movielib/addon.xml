@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.movielib"
     name="Movielib"
-    version="1.4.10"
+    version="1.4.11"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />
@@ -18,6 +18,7 @@
         <summary lang="bg">Синхронизира видео библиотеката с уеб страницата на Movielib</summary>
         <summary lang="sk">Synchronizuje video knižnicu s Movielib stránkou</summary>
         <summary lang="it">Sincronizza la libreria video con il sitoweb di Movielib</summary>
+        <summary lang="cs">Synchronizuje video knihovnu s webovými stránkami Movielib</summary>
         <description lang="en">Synchronizes video library with the Movielib site. Script can be downloaded from https://github.com/Regss/movielib</description>
         <description lang="pl">Synchronizuje bazę video ze stroną Movielib. Którą można pobrać z https://github.com/Regss/movielib</description>
         <description lang="de">Synchronisiert die Videobibliothek mit der Movielib-Webseite. Das Skript kann von https://github.com/Regss/movielib heruntergeladen werden.</description>
@@ -26,6 +27,7 @@
         <description lang="bg">Синхронизира видео библиотеката с уеб страницата на Movielib.  Скрипта може да бъде свален от https://github.com/Regss/movielib</description>
         <description lang="sk">Synchronizuje video knižnicu s Movielib stránkou. Skript môžte sťahovať z https://github.com/Regss/movielib</description>
         <description lang="it">Sincronizza la libreria video con il sitoweb di Movielib. Lo script può essere scaricato da https://github.com/Regss/movielib</description>
+        <description lang="cs">Synchronizuje video knihovnu s webovými stránkami Movielib. Script může být stažen z https://github.com/Regss/movielib</description>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
         <forum>http://forum.kodi.tv/showthread.php?tid=167893</forum>
