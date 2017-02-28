@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.filmweb.oceny"
     name="Filmweb Oceny"
-    version="1.0.2"
+    version="1.0.3"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
-        <import addon="service.filmweb.oceny" version="1.0.1" />
     </requires>
     <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.service" library="service.py" start="login" />
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Rate movies on filmweb.pl website</summary>
         <summary lang="pl">Ocenianie filmów na stronie filmweb.pl</summary>
