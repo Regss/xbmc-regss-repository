@@ -1,3 +1,7 @@
+[B]1.2.5[/B]
+- fix: assign cdda Audio CD from unknown to audio type
+- fix: prevent auto change immediately after change profile manually
+
 [B]1.2.4[/B]
 - add: kodi start/wakeup (Default) profile
 
