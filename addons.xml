@@ -236,7 +236,7 @@
 
 <addon id="script.shutdown.timer"
     name="Shutdown Timer"
-    version="1.0.0"
+    version="1.0.1"
     provider-name="Regss">
     <requires>
         <import addon="xbmc.python" version="2.14.0" />
