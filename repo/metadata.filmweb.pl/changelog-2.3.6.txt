@@ -1,3 +1,7 @@
+[B]2.3.6[/B]
+- Poprawka: nowa wyszukiwarka
+- Poprawka: dopasowanie to scrapera TMDb
+- Dodano: Alternatywna wyszukiwarka
 [B]2.3.5[/B]
 - Poprawka: pobieranie opisu
 [B]2.3.4[/B]
