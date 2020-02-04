@@ -1,3 +1,5 @@
+[B]2.4.0[/B]
+- Poprawka: dopasowanie do nowego layout'u
 [B]2.3.6[/B]
 - Poprawka: nowa wyszukiwarka
 - Poprawka: dopasowanie to scrapera TMDb
