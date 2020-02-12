@@ -1,3 +1,7 @@
+[B]2.4.1[/B]
+- Poprawka: Pobieranie aktorów
+- Poprawka: pobieranie opisu
+- Poprawka: dopasowanie do nowych standardów KODI Leia
 [B]2.4.0[/B]
 - Poprawka: dopasowanie do nowego layout'u
 [B]2.3.6[/B]
