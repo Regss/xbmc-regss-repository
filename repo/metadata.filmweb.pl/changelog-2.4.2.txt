@@ -1,3 +1,5 @@
+[B]2.4.2[/B]
+- Poprawka: Pobieranie tagline
 [B]2.4.1[/B]
 - Poprawka: Pobieranie aktorów
 - Poprawka: pobieranie opisu
