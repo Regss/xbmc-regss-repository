@@ -1,3 +1,5 @@
+[B]2.4.3[/B]
+- poprawka: Pobieranie okładki
 [B]2.4.2[/B]
 - Poprawka: Pobieranie tagline
 [B]2.4.1[/B]
